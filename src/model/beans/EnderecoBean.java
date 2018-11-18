@@ -18,9 +18,8 @@ import javax.persistence.SequenceGenerator;
  * @author willi
  */
 @Entity
-@SequenceGenerator(name = "sequencia_endereco", sequenceName = "endereco_seq", allocationSize=1)
-public class EnderecoBean implements Serializable {
-    
+@SequenceGenerator(name = "sequencia_endereco", sequenceName = "endereco_seq", initialValue = 1, allocationSize = 1)
+public class EnderecoBean implements Serializable {    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_endereco")
     private Integer id;
