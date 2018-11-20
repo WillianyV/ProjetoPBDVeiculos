@@ -16,12 +16,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="SEDE_FILIAL")
 @SequenceGenerator(name = "sequencia_empresa", sequenceName = "empresa_seq", initialValue = 1, allocationSize = 1)
 public class SedeFilialBean implements Serializable {
     @Id
@@ -32,32 +34,28 @@ public class SedeFilialBean implements Serializable {
     @Column(length = 20)
     private String tipo, CNPJ;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Edereco", nullable = false)
-    private EnderecoBean fkEndereco;
+    @JoinColumn(name = "Id_Endereco", nullable = false)
+    private EnderecoBean fk_endereco;
 
     public SedeFilialBean() {
     }
 
-    public SedeFilialBean(String nome, EnderecoBean fkEndereco) {
+    public SedeFilialBean(String nome, EnderecoBean fk_endereco) {
         this.nome = nome;
-        this.fkEndereco = fkEndereco;
+        this.fk_endereco = fk_endereco;
     }
 
-    public SedeFilialBean(String nome, String tipo, String CNPJ, EnderecoBean fkEndereco) {
+    public SedeFilialBean(String nome, String tipo, String CNPJ, EnderecoBean fk_endereco) {
         this.nome = nome;
         this.tipo = tipo;
         this.CNPJ = CNPJ;
-        this.fkEndereco = fkEndereco;
+        this.fk_endereco = fk_endereco;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.nome);
-        hash = 53 * hash + Objects.hashCode(this.tipo);
-        hash = 53 * hash + Objects.hashCode(this.CNPJ);
-        hash = 53 * hash + Objects.hashCode(this.fkEndereco);
+        hash = 31 * hash + Objects.hashCode(this.tipo);
         return hash;
     }
 
@@ -73,27 +71,12 @@ public class SedeFilialBean implements Serializable {
             return false;
         }
         final SedeFilialBean other = (SedeFilialBean) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipo, other.tipo)) {
-            return false;
-        }
-        if (!Objects.equals(this.CNPJ, other.CNPJ)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkEndereco, other.fkEndereco)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "SedeFilialBean{" + "id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", CNPJ=" + CNPJ + ", fkEndereco=" + fkEndereco + '}';
+        return "SedeFilialBean{" + "id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", CNPJ=" + CNPJ + ", fk_Endereco=" + fk_endereco + '}';
     }
 
     public Integer getId() {
@@ -128,12 +111,12 @@ public class SedeFilialBean implements Serializable {
         this.CNPJ = CNPJ;
     }
 
-    public EnderecoBean getFkEndereco() {
-        return fkEndereco;
+    public EnderecoBean getFk_endereco() {
+        return fk_endereco;
     }
 
-    public void setFkEndereco(EnderecoBean fkEndereco) {
-        this.fkEndereco = fkEndereco;
+    public void setFk_endereco(EnderecoBean fk_endereco) {
+        this.fk_endereco = fk_endereco;
     }
-
+    
 }

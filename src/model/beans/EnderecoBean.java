@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.beans;
 
 import java.io.Serializable;
@@ -12,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="ENDERECO")
 @SequenceGenerator(name = "sequencia_endereco", sequenceName = "endereco_seq", initialValue = 1, allocationSize = 1)
 public class EnderecoBean implements Serializable {    
     @Id
@@ -39,8 +36,7 @@ public class EnderecoBean implements Serializable {
     public EnderecoBean() {
     }
 
-    public EnderecoBean(Integer id, String logradouro, String bairro, String cidade, String uf, String cep, int numero) {
-        this.id = id;
+    public EnderecoBean(String logradouro, String bairro, String cidade, String uf, String cep, int numero) {
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -48,9 +44,7 @@ public class EnderecoBean implements Serializable {
         this.cep = cep;
         this.numero = numero;
     }
-    /*
-    EQUALS() AND HASCODE()
-    */
+
     @Override
     public String toString() {
         return "EnderecoBean{" + "id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", uf=" + uf + ", cep=" + cep + ", numero=" + numero + '}';

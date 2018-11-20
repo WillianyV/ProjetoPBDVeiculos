@@ -2,16 +2,18 @@ package model.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="CATEGORIA_CAMIONETA_PASSAGEIRO")
 public class CamionetasPassageirosBean extends CategoriaBean{
     @Column(length = 50)
-    private String tipoAirBag;
-    private boolean direcaoAssistida, cintosTraseirosRetrateis, rodasLigaLeve, contPoluicaoAr;
+    private String tipo_air_bag;
+    private boolean direcao_assistida, cintos_traseiros_retrateis, rodas_liga_leve, cont_poluicao_ar;
 
     public CamionetasPassageirosBean() {
     }
@@ -20,68 +22,58 @@ public class CamionetasPassageirosBean extends CategoriaBean{
         super(codigo, nome);
     }
 
-    /**
-     *
-     * @param tipoAirBag
-     * @param direcaoAssistida
-     * @param cintosTraseirosRetrateis
-     * @param rodasLigaLeve
-     * @param contPoluicaoAr
-     * @param codigo
-     * @param nome
-     */
-    public CamionetasPassageirosBean(String tipoAirBag, boolean direcaoAssistida, boolean cintosTraseirosRetrateis, boolean rodasLigaLeve, boolean contPoluicaoAr, String codigo, String nome) {
-        super(codigo, nome);
-        this.tipoAirBag = tipoAirBag;
-        this.direcaoAssistida = direcaoAssistida;
-        this.cintosTraseirosRetrateis = cintosTraseirosRetrateis;
-        this.rodasLigaLeve = rodasLigaLeve;
-        this.contPoluicaoAr = contPoluicaoAr;
+    public CamionetasPassageirosBean(String tipo_air_bag, boolean direcao_assistida, boolean cintos_traseiros_retrateis, boolean rodas_liga_leve, boolean cont_poluicao_ar, String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re) {
+        super(codigo, nome, tamanho, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re);
+        this.tipo_air_bag = tipo_air_bag;
+        this.direcao_assistida = direcao_assistida;
+        this.cintos_traseiros_retrateis = cintos_traseiros_retrateis;
+        this.rodas_liga_leve = rodas_liga_leve;
+        this.cont_poluicao_ar = cont_poluicao_ar;
     }
 
     @Override
     public String toString() {
-        return "CamionetasPassageiros{" + "tipoAirBag=" + tipoAirBag + ", direcaoAssistida=" + direcaoAssistida + ", cintosTraseirosRetrateis=" + cintosTraseirosRetrateis + ", rodasLigaLeve=" + rodasLigaLeve + ", contPoluicaoAr=" + contPoluicaoAr + '}';
+        return "CamionetasPassageirosBean{" + "tipo_air_bag=" + tipo_air_bag + ", direcao_assistida=" + direcao_assistida + ", cintos_traseiros_retrateis=" + cintos_traseiros_retrateis + ", rodas_liga_leve=" + rodas_liga_leve + ", cont_poluicao_ar=" + cont_poluicao_ar + '}';
     }
 
-    public String getTipoAirBag() {
-        return tipoAirBag;
+    public String getTipo_air_bag() {
+        return tipo_air_bag;
     }
 
-    public void setTipoAirBag(String tipoAirBag) {
-        this.tipoAirBag = tipoAirBag;
+    public void setTipo_air_bag(String tipo_air_bag) {
+        this.tipo_air_bag = tipo_air_bag;
     }
 
-    public boolean isDirecaoAssistida() {
-        return direcaoAssistida;
+    public boolean isDirecao_assistida() {
+        return direcao_assistida;
     }
 
-    public void setDirecaoAssistida(boolean direcaoAssistida) {
-        this.direcaoAssistida = direcaoAssistida;
+    public void setDirecao_assistida(boolean direcao_assistida) {
+        this.direcao_assistida = direcao_assistida;
     }
 
-    public boolean isCintosTraseirosRetrateis() {
-        return cintosTraseirosRetrateis;
+    public boolean isCintos_traseiros_retrateis() {
+        return cintos_traseiros_retrateis;
     }
 
-    public void setCintosTraseirosRetrateis(boolean cintosTraseirosRetrateis) {
-        this.cintosTraseirosRetrateis = cintosTraseirosRetrateis;
+    public void setCintos_traseiros_retrateis(boolean cintos_traseiros_retrateis) {
+        this.cintos_traseiros_retrateis = cintos_traseiros_retrateis;
     }
 
-    public boolean isRodasLigaLeve() {
-        return rodasLigaLeve;
+    public boolean isRodas_liga_leve() {
+        return rodas_liga_leve;
     }
 
-    public void setRodasLigaLeve(boolean rodasLigaLeve) {
-        this.rodasLigaLeve = rodasLigaLeve;
+    public void setRodas_liga_leve(boolean rodas_liga_leve) {
+        this.rodas_liga_leve = rodas_liga_leve;
     }
 
-    public boolean isContPoluicaoAr() {
-        return contPoluicaoAr;
+    public boolean isCont_poluicao_ar() {
+        return cont_poluicao_ar;
     }
 
-    public void setContPoluicaoAr(boolean contPoluicaoAr) {
-        this.contPoluicaoAr = contPoluicaoAr;
+    public void setCont_poluicao_ar(boolean cont_poluicao_ar) {
+        this.cont_poluicao_ar = cont_poluicao_ar;
     }
-   
+
 }

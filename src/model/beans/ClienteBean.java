@@ -18,12 +18,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="CLIENTE")
 @SequenceGenerator(name = "sequencia_cliente", sequenceName = "usuario_cliente", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ClienteBean implements Serializable {
@@ -33,23 +35,21 @@ public abstract class ClienteBean implements Serializable {
     @Column(nullable = false)
     private String nome;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Edereco", nullable = false)
-    private EnderecoBean fkEndereco;
+    @JoinColumn(name = "Id_Endereco", nullable = false)
+    private EnderecoBean fk_endereco;
 
-     public ClienteBean() {
+    public ClienteBean() {
     }
 
-    public ClienteBean(String nome, EnderecoBean fkEndereco) {
+    public ClienteBean(String nome, EnderecoBean fk_endereco) {
         this.nome = nome;
-        this.fkEndereco = fkEndereco;
+        this.fk_endereco = fk_endereco;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        hash = 83 * hash + Objects.hashCode(this.nome);
-        hash = 83 * hash + Objects.hashCode(this.fkEndereco);
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -65,21 +65,12 @@ public abstract class ClienteBean implements Serializable {
             return false;
         }
         final ClienteBean other = (ClienteBean) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkEndereco, other.fkEndereco)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "ClienteBean{" + "id=" + id + ", nome=" + nome + ", fkEndereco=" + fkEndereco + '}';
+        return "ClienteBean{" + "id=" + id + ", nome=" + nome + ", fk_endereco=" + fk_endereco + '}';
     }
 
     public Integer getId() {
@@ -98,12 +89,11 @@ public abstract class ClienteBean implements Serializable {
         this.nome = nome;
     }
 
-    public EnderecoBean getFkEndereco() {
-        return fkEndereco;
+    public EnderecoBean getFk_endereco() {
+        return fk_endereco;
     }
 
-    public void setFkEndereco(EnderecoBean fkEndereco) {
-        this.fkEndereco = fkEndereco;
+    public void setFk_endereco(EnderecoBean fk_endereco) {
+        this.fk_endereco = fk_endereco;
     }
-    
 }

@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -23,59 +24,82 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="VEICULO")
 @SequenceGenerator(name = "sequencia_veiculo", sequenceName = "veiculo_seq", initialValue = 1, allocationSize = 1)
 public class VeiculoBean implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_veiculo")
     private Integer id;
     @Column(nullable = false)
-    private int nPlaca; 
-    private int nChassi, nMotor, toqueMotor, quilometragemAtual, nPassageiros, nPorta;
+    private int n_placa; 
+    private int n_chassi, n_motor, toque_motor, quilometragem_atual, n_passageiros, n_porta;
     @Column(length = 100)
-    private String cor, modelo, tipoCombustivel, fabricante;
+    private String cor, modelo, tipo_combustivel, fabricante;
     @Column(length = 50, nullable = false)
     private String status;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date anoFabricacao, anoModelo;
+    private Date ano_fabricacao, ano_modelo;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_categoria", nullable = false)
-    private CategoriaBean fkCategoria;
+    @JoinColumn(name = "Id_Categoria", nullable = false)
+    private CategoriaBean fk_categoria;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_sede_filial", nullable = false)
-    private SedeFilialBean fkSedeFilial;
+    @JoinColumn(name = "Id_Sede_Filial", nullable = false)
+    private SedeFilialBean fk_sede_filial;
 
     public VeiculoBean() {
     }
 
-    public VeiculoBean(int nPlaca, String status, CategoriaBean fkCategoria, SedeFilialBean fkSedeFilial) {
-        this.nPlaca = nPlaca;
+    public VeiculoBean(int n_placa, String status, CategoriaBean fk_categoria, SedeFilialBean fk_sede_filial) {
+        this.n_placa = n_placa;
         this.status = status;
-        this.fkCategoria = fkCategoria;
-        this.fkSedeFilial = fkSedeFilial;
+        this.fk_categoria = fk_categoria;
+        this.fk_sede_filial = fk_sede_filial;
     }
 
-    public VeiculoBean(int nPlaca, int nChassi, int nMotor, int toqueMotor, int quilometragemAtual, int nPassageiros, int nPorta, String cor, String modelo, String tipoCombustivel, String fabricante, String status, Date anoFabricacao, Date anoModelo, CategoriaBean fkCategoria, SedeFilialBean fkSedeFilial) {
-        this.nPlaca = nPlaca;
-        this.nChassi = nChassi;
-        this.nMotor = nMotor;
-        this.toqueMotor = toqueMotor;
-        this.quilometragemAtual = quilometragemAtual;
-        this.nPassageiros = nPassageiros;
-        this.nPorta = nPorta;
+    public VeiculoBean(int n_placa, int n_chassi, int n_motor, int toque_motor, int quilometragem_atual, int n_passageiros, int n_porta, String cor, String modelo, String tipo_combustivel, String fabricante, String status, Date ano_fabricacao, Date ano_modelo, CategoriaBean fk_categoria, SedeFilialBean fk_sede_filial) {
+        this.n_placa = n_placa;
+        this.n_chassi = n_chassi;
+        this.n_motor = n_motor;
+        this.toque_motor = toque_motor;
+        this.quilometragem_atual = quilometragem_atual;
+        this.n_passageiros = n_passageiros;
+        this.n_porta = n_porta;
         this.cor = cor;
         this.modelo = modelo;
-        this.tipoCombustivel = tipoCombustivel;
+        this.tipo_combustivel = tipo_combustivel;
         this.fabricante = fabricante;
         this.status = status;
-        this.anoFabricacao = anoFabricacao;
-        this.anoModelo = anoModelo;
-        this.fkCategoria = fkCategoria;
-        this.fkSedeFilial = fkSedeFilial;
+        this.ano_fabricacao = ano_fabricacao;
+        this.ano_modelo = ano_modelo;
+        this.fk_categoria = fk_categoria;
+        this.fk_sede_filial = fk_sede_filial;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 73 * hash + this.n_placa;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final VeiculoBean other = (VeiculoBean) obj;
+        return true;
     }
 
     @Override
     public String toString() {
-        return "VeiculoBean{" + "id=" + id + ", nPlaca=" + nPlaca + ", nChassi=" + nChassi + ", nMotor=" + nMotor + ", toqueMotor=" + toqueMotor + ", quilometragemAtual=" + quilometragemAtual + ", nPassageiros=" + nPassageiros + ", nPorta=" + nPorta + ", cor=" + cor + ", modelo=" + modelo + ", tipoCombustivel=" + tipoCombustivel + ", fabricante=" + fabricante + ", status=" + status + ", anoFabricacao=" + anoFabricacao + ", anoModelo=" + anoModelo + ", fkCategoria=" + fkCategoria + ", fkSedeFilial=" + fkSedeFilial + '}';
+        return "VeiculoBean{" + "id=" + id + ", n_placa=" + n_placa + ", n_chassi=" + n_chassi + ", n_motor=" + n_motor + ", toque_motor=" + toque_motor + ", quilometragem_atual=" + quilometragem_atual + ", n_passageiros=" + n_passageiros + ", n_porta=" + n_porta + ", cor=" + cor + ", modelo=" + modelo + ", tipo_combustivel=" + tipo_combustivel + ", fabricante=" + fabricante + ", status=" + status + ", ano_fabricacao=" + ano_fabricacao + ", ano_modelo=" + ano_modelo + ", fk_categoria=" + fk_categoria + ", fk_sede_filial=" + fk_sede_filial + '}';
     }
 
     public Integer getId() {
@@ -86,60 +110,60 @@ public class VeiculoBean implements Serializable{
         this.id = id;
     }
 
-    public int getnPlaca() {
-        return nPlaca;
+    public int getN_placa() {
+        return n_placa;
     }
 
-    public void setnPlaca(int nPlaca) {
-        this.nPlaca = nPlaca;
+    public void setN_placa(int n_placa) {
+        this.n_placa = n_placa;
     }
 
-    public int getnChassi() {
-        return nChassi;
+    public int getN_chassi() {
+        return n_chassi;
     }
 
-    public void setnChassi(int nChassi) {
-        this.nChassi = nChassi;
+    public void setN_chassi(int n_chassi) {
+        this.n_chassi = n_chassi;
     }
 
-    public int getnMotor() {
-        return nMotor;
+    public int getN_motor() {
+        return n_motor;
     }
 
-    public void setnMotor(int nMotor) {
-        this.nMotor = nMotor;
+    public void setN_motor(int n_motor) {
+        this.n_motor = n_motor;
     }
 
-    public int getToqueMotor() {
-        return toqueMotor;
+    public int getToque_motor() {
+        return toque_motor;
     }
 
-    public void setToqueMotor(int toqueMotor) {
-        this.toqueMotor = toqueMotor;
+    public void setToque_motor(int toque_motor) {
+        this.toque_motor = toque_motor;
     }
 
-    public int getQuilometragemAtual() {
-        return quilometragemAtual;
+    public int getQuilometragem_atual() {
+        return quilometragem_atual;
     }
 
-    public void setQuilometragemAtual(int quilometragemAtual) {
-        this.quilometragemAtual = quilometragemAtual;
+    public void setQuilometragem_atual(int quilometragem_atual) {
+        this.quilometragem_atual = quilometragem_atual;
     }
 
-    public int getnPassageiros() {
-        return nPassageiros;
+    public int getN_passageiros() {
+        return n_passageiros;
     }
 
-    public void setnPassageiros(int nPassageiros) {
-        this.nPassageiros = nPassageiros;
+    public void setN_passageiros(int n_passageiros) {
+        this.n_passageiros = n_passageiros;
     }
 
-    public int getnPorta() {
-        return nPorta;
+    public int getN_porta() {
+        return n_porta;
     }
 
-    public void setnPorta(int nPorta) {
-        this.nPorta = nPorta;
+    public void setN_porta(int n_porta) {
+        this.n_porta = n_porta;
     }
 
     public String getCor() {
@@ -158,12 +182,12 @@ public class VeiculoBean implements Serializable{
         this.modelo = modelo;
     }
 
-    public String getTipoCombustivel() {
-        return tipoCombustivel;
+    public String getTipo_combustivel() {
+        return tipo_combustivel;
     }
 
-    public void setTipoCombustivel(String tipoCombustivel) {
-        this.tipoCombustivel = tipoCombustivel;
+    public void setTipo_combustivel(String tipo_combustivel) {
+        this.tipo_combustivel = tipo_combustivel;
     }
 
     public String getFabricante() {
@@ -182,36 +206,36 @@ public class VeiculoBean implements Serializable{
         this.status = status;
     }
 
-    public Date getAnoFabricacao() {
-        return anoFabricacao;
+    public Date getAno_fabricacao() {
+        return ano_fabricacao;
     }
 
-    public void setAnoFabricacao(Date anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
+    public void setAno_fabricacao(Date ano_fabricacao) {
+        this.ano_fabricacao = ano_fabricacao;
     }
 
-    public Date getAnoModelo() {
-        return anoModelo;
+    public Date getAno_modelo() {
+        return ano_modelo;
     }
 
-    public void setAnoModelo(Date anoModelo) {
-        this.anoModelo = anoModelo;
+    public void setAno_modelo(Date ano_modelo) {
+        this.ano_modelo = ano_modelo;
     }
 
-    public CategoriaBean getFkCategoria() {
-        return fkCategoria;
+    public CategoriaBean getFk_categoria() {
+        return fk_categoria;
     }
 
-    public void setFkCategoria(CategoriaBean fkCategoria) {
-        this.fkCategoria = fkCategoria;
+    public void setFk_categoria(CategoriaBean fk_categoria) {
+        this.fk_categoria = fk_categoria;
     }
 
-    public SedeFilialBean getFkSedeFilial() {
-        return fkSedeFilial;
+    public SedeFilialBean getFk_sede_filial() {
+        return fk_sede_filial;
     }
 
-    public void setFkSedeFilial(SedeFilialBean fkSedeFilial) {
-        this.fkSedeFilial = fkSedeFilial;
+    public void setFk_sede_filial(SedeFilialBean fk_sede_filial) {
+        this.fk_sede_filial = fk_sede_filial;
     }
     
 }

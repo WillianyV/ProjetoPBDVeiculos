@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -24,6 +25,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="USUARIO")
 @SequenceGenerator(name = "sequencia_usuario", sequenceName = "usuario_seq", initialValue = 1, allocationSize = 1)
 public class UsuarioBean implements Serializable {
     @Id
@@ -34,55 +36,34 @@ public class UsuarioBean implements Serializable {
     @Column(length = 30)
     private String CPF, RG, CTPS;
     @Column(nullable = false,length = 30)
-    private String tipoUsuario, login, senha;
+    private String tipo_usuario, login, senha;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DN;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Edereco", nullable = false)
-    private EnderecoBean fkEndereco;
+    @JoinColumn(name = "Id_Endereco", nullable = false)
+    private EnderecoBean fk_endereco;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Sede_Filial", nullable = false)
-    private SedeFilialBean fkSedeFilial;
+    private SedeFilialBean fk_sede_filial;
 
     public UsuarioBean() {
     }
 
-    public UsuarioBean(String nome, String tipoUsuario, String login, String senha, EnderecoBean fkEndereco, SedeFilialBean fkSedeFilial) {
+    public UsuarioBean(String nome, String tipo_usuario, String login, String senha, EnderecoBean fk_endereco, SedeFilialBean fk_sede_filial) {
         this.nome = nome;
-        this.tipoUsuario = tipoUsuario;
+        this.tipo_usuario = tipo_usuario;
         this.login = login;
         this.senha = senha;
-        this.fkEndereco = fkEndereco;
-        this.fkSedeFilial = fkSedeFilial;
-    }
-
-    public UsuarioBean(String nome, String CPF, String RG, String CTPS, String tipoUsuario, String login, String senha, Date DN, EnderecoBean fkEndereco, SedeFilialBean fkSedeFilial) {
-        this.nome = nome;
-        this.CPF = CPF;
-        this.RG = RG;
-        this.CTPS = CTPS;
-        this.tipoUsuario = tipoUsuario;
-        this.login = login;
-        this.senha = senha;
-        this.DN = DN;
-        this.fkEndereco = fkEndereco;
-        this.fkSedeFilial = fkSedeFilial;
+        this.fk_endereco = fk_endereco;
+        this.fk_sede_filial = fk_sede_filial;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.nome);
-        hash = 41 * hash + Objects.hashCode(this.CPF);
-        hash = 41 * hash + Objects.hashCode(this.RG);
-        hash = 41 * hash + Objects.hashCode(this.CTPS);
-        hash = 41 * hash + Objects.hashCode(this.tipoUsuario);
-        hash = 41 * hash + Objects.hashCode(this.login);
-        hash = 41 * hash + Objects.hashCode(this.senha);
-        hash = 41 * hash + Objects.hashCode(this.DN);
-        hash = 41 * hash + Objects.hashCode(this.fkEndereco);
-        hash = 41 * hash + Objects.hashCode(this.fkSedeFilial);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.nome);
+        hash = 29 * hash + Objects.hashCode(this.CPF);
+        hash = 29 * hash + Objects.hashCode(this.login);
         return hash;
     }
 
@@ -98,19 +79,7 @@ public class UsuarioBean implements Serializable {
             return false;
         }
         final UsuarioBean other = (UsuarioBean) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
         if (!Objects.equals(this.CPF, other.CPF)) {
-            return false;
-        }
-        if (!Objects.equals(this.RG, other.RG)) {
-            return false;
-        }
-        if (!Objects.equals(this.CTPS, other.CTPS)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipoUsuario, other.tipoUsuario)) {
             return false;
         }
         if (!Objects.equals(this.login, other.login)) {
@@ -119,24 +88,13 @@ public class UsuarioBean implements Serializable {
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.DN, other.DN)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkEndereco, other.fkEndereco)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkSedeFilial, other.fkSedeFilial)) {
-            return false;
-        }
         return true;
     }
 
+    
     @Override
     public String toString() {
-        return "UsuarioBean{" + "id=" + id + ", nome=" + nome + ", CPF=" + CPF + ", RG=" + RG + ", CTPS=" + CTPS + ", tipoUsuario=" + tipoUsuario + ", login=" + login + ", senha=" + senha + ", DN=" + DN + ", fkEndereco=" + fkEndereco + ", fkSedeFilial=" + fkSedeFilial + '}';
+        return "UsuarioBean{" + "id=" + id + ", nome=" + nome + ", CPF=" + CPF + ", RG=" + RG + ", CTPS=" + CTPS + ", tipo_usuario=" + tipo_usuario + ", login=" + login + ", senha=" + senha + ", DN=" + DN + ", fk_endereco=" + fk_endereco + ", fk_sede_filial=" + fk_sede_filial + '}';
     }
 
     public Integer getId() {
@@ -179,12 +137,12 @@ public class UsuarioBean implements Serializable {
         this.CTPS = CTPS;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
+    public String getTipo_usuario() {
+        return tipo_usuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
     public String getLogin() {
@@ -211,23 +169,20 @@ public class UsuarioBean implements Serializable {
         this.DN = DN;
     }
 
-    public EnderecoBean getFkEndereco() {
-        return fkEndereco;
+    public EnderecoBean getFk_endereco() {
+        return fk_endereco;
     }
 
-    public void setFkEndereco(EnderecoBean fkEndereco) {
-        this.fkEndereco = fkEndereco;
+    public void setFk_endereco(EnderecoBean fk_endereco) {
+        this.fk_endereco = fk_endereco;
     }
 
-    public SedeFilialBean getFkSedeFilial() {
-        return fkSedeFilial;
+    public SedeFilialBean getFk_sede_filial() {
+        return fk_sede_filial;
     }
 
-    public void setFkSedeFilial(SedeFilialBean fkSedeFilial) {
-        this.fkSedeFilial = fkSedeFilial;
+    public void setFk_sede_filial(SedeFilialBean fk_sede_filial) {
+        this.fk_sede_filial = fk_sede_filial;
     }
-    
-    
-    
-    
+       
 }

@@ -7,7 +7,6 @@ package model.beans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -24,6 +24,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="REVISAO")
 @SequenceGenerator(name = "sequencia_revisao", sequenceName = "revisao_seq", initialValue = 1, allocationSize = 1)
 public class RevisaoBean implements Serializable {
 
@@ -31,80 +32,25 @@ public class RevisaoBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_revisao")
     private Integer id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataUltimaRevisao, dataSaida, horaSaida;
+    private Date data_ultima_revisao, data_saida, hora_saida;
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataEntrada;
-    @Column(nullable = false)
+    private Date data_entrada;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Veiculo", nullable = false)
-    private VeiculoBean fkVeiculo;
+    private VeiculoBean fk_veiculo;
 
     public RevisaoBean() {
     }
 
-    public RevisaoBean(Date dataEntrada, VeiculoBean fkVeiculo) {
-        this.dataEntrada = dataEntrada;
-        this.fkVeiculo = fkVeiculo;
-    }
-
-    public RevisaoBean(Date dataUltimaRevisao, Date dataSaida, Date horaSaida, Date dataEntrada, VeiculoBean fkVeiculo) {
-        this.dataUltimaRevisao = dataUltimaRevisao;
-        this.dataSaida = dataSaida;
-        this.horaSaida = horaSaida;
-        this.dataEntrada = dataEntrada;
-        this.fkVeiculo = fkVeiculo;
-    }
-    
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.dataUltimaRevisao);
-        hash = 23 * hash + Objects.hashCode(this.dataSaida);
-        hash = 23 * hash + Objects.hashCode(this.horaSaida);
-        hash = 23 * hash + Objects.hashCode(this.dataEntrada);
-        hash = 23 * hash + Objects.hashCode(this.fkVeiculo);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final RevisaoBean other = (RevisaoBean) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataUltimaRevisao, other.dataUltimaRevisao)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataSaida, other.dataSaida)) {
-            return false;
-        }
-        if (!Objects.equals(this.horaSaida, other.horaSaida)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataEntrada, other.dataEntrada)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkVeiculo, other.fkVeiculo)) {
-            return false;
-        }
-        return true;
+    public RevisaoBean(Date data_entrada, VeiculoBean fk_veiculo) {
+        this.data_entrada = data_entrada;
+        this.fk_veiculo = fk_veiculo;
     }
 
     @Override
     public String toString() {
-        return "RevisaoBean{" + "id=" + id + ", dataUltimaRevisao=" + dataUltimaRevisao + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", dataEntrada=" + dataEntrada + ", fkVeiculo=" + fkVeiculo + '}';
+        return "RevisaoBean{" + "id=" + id + ", data_ultima_revisao=" + data_ultima_revisao + ", data_saida=" + data_saida + ", hora_saida=" + hora_saida + ", data_entrada=" + data_entrada + ", fk_veiculo=" + fk_veiculo + '}';
     }
 
     public Integer getId() {
@@ -115,44 +61,44 @@ public class RevisaoBean implements Serializable {
         this.id = id;
     }
 
-    public Date getDataUltimaRevisao() {
-        return dataUltimaRevisao;
+    public Date getData_ultima_revisao() {
+        return data_ultima_revisao;
     }
 
-    public void setDataUltimaRevisao(Date dataUltimaRevisao) {
-        this.dataUltimaRevisao = dataUltimaRevisao;
+    public void setData_ultima_revisao(Date data_ultima_revisao) {
+        this.data_ultima_revisao = data_ultima_revisao;
     }
 
-    public Date getDataSaida() {
-        return dataSaida;
+    public Date getData_saida() {
+        return data_saida;
     }
 
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setData_saida(Date data_saida) {
+        this.data_saida = data_saida;
     }
 
-    public Date getHoraSaida() {
-        return horaSaida;
+    public Date getHora_saida() {
+        return hora_saida;
     }
 
-    public void setHoraSaida(Date horaSaida) {
-        this.horaSaida = horaSaida;
+    public void setHora_saida(Date hora_saida) {
+        this.hora_saida = hora_saida;
     }
 
-    public Date getDataEntrada() {
-        return dataEntrada;
+    public Date getData_entrada() {
+        return data_entrada;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public void setData_entrada(Date data_entrada) {
+        this.data_entrada = data_entrada;
     }
 
-    public VeiculoBean getFkVeiculo() {
-        return fkVeiculo;
+    public VeiculoBean getFk_veiculo() {
+        return fk_veiculo;
     }
 
-    public void setFkVeiculo(VeiculoBean fkVeiculo) {
-        this.fkVeiculo = fkVeiculo;
+    public void setFk_veiculo(VeiculoBean fk_veiculo) {
+        this.fk_veiculo = fk_veiculo;
     }
-    
+
 }

@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +22,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="MOTORISTA")
 @SequenceGenerator(name = "sequencia_motorista", sequenceName = "motorista_seq", initialValue = 1, allocationSize = 1)
 public class MotoristaBean implements Serializable {
     @Id
@@ -31,32 +33,29 @@ public class MotoristaBean implements Serializable {
     private String CNH;
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(nullable = false)
-    private Date dataVencimentoCHN, DN;
+    private Date data_vencimento_CHN, DN;
 
     public MotoristaBean() {
     }
 
-    public MotoristaBean(String CNH, Date dataVencimentoCHN, Date DN) {
+    public MotoristaBean(String CNH, Date data_vencimento_CHN, Date DN) {
         this.CNH = CNH;
-        this.dataVencimentoCHN = dataVencimentoCHN;
+        this.data_vencimento_CHN = data_vencimento_CHN;
         this.DN = DN;
     }
 
-    public MotoristaBean(String nome, String CNH, Date dataVencimentoCHN, Date DN) {
+    public MotoristaBean(String nome, String CNH, Date data_vencimento_CHN, Date DN) {
         this.nome = nome;
         this.CNH = CNH;
-        this.dataVencimentoCHN = dataVencimentoCHN;
+        this.data_vencimento_CHN = data_vencimento_CHN;
         this.DN = DN;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.nome);
-        hash = 41 * hash + Objects.hashCode(this.CNH);
-        hash = 41 * hash + Objects.hashCode(this.dataVencimentoCHN);
-        hash = 41 * hash + Objects.hashCode(this.DN);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.CNH);
         return hash;
     }
 
@@ -72,19 +71,7 @@ public class MotoristaBean implements Serializable {
             return false;
         }
         final MotoristaBean other = (MotoristaBean) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
         if (!Objects.equals(this.CNH, other.CNH)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataVencimentoCHN, other.dataVencimentoCHN)) {
-            return false;
-        }
-        if (!Objects.equals(this.DN, other.DN)) {
             return false;
         }
         return true;
@@ -92,7 +79,7 @@ public class MotoristaBean implements Serializable {
 
     @Override
     public String toString() {
-        return "MotoristaBean{" + "id=" + id + ", nome=" + nome + ", CNH=" + CNH + ", dataVencimentoCHN=" + dataVencimentoCHN + ", DN=" + DN + '}';
+        return "MotoristaBean{" + "id=" + id + ", nome=" + nome + ", CNH=" + CNH + ", data_vencimento_CHN=" + data_vencimento_CHN + ", DN=" + DN + '}';
     }
 
     public Integer getId() {
@@ -119,12 +106,12 @@ public class MotoristaBean implements Serializable {
         this.CNH = CNH;
     }
 
-    public Date getDataVencimentoCHN() {
-        return dataVencimentoCHN;
+    public Date getData_vencimento_CHN() {
+        return data_vencimento_CHN;
     }
 
-    public void setDataVencimentoCHN(Date dataVencimentoCHN) {
-        this.dataVencimentoCHN = dataVencimentoCHN;
+    public void setData_vencimento_CHN(Date data_vencimento_CHN) {
+        this.data_vencimento_CHN = data_vencimento_CHN;
     }
 
     public Date getDN() {

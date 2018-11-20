@@ -2,16 +2,18 @@
 package model.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="CATEGORIA_CAMINONETA_CARGA")
 public class CamionetasCargaBean extends CategoriaBean{
     
-    private float capacidadeCarga, desempenho, potenciaMotor, volumeAbastecimento, distanciaEixos;
-    private String tipoEmbreagem;
+    private float capacidade_carga, desempenho, potencia_motor, volume_abastecimento, distancia_eixos;
+    private String tipo_embreagem;
 
     public CamionetasCargaBean() {
     }
@@ -20,27 +22,27 @@ public class CamionetasCargaBean extends CategoriaBean{
         super(codigo, nome);
     }
 
-    public CamionetasCargaBean(float capacidadeCarga, float desempenho, float potenciaMotor, float volumeAbastecimento, float distanciaEixos, String tipoEmbreagem, String codigo, String nome) {
-        super(codigo, nome);
-        this.capacidadeCarga = capacidadeCarga;
+    public CamionetasCargaBean(float capacidade_carga, float desempenho, float potencia_motor, float volume_abastecimento, float distancia_eixos, String tipo_embreagem, String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re) {
+        super(codigo, nome, tamanho, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re);
+        this.capacidade_carga = capacidade_carga;
         this.desempenho = desempenho;
-        this.potenciaMotor = potenciaMotor;
-        this.volumeAbastecimento = volumeAbastecimento;
-        this.distanciaEixos = distanciaEixos;
-        this.tipoEmbreagem = tipoEmbreagem;
+        this.potencia_motor = potencia_motor;
+        this.volume_abastecimento = volume_abastecimento;
+        this.distancia_eixos = distancia_eixos;
+        this.tipo_embreagem = tipo_embreagem;
     }
 
     @Override
     public String toString() {
-        return "CamionetasCarga{" + "capacidadeCarga=" + capacidadeCarga + ", desempenho=" + desempenho + ", potenciaMotor=" + potenciaMotor + ", volumeAbastecimento=" + volumeAbastecimento + ", distanciaEixos=" + distanciaEixos + ", tipoEmbreagem=" + tipoEmbreagem + '}';
+        return "CamionetasCargaBean{" + "capacidade_carga=" + capacidade_carga + ", desempenho=" + desempenho + ", potencia_motor=" + potencia_motor + ", volume_abastecimento=" + volume_abastecimento + ", distancia_eixos=" + distancia_eixos + ", tipo_embreagem=" + tipo_embreagem + '}';
+    }
+    
+    public float getCapacidade_carga() {
+        return capacidade_carga;
     }
 
-    public float getCapacidadeCarga() {
-        return capacidadeCarga;
-    }
-
-    public void setCapacidadeCarga(float capacidadeCarga) {
-        this.capacidadeCarga = capacidadeCarga;
+    public void setCapacidade_carga(float capacidade_carga) {
+        this.capacidade_carga = capacidade_carga;
     }
 
     public float getDesempenho() {
@@ -51,36 +53,37 @@ public class CamionetasCargaBean extends CategoriaBean{
         this.desempenho = desempenho;
     }
 
-    public float getPotenciaMotor() {
-        return potenciaMotor;
+    public float getPotencia_motor() {
+        return potencia_motor;
     }
 
-    public void setPotenciaMotor(float potenciaMotor) {
-        this.potenciaMotor = potenciaMotor;
+    public void setPotencia_motor(float potencia_motor) {
+        this.potencia_motor = potencia_motor;
     }
 
-    public float getVolumeAbastecimento() {
-        return volumeAbastecimento;
+    public float getVolume_abastecimento() {
+        return volume_abastecimento;
     }
 
-    public void setVolumeAbastecimento(float volumeAbastecimento) {
-        this.volumeAbastecimento = volumeAbastecimento;
+    public void setVolume_abastecimento(float volume_abastecimento) {
+        this.volume_abastecimento = volume_abastecimento;
     }
 
-    public float getDistanciaEixos() {
-        return distanciaEixos;
+    public float getDistancia_eixos() {
+        return distancia_eixos;
     }
 
-    public void setDistanciaEixos(float distanciaEixos) {
-        this.distanciaEixos = distanciaEixos;
+    public void setDistancia_eixos(float distancia_eixos) {
+        this.distancia_eixos = distancia_eixos;
     }
 
-    public String getTipoEmbreagem() {
-        return tipoEmbreagem;
+    public String getTipo_embreagem() {
+        return tipo_embreagem;
     }
 
-    public void setTipoEmbreagem(String tipoEmbreagem) {
-        this.tipoEmbreagem = tipoEmbreagem;
+    public void setTipo_embreagem(String tipo_embreagem) {
+        this.tipo_embreagem = tipo_embreagem;
     }
+    
     
 }

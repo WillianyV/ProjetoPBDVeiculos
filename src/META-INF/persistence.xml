@@ -1,27 +1,48 @@
-<?xml  version="1.0"  encoding="UTF-8"?>
-<persistence  version="2.0"
-              xmlns="http://java.sun.com/xml/ns/persistence"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://java.sun.com/xml/ns/persistencehttp://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <!--  UNIDADE  DE  PERSISTÊNCIA  -->
-    <persistence-unit  name="ProjetoVeiculos"  transaction-type="RESOURCE_LOCAL">  
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <properties>
-            <!--  Detectar  automaticamente  as  classes-tabelas  -->
-            <property name="hibernate.archive.autodetection" value="class"/>
-            <!--  conexão  com  o  banco:  dialeto  e  driver  -->
-            <property name="hibernate.dialect"value="org.hibernate.dialect.PostgreSQLDialect" />
-            <property name="javax.persistence.jdbc.driver_class"value="org.postgresql.Driver" />
-            <!--  conexão  com  o  banco:  usuário,  senha  e  banco  -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PBDVeiculos"  />
-            <property name="javax.persistence.jdbc.user" value="postgres"  />
-            <property name="javax.persistence.jdbc.password" value="postgres"  />
-            <!--  conexão  com  o  banco:  forma  de  atualização:  create,  update...  -->
-            <property name="hibernate.hbm2ddl.auto" value="update"  />
-            <!--  Opcional:  DEBUG  -->
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property  name="use_sql_comments"  value="true"/>
-        </properties>
-    </persistence-unit>
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <!-- Unidade de persistencia -->
+  <persistence-unit name="ProjetoPBD" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <!-- Lista de entidades -->
+    <class/>
+    <class>model.beans.AutomovelBean</class>
+    <class>model.beans.CamionetasCargaBean</class>
+    <class>model.beans.CamionetasPassageirosBean</class>
+    <class>model.beans.CategoriaBean</class>
+    <class>model.beans.ClienteBean</class>
+    <class>model.beans.ControleFinanceiroBean</class>
+    <class>model.beans.EnderecoBean</class>
+    <class>model.beans.FormasPagamentosBean</class>
+    <class>model.beans.LimpezaBean</class>
+    <class>model.beans.LocacaoBean</class>
+    <class>model.beans.MotoristaBean</class>
+    <class>model.beans.PessoaFisicaBean</class>
+    <class>model.beans.PessoaJuridicaBean</class>
+    <class>model.beans.ReservaBean</class>
+    <class>model.beans.RevisaoBean</class>
+    <class>model.beans.SedeFilialBean</class>
+    <class>model.beans.UsuarioBean</class>
+    <class>model.beans.VeiculoBean</class>
+    <properties>
+      <!-- Propriedades JDBC -->
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <!-- DB Driver -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/PBDVeiculos"/>
+      <!-- BD Mane -->
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <!-- DB User -->
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <!-- DB Password -->
+      <!-- Configurações específicas do Hibernate -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <!-- DB Dialect -->
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <!-- create / create-drop / update -->
+      <property name="hibernate.show_sql" value="true"/>
+      <!-- Show SQL in console -->
+      <property name="hibernate.format_sql" value="true"/>
+      <!-- Show SQL formatted -->
+      <property name="use_sql_comments" value="true"/>
+    </properties>
+  </persistence-unit>
 </persistence>

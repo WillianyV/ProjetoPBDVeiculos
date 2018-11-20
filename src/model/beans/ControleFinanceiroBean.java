@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -23,6 +24,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="CONTROLE_FINANCEIRO")
 @SequenceGenerator(name = "sequencia_controle_financeiro", sequenceName = "controle_financeiro_seq", initialValue = 1, allocationSize = 1)
 public class ControleFinanceiroBean implements Serializable {
     @Id
@@ -37,34 +39,26 @@ public class ControleFinanceiroBean implements Serializable {
     @Column(nullable = false)
     private String tipo;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_usuario", nullable = false)
-    private UsuarioBean fkUsuario;
+    @JoinColumn(name = "Id_Usuario", nullable = false)
+    private UsuarioBean fk_usuario;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_formas_pagamento", nullable = false)
-    private FormasPagamentosBean fkFormasPagamentos;
+    @JoinColumn(name = "Id_Formas_Pagamento", nullable = false)
+    private FormasPagamentosBean fk_formas_pagamento;
 
     public ControleFinanceiroBean() {
     }
 
-    public ControleFinanceiroBean(float valor, String tipo, UsuarioBean fkUsuario, FormasPagamentosBean fkFormasPagamentos) {
-        this.valor = valor;
-        this.tipo = tipo;
-        this.fkUsuario = fkUsuario;
-        this.fkFormasPagamentos = fkFormasPagamentos;
-    }
-
-    public ControleFinanceiroBean(String descricao, float valor, Date dataFincanceiro, String tipo, UsuarioBean fkUsuario, FormasPagamentosBean fkFormasPagamentos) {
-        this.descricao = descricao;
+    public ControleFinanceiroBean(float valor, Date dataFincanceiro, String tipo, UsuarioBean fk_usuario, FormasPagamentosBean fk_formas_pagamento) {
         this.valor = valor;
         this.dataFincanceiro = dataFincanceiro;
         this.tipo = tipo;
-        this.fkUsuario = fkUsuario;
-        this.fkFormasPagamentos = fkFormasPagamentos;
+        this.fk_usuario = fk_usuario;
+        this.fk_formas_pagamento = fk_formas_pagamento;
     }
 
     @Override
     public String toString() {
-        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", fkUsuario=" + fkUsuario + ", fkFormasPagamentos=" + fkFormasPagamentos + '}';
+        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", fk_usuario=" + fk_usuario + ", fk_formas_pagamento=" + fk_formas_pagamento + '}';
     }
 
     public Integer getId() {
@@ -107,20 +101,20 @@ public class ControleFinanceiroBean implements Serializable {
         this.tipo = tipo;
     }
 
-    public UsuarioBean getFkUsuario() {
-        return fkUsuario;
+    public UsuarioBean getFk_usuario() {
+        return fk_usuario;
     }
 
-    public void setFkUsuario(UsuarioBean fkUsuario) {
-        this.fkUsuario = fkUsuario;
+    public void setFk_usuario(UsuarioBean fk_usuario) {
+        this.fk_usuario = fk_usuario;
     }
 
-    public FormasPagamentosBean getFkFormasPagamentos() {
-        return fkFormasPagamentos;
+    public FormasPagamentosBean getFk_formas_pagamento() {
+        return fk_formas_pagamento;
     }
 
-    public void setFkFormasPagamentos(FormasPagamentosBean fkFormasPagamentos) {
-        this.fkFormasPagamentos = fkFormasPagamentos;
+    public void setFk_formas_pagamento(FormasPagamentosBean fk_formas_pagamento) {
+        this.fk_formas_pagamento = fk_formas_pagamento;
     }
-        
+
 }

@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author willi
  */
 @Entity
+@Table(name="FORMAS_DE_PAGAMENTO")
 @SequenceGenerator(name = "sequencia_formas_pagamento", sequenceName = "formas_pagamento_seq", initialValue = 1, allocationSize = 1)
 public class FormasPagamentosBean implements Serializable {
     @Id
@@ -25,7 +27,7 @@ public class FormasPagamentosBean implements Serializable {
     private Integer id;
     @Column(length = 50)
     private String tipo;
-    private int nParcelas;
+    private int n_parcelas;
 
     public FormasPagamentosBean() {
     }
@@ -34,14 +36,9 @@ public class FormasPagamentosBean implements Serializable {
         this.tipo = tipo;
     }
 
-    public FormasPagamentosBean(String tipo, int nParcelas) {
-        this.tipo = tipo;
-        this.nParcelas = nParcelas;
-    }
-    
     @Override
     public String toString() {
-        return "FormasPagamentosBean{" + "id=" + id + ", tipo=" + tipo + ", nParcelas=" + nParcelas + '}';
+        return "FormasPagamentosBean{" + "id=" + id + ", tipo=" + tipo + ", n_parcelas=" + n_parcelas + '}';
     }
 
     public Integer getId() {
@@ -60,12 +57,12 @@ public class FormasPagamentosBean implements Serializable {
         this.tipo = tipo;
     }
 
-    public int getnParcelas() {
-        return nParcelas;
+    public int getN_parcelas() {
+        return n_parcelas;
     }
 
-    public void setnParcelas(int nParcelas) {
-        this.nParcelas = nParcelas;
+    public void setN_parcelas(int n_parcelas) {
+        this.n_parcelas = n_parcelas;
     }
-    
+
 }

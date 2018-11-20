@@ -7,7 +7,6 @@ package model.beans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -24,86 +24,34 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="LIMPEZA")	
 @SequenceGenerator(name = "sequencia_limpeza", sequenceName = "limpeza_seq", initialValue = 1, allocationSize = 1)
 public class LimpezaBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_limpeza")
     private Integer id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataUltimaLipeza, dataSaida, horaSaida;
+    private Date data_ultima_lipeza, data_saida, hora_saida;
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataEntrada;
+    private Date data_entrada;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Veiculo", nullable = false)
-    private VeiculoBean fkVeiculo;
-    
+    private VeiculoBean fk_veiculo;
+
     public LimpezaBean() {
     }
 
-    public LimpezaBean(Date dataEntrada, VeiculoBean fkVeiculo) {
-        this.dataEntrada = dataEntrada;
-        this.fkVeiculo = fkVeiculo;
-    }
-
-    public LimpezaBean(Date dataUltimaLipeza, Date dataSaida, Date horaSaida, Date dataEntrada, VeiculoBean fkVeiculo) {
-        this.dataUltimaLipeza = dataUltimaLipeza;
-        this.dataSaida = dataSaida;
-        this.horaSaida = horaSaida;
-        this.dataEntrada = dataEntrada;
-        this.fkVeiculo = fkVeiculo;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.dataUltimaLipeza);
-        hash = 59 * hash + Objects.hashCode(this.dataSaida);
-        hash = 59 * hash + Objects.hashCode(this.horaSaida);
-        hash = 59 * hash + Objects.hashCode(this.dataEntrada);
-        hash = 59 * hash + Objects.hashCode(this.fkVeiculo);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final LimpezaBean other = (LimpezaBean) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataUltimaLipeza, other.dataUltimaLipeza)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataSaida, other.dataSaida)) {
-            return false;
-        }
-        if (!Objects.equals(this.horaSaida, other.horaSaida)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataEntrada, other.dataEntrada)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkVeiculo, other.fkVeiculo)) {
-            return false;
-        }
-        return true;
+    public LimpezaBean(Date data_entrada, VeiculoBean fk_veiculo) {
+        this.data_entrada = data_entrada;
+        this.fk_veiculo = fk_veiculo;
     }
 
     @Override
     public String toString() {
-        return "LimpezaBean{" + "id=" + id + ", dataUltimaLipeza=" + dataUltimaLipeza + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", dataEntrada=" + dataEntrada + ", fkVeiculo=" + fkVeiculo + '}';
+        return "LimpezaBean{" + "id=" + id + ", data_ultima_lipeza=" + data_ultima_lipeza + ", data_saida=" + data_saida + ", hora_saida=" + hora_saida + ", data_entrada=" + data_entrada + ", fk_veiculo=" + fk_veiculo + '}';
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -112,44 +60,44 @@ public class LimpezaBean implements Serializable {
         this.id = id;
     }
 
-    public Date getDataUltimaLipeza() {
-        return dataUltimaLipeza;
+    public Date getData_ultima_lipeza() {
+        return data_ultima_lipeza;
     }
 
-    public void setDataUltimaLipeza(Date dataUltimaLipeza) {
-        this.dataUltimaLipeza = dataUltimaLipeza;
+    public void setData_ultima_lipeza(Date data_ultima_lipeza) {
+        this.data_ultima_lipeza = data_ultima_lipeza;
     }
 
-    public Date getDataSaida() {
-        return dataSaida;
+    public Date getData_saida() {
+        return data_saida;
     }
 
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setData_saida(Date data_saida) {
+        this.data_saida = data_saida;
     }
 
-    public Date getHoraSaida() {
-        return horaSaida;
+    public Date getHora_saida() {
+        return hora_saida;
     }
 
-    public void setHoraSaida(Date horaSaida) {
-        this.horaSaida = horaSaida;
+    public void setHora_saida(Date hora_saida) {
+        this.hora_saida = hora_saida;
     }
 
-    public Date getDataEntrada() {
-        return dataEntrada;
+    public Date getData_entrada() {
+        return data_entrada;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public void setData_entrada(Date data_entrada) {
+        this.data_entrada = data_entrada;
     }
 
-    public VeiculoBean getFkVeiculo() {
-        return fkVeiculo;
+    public VeiculoBean getFk_veiculo() {
+        return fk_veiculo;
     }
 
-    public void setFkVeiculo(VeiculoBean fkVeiculo) {
-        this.fkVeiculo = fkVeiculo;
+    public void setFk_veiculo(VeiculoBean fk_veiculo) {
+        this.fk_veiculo = fk_veiculo;
     }
     
 }

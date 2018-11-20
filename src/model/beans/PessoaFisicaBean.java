@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -19,6 +20,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="CLIENTE_PESSOA_FISICA")
 public class PessoaFisicaBean extends ClienteBean{
  
     @Column(nullable = false,length = 15)
@@ -29,37 +31,12 @@ public class PessoaFisicaBean extends ClienteBean{
     private Date DN;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Motorista", nullable = false)
-    private MotoristaBean fkMotorista;
-
-    public PessoaFisicaBean() {
-    }
-
-    public PessoaFisicaBean(String CPF, MotoristaBean fkMotorista) {
-        this.CPF = CPF;
-        this.fkMotorista = fkMotorista;
-    }
-
-    public PessoaFisicaBean(String CPF, MotoristaBean fkMotorista, String nome, EnderecoBean fkEndereco) {
-        super(nome, fkEndereco);
-        this.CPF = CPF;
-        this.fkMotorista = fkMotorista;
-    }
-
-    public PessoaFisicaBean(String CPF, String sexo, Date DN, MotoristaBean fkMotorista, String nome, EnderecoBean fkEndereco) {
-        super(nome, fkEndereco);
-        this.CPF = CPF;
-        this.sexo = sexo;
-        this.DN = DN;
-        this.fkMotorista = fkMotorista;
-    }
+    private MotoristaBean fk_motorista;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.CPF);
-        hash = 67 * hash + Objects.hashCode(this.sexo);
-        hash = 67 * hash + Objects.hashCode(this.DN);
-        hash = 67 * hash + Objects.hashCode(this.fkMotorista);
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.CPF);
         return hash;
     }
 
@@ -78,21 +55,12 @@ public class PessoaFisicaBean extends ClienteBean{
         if (!Objects.equals(this.CPF, other.CPF)) {
             return false;
         }
-        if (!Objects.equals(this.sexo, other.sexo)) {
-            return false;
-        }
-        if (!Objects.equals(this.DN, other.DN)) {
-            return false;
-        }
-        if (!Objects.equals(this.fkMotorista, other.fkMotorista)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "PessoaFisicaBean{" + "CPF=" + CPF + ", sexo=" + sexo + ", DN=" + DN + ", fkMotorista=" + fkMotorista + '}';
+        return "PessoaFisicaBean{" + "CPF=" + CPF + ", sexo=" + sexo + ", DN=" + DN + ", fk_motorista=" + fk_motorista + '}';
     }
 
     public String getCPF() {
@@ -119,12 +87,12 @@ public class PessoaFisicaBean extends ClienteBean{
         this.DN = DN;
     }
 
-    public MotoristaBean getFkMotorista() {
-        return fkMotorista;
+    public MotoristaBean getFk_motorista() {
+        return fk_motorista;
     }
 
-    public void setFkMotorista(MotoristaBean fkMotorista) {
-        this.fkMotorista = fkMotorista;
+    public void setFk_motorista(MotoristaBean fk_motorista) {
+        this.fk_motorista = fk_motorista;
     }
     
 }
