@@ -44,21 +44,26 @@ public class ControleFinanceiroBean implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Formas_Pagamento", nullable = false)
     private FormasPagamentosBean fk_formas_pagamento;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_Locacao", nullable = false)
+    private LocacaoBean fk_locacao;
 
     public ControleFinanceiroBean() {
     }
 
-    public ControleFinanceiroBean(float valor, Date dataFincanceiro, String tipo, UsuarioBean fk_usuario, FormasPagamentosBean fk_formas_pagamento) {
+    public ControleFinanceiroBean(String descricao, float valor, Date dataFincanceiro, String tipo, UsuarioBean fk_usuario, FormasPagamentosBean fk_formas_pagamento, LocacaoBean fk_locacao) {
+        this.descricao = descricao;
         this.valor = valor;
         this.dataFincanceiro = dataFincanceiro;
         this.tipo = tipo;
         this.fk_usuario = fk_usuario;
         this.fk_formas_pagamento = fk_formas_pagamento;
+        this.fk_locacao = fk_locacao;
     }
 
     @Override
     public String toString() {
-        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", fk_usuario=" + fk_usuario + ", fk_formas_pagamento=" + fk_formas_pagamento + '}';
+        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", fk_usuario=" + fk_usuario + ", fk_formas_pagamento=" + fk_formas_pagamento + ", fk_locacao=" + fk_locacao + '}';
     }
 
     public Integer getId() {
@@ -116,5 +121,14 @@ public class ControleFinanceiroBean implements Serializable {
     public void setFk_formas_pagamento(FormasPagamentosBean fk_formas_pagamento) {
         this.fk_formas_pagamento = fk_formas_pagamento;
     }
+
+    public LocacaoBean getFk_locacao() {
+        return fk_locacao;
+    }
+
+    public void setFk_locacao(LocacaoBean fk_locacao) {
+        this.fk_locacao = fk_locacao;
+    }
+
 
 }

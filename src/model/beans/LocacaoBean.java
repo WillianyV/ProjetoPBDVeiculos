@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
@@ -49,40 +48,23 @@ public class LocacaoBean implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Motorista", nullable = false)
     private MotoristaBean fk_motorista;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Controle_Financeiro")
-    private ControleFinanceiroBean fk_controle_financeiro;
 
     public LocacaoBean() {
     }
 
-    public LocacaoBean(String tipo_locacao, Date data_retirada, CategoriaBean fk_categoria, UsuarioBean fk_usuario, ClienteBean fk_cliente) {
-        this.tipo_locacao = tipo_locacao;
-        this.data_retirada = data_retirada;
-        this.fk_categoria = fk_categoria;
-        this.fk_usuario = fk_usuario;
-        this.fk_cliente = fk_cliente;
-    }
-
-    public LocacaoBean(String tipo_locacao, Date data_retirada, Date hora_retirada, Date data_devolucao, Date hora_devolucao, float taxa_higienização, float taxa_combustivel, ReservaBean fk_reserva, CategoriaBean fk_categoria, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista, ControleFinanceiroBean fk_controle_financeiro) {
+    public LocacaoBean(String tipo_locacao, Date data_retirada, Date hora_retirada, CategoriaBean fk_categoria, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista) {
         this.tipo_locacao = tipo_locacao;
         this.data_retirada = data_retirada;
         this.hora_retirada = hora_retirada;
-        this.data_devolucao = data_devolucao;
-        this.hora_devolucao = hora_devolucao;
-        this.taxa_higienização = taxa_higienização;
-        this.taxa_combustivel = taxa_combustivel;
-        this.fk_reserva = fk_reserva;
         this.fk_categoria = fk_categoria;
         this.fk_usuario = fk_usuario;
         this.fk_cliente = fk_cliente;
         this.fk_motorista = fk_motorista;
-        this.fk_controle_financeiro = fk_controle_financeiro;
     }
 
     @Override
     public String toString() {
-        return "LocacaoBean{" + "id=" + id + ", tipo_locacao=" + tipo_locacao + ", data_retirada=" + data_retirada + ", hora_retirada=" + hora_retirada + ", data_devolucao=" + data_devolucao + ", hora_devolucao=" + hora_devolucao + ", taxa_higieniza\u00e7\u00e3o=" + taxa_higienização + ", taxa_combustivel=" + taxa_combustivel + ", fk_reserva=" + fk_reserva + ", fk_categoria=" + fk_categoria + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_motorista=" + fk_motorista + ", fk_controle_financeiro=" + fk_controle_financeiro + '}';
+        return "LocacaoBean{" + "id=" + id + ", tipo_locacao=" + tipo_locacao + ", data_retirada=" + data_retirada + ", hora_retirada=" + hora_retirada + ", data_devolucao=" + data_devolucao + ", hora_devolucao=" + hora_devolucao + ", taxa_higieniza\u00e7\u00e3o=" + taxa_higienização + ", taxa_combustivel=" + taxa_combustivel + ", fk_reserva=" + fk_reserva + ", fk_categoria=" + fk_categoria + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_motorista=" + fk_motorista + '}';
     }
 
     public Integer getId() {
@@ -188,13 +170,5 @@ public class LocacaoBean implements Serializable {
     public void setFk_motorista(MotoristaBean fk_motorista) {
         this.fk_motorista = fk_motorista;
     }
-
-    public ControleFinanceiroBean getFk_controle_financeiro() {
-        return fk_controle_financeiro;
-    }
-
-    public void setFk_controle_financeiro(ControleFinanceiroBean fk_controle_financeiro) {
-        this.fk_controle_financeiro = fk_controle_financeiro;
-    }
-       
+  
 }

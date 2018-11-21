@@ -19,7 +19,7 @@ public class App {
         EnderecoBean e = new EnderecoBean("Rua Lourival Diniz Carvalho", "Santa Rosa", "Floresta", "PE", "56400-000", 304);
         EnderecoDAO end = new EnderecoDAO();
         
-        
+        end.persist(e);
        
        /* 
         Verificar: 
