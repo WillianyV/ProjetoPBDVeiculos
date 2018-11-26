@@ -29,10 +29,20 @@ public class PessoaFisicaBean extends ClienteBean{
     private String sexo;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DN;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "Id_Motorista", nullable = false)
     private MotoristaBean fk_motorista;
 
+    public PessoaFisicaBean() {
+    }
+
+    public PessoaFisicaBean(String CPF, MotoristaBean fk_motorista, String nome, EnderecoBean fk_endereco) {
+        super(nome, fk_endereco);
+        this.CPF = CPF;
+        this.fk_motorista = fk_motorista;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;

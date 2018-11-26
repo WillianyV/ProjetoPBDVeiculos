@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -20,6 +21,7 @@ import javax.persistence.Temporal;
  * @author willi
  */
 @Entity
+@Table(name="LOCACAO")
 @SequenceGenerator(name = "sequencia_locacao", sequenceName = "locacao_seq", initialValue = 1, allocationSize = 1)
 public class LocacaoBean implements Serializable {
     @Id
@@ -33,20 +35,20 @@ public class LocacaoBean implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_devolucao, hora_devolucao;
     private float taxa_higienização, taxa_combustivel;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "Id_Reserva")
     private ReservaBean fk_reserva;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Categoria", nullable = false)
     private CategoriaBean fk_categoria;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Usuario", nullable = false)
     private UsuarioBean fk_usuario;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Cliente", nullable = false)
     private ClienteBean fk_cliente;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Motorista", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "Id_Motorista")
     private MotoristaBean fk_motorista;
 
     public LocacaoBean() {

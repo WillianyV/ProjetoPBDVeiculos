@@ -34,7 +34,7 @@ public class SedeFilialBean implements Serializable {
     @Column(length = 20)
     private String tipo, CNPJ;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Endereco", nullable = false)
+    @JoinColumn(name = "Id_Endereco")
     private EnderecoBean fk_endereco;
 
     public SedeFilialBean() {

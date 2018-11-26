@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,7 +36,8 @@ public class LimpezaBean implements Serializable {
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_entrada;
-    @ManyToOne(cascade = CascadeType.ALL)
+//    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "Id_Veiculo", nullable = false)
     private VeiculoBean fk_veiculo;
 

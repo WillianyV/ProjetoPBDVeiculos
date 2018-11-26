@@ -38,13 +38,13 @@ public class ControleFinanceiroBean implements Serializable {
     private Date dataFincanceiro;
     @Column(nullable = false)
     private String tipo;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Usuario", nullable = false)
     private UsuarioBean fk_usuario;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Formas_Pagamento", nullable = false)
     private FormasPagamentosBean fk_formas_pagamento;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Locacao", nullable = false)
     private LocacaoBean fk_locacao;
 

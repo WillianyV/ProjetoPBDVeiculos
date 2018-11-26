@@ -6,14 +6,27 @@
 package util;
 
 import java.sql.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author willi
  */
 public class Util {
+
+    private static Pattern pattern;
+    private static Matcher matcher;
+
+    private static final String RESTRICOES = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*]).{6,11})";
     
-     public static Date getDate(String d){
+    public static boolean validarSenha(String senha) {
+        pattern = Pattern.compile(RESTRICOES);
+        matcher = pattern.matcher(senha);
+        return matcher.matches();
+    }       
+    
+    public static Date getDate(String d) {
         d = d.replaceAll("/", "");
         int ano = (Integer.parseInt(d.substring(4, 8))) - 1900;
         int mes = (Integer.parseInt(d.substring(2, 4))) - 1;

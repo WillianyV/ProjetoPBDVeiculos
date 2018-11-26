@@ -26,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="CLIENTE")
-@SequenceGenerator(name = "sequencia_cliente", sequenceName = "usuario_cliente", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "sequencia_cliente", sequenceName = "cliente_seq", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ClienteBean implements Serializable {
     @Id

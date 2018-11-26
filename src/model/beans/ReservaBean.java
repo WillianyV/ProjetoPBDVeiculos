@@ -35,13 +35,13 @@ public class ReservaBean implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(nullable = false)
     private Date dia_deseja_locar;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Usuario", nullable = false)
     private UsuarioBean fk_usuario;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Cliente", nullable = false)
     private ClienteBean fk_cliente;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Categoria", nullable = false)
     private CategoriaBean fk_categoria;
 

@@ -42,8 +42,8 @@ public class UsuarioBean implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Endereco", nullable = false)
     private EnderecoBean fk_endereco;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Sede_Filial", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "Id_Sede_Filial")
     private SedeFilialBean fk_sede_filial;
 
     public UsuarioBean() {
@@ -58,6 +58,18 @@ public class UsuarioBean implements Serializable {
         this.fk_sede_filial = fk_sede_filial;
     }
 
+    public UsuarioBean(String nome, String CPF, String tipo_usuario, String login, String senha, EnderecoBean fk_endereco, SedeFilialBean fk_sede_filial) {
+        this.nome = nome;
+        this.CPF = CPF;
+        this.tipo_usuario = tipo_usuario;
+        this.login = login;
+        this.senha = senha;
+        this.fk_endereco = fk_endereco;
+        this.fk_sede_filial = fk_sede_filial;
+    }
+
+   
+    
     @Override
     public int hashCode() {
         int hash = 5;

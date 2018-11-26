@@ -39,10 +39,10 @@ public class VeiculoBean implements Serializable{
     private String status;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ano_fabricacao, ano_modelo;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Categoria", nullable = false)
     private CategoriaBean fk_categoria;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "Id_Sede_Filial", nullable = false)
     private SedeFilialBean fk_sede_filial;
 
