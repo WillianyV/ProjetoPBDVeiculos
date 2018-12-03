@@ -1,6 +1,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.AutomovelBean;
@@ -59,11 +60,11 @@ public class AutomovelDAO {
         return automovel;
     }
 
-    public List<AutomovelBean> findAll() {
+    public ArrayList<AutomovelBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<AutomovelBean> automoveis = null;
+        ArrayList<AutomovelBean> automoveis = null;
         try {
-            automoveis = em.createQuery("from AutomovelBean e").getResultList();
+            automoveis = (ArrayList)em.createQuery("from AutomovelBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Automóveis" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Automóveis", "ERRO: Automovel");

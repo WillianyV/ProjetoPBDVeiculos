@@ -1,6 +1,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.CamionetasPassageirosBean;
@@ -59,11 +60,11 @@ public class CamionetasPassageirosDAO {
         return cp;
     }
 
-    public List<CamionetasPassageirosBean> findAll() {
+    public ArrayList<CamionetasPassageirosBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<CamionetasPassageirosBean> cp = null;
+        ArrayList<CamionetasPassageirosBean> cp = null;
         try {
-            cp = em.createQuery("from PessoaFisicaBean e").getResultList();
+            cp = (ArrayList)em.createQuery("from PessoaFisicaBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Camionetas de passageiros" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Camionetas de passageiros", "ERRO: Camionetas de passageiros");

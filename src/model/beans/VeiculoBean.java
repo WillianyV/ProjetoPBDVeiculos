@@ -6,8 +6,7 @@
 package model.beans;
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -30,55 +28,52 @@ public class VeiculoBean implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_veiculo")
     private Integer id;
-    @Column(nullable = false)
-    private int n_placa; 
-    private int n_chassi, n_motor, toque_motor, quilometragem_atual, n_passageiros, n_porta;
+    @Column(length = 10, nullable = false)
+    private String n_placa; 
+    @Column(length = 17)
+    private String n_chassi, n_motor; 
+    private double toque_motor, quilometragem_atual;
+    private int n_passageiros, n_porta;
     @Column(length = 100)
     private String cor, modelo, tipo_combustivel, fabricante;
     @Column(length = 50, nullable = false)
-    private String status;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ano_fabricacao, ano_modelo;
+    private boolean status;
+    private int ano_fabricacao, ano_modelo;
     @ManyToOne()
-    @JoinColumn(name = "Id_Categoria", nullable = false)
+    @JoinColumn(name = "Id_Categoria")
     private CategoriaBean fk_categoria;
     @ManyToOne()
-    @JoinColumn(name = "Id_Sede_Filial", nullable = false)
+    @JoinColumn(name = "Id_Sede_Filial")
     private SedeFilialBean fk_sede_filial;
 
     public VeiculoBean() {
     }
 
-    public VeiculoBean(int n_placa, String status, CategoriaBean fk_categoria, SedeFilialBean fk_sede_filial) {
+    public VeiculoBean(String n_placa, boolean status) {
         this.n_placa = n_placa;
         this.status = status;
-        this.fk_categoria = fk_categoria;
-        this.fk_sede_filial = fk_sede_filial;
-    }
-
-    public VeiculoBean(int n_placa, int n_chassi, int n_motor, int toque_motor, int quilometragem_atual, int n_passageiros, int n_porta, String cor, String modelo, String tipo_combustivel, String fabricante, String status, Date ano_fabricacao, Date ano_modelo, CategoriaBean fk_categoria, SedeFilialBean fk_sede_filial) {
-        this.n_placa = n_placa;
-        this.n_chassi = n_chassi;
-        this.n_motor = n_motor;
-        this.toque_motor = toque_motor;
-        this.quilometragem_atual = quilometragem_atual;
-        this.n_passageiros = n_passageiros;
-        this.n_porta = n_porta;
-        this.cor = cor;
-        this.modelo = modelo;
-        this.tipo_combustivel = tipo_combustivel;
-        this.fabricante = fabricante;
-        this.status = status;
-        this.ano_fabricacao = ano_fabricacao;
-        this.ano_modelo = ano_modelo;
-        this.fk_categoria = fk_categoria;
-        this.fk_sede_filial = fk_sede_filial;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 73 * hash + this.n_placa;
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.n_placa);
+        hash = 97 * hash + Objects.hashCode(this.n_chassi);
+        hash = 97 * hash + Objects.hashCode(this.n_motor);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.toque_motor) ^ (Double.doubleToLongBits(this.toque_motor) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.quilometragem_atual) ^ (Double.doubleToLongBits(this.quilometragem_atual) >>> 32));
+        hash = 97 * hash + this.n_passageiros;
+        hash = 97 * hash + this.n_porta;
+        hash = 97 * hash + Objects.hashCode(this.cor);
+        hash = 97 * hash + Objects.hashCode(this.modelo);
+        hash = 97 * hash + Objects.hashCode(this.tipo_combustivel);
+        hash = 97 * hash + Objects.hashCode(this.fabricante);
+        hash = 97 * hash + (this.status ? 1 : 0);
+        hash = 97 * hash + this.ano_fabricacao;
+        hash = 97 * hash + this.ano_modelo;
+        hash = 97 * hash + Objects.hashCode(this.fk_categoria);
+        hash = 97 * hash + Objects.hashCode(this.fk_sede_filial);
         return hash;
     }
 
@@ -94,6 +89,57 @@ public class VeiculoBean implements Serializable{
             return false;
         }
         final VeiculoBean other = (VeiculoBean) obj;
+        if (Double.doubleToLongBits(this.toque_motor) != Double.doubleToLongBits(other.toque_motor)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.quilometragem_atual) != Double.doubleToLongBits(other.quilometragem_atual)) {
+            return false;
+        }
+        if (this.n_passageiros != other.n_passageiros) {
+            return false;
+        }
+        if (this.n_porta != other.n_porta) {
+            return false;
+        }
+        if (this.status != other.status) {
+            return false;
+        }
+        if (this.ano_fabricacao != other.ano_fabricacao) {
+            return false;
+        }
+        if (this.ano_modelo != other.ano_modelo) {
+            return false;
+        }
+        if (!Objects.equals(this.n_placa, other.n_placa)) {
+            return false;
+        }
+        if (!Objects.equals(this.n_chassi, other.n_chassi)) {
+            return false;
+        }
+        if (!Objects.equals(this.n_motor, other.n_motor)) {
+            return false;
+        }
+        if (!Objects.equals(this.cor, other.cor)) {
+            return false;
+        }
+        if (!Objects.equals(this.modelo, other.modelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo_combustivel, other.tipo_combustivel)) {
+            return false;
+        }
+        if (!Objects.equals(this.fabricante, other.fabricante)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.fk_categoria, other.fk_categoria)) {
+            return false;
+        }
+        if (!Objects.equals(this.fk_sede_filial, other.fk_sede_filial)) {
+            return false;
+        }
         return true;
     }
 
@@ -110,43 +156,43 @@ public class VeiculoBean implements Serializable{
         this.id = id;
     }
 
-    public int getN_placa() {
+    public String getN_placa() {
         return n_placa;
     }
 
-    public void setN_placa(int n_placa) {
+    public void setN_placa(String n_placa) {
         this.n_placa = n_placa;
     }
 
-    public int getN_chassi() {
+    public String getN_chassi() {
         return n_chassi;
     }
 
-    public void setN_chassi(int n_chassi) {
+    public void setN_chassi(String n_chassi) {
         this.n_chassi = n_chassi;
     }
 
-    public int getN_motor() {
+    public String getN_motor() {
         return n_motor;
     }
 
-    public void setN_motor(int n_motor) {
+    public void setN_motor(String n_motor) {
         this.n_motor = n_motor;
     }
 
-    public int getToque_motor() {
+    public double getToque_motor() {
         return toque_motor;
     }
 
-    public void setToque_motor(int toque_motor) {
+    public void setToque_motor(double toque_motor) {
         this.toque_motor = toque_motor;
     }
 
-    public int getQuilometragem_atual() {
+    public double getQuilometragem_atual() {
         return quilometragem_atual;
     }
 
-    public void setQuilometragem_atual(int quilometragem_atual) {
+    public void setQuilometragem_atual(double quilometragem_atual) {
         this.quilometragem_atual = quilometragem_atual;
     }
 
@@ -198,27 +244,27 @@ public class VeiculoBean implements Serializable{
         this.fabricante = fabricante;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public Date getAno_fabricacao() {
+    public int getAno_fabricacao() {
         return ano_fabricacao;
     }
 
-    public void setAno_fabricacao(Date ano_fabricacao) {
+    public void setAno_fabricacao(int ano_fabricacao) {
         this.ano_fabricacao = ano_fabricacao;
     }
 
-    public Date getAno_modelo() {
+    public int getAno_modelo() {
         return ano_modelo;
     }
 
-    public void setAno_modelo(Date ano_modelo) {
+    public void setAno_modelo(int ano_modelo) {
         this.ano_modelo = ano_modelo;
     }
 
@@ -237,5 +283,6 @@ public class VeiculoBean implements Serializable{
     public void setFk_sede_filial(SedeFilialBean fk_sede_filial) {
         this.fk_sede_filial = fk_sede_filial;
     }
+
     
 }

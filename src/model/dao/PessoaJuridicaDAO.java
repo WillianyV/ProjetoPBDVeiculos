@@ -2,6 +2,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.PessoaJuridicaBean;
@@ -60,11 +61,11 @@ public class PessoaJuridicaDAO {
         return pj;
     }
 
-    public List<PessoaJuridicaBean> findAll() {
+    public ArrayList<PessoaJuridicaBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<PessoaJuridicaBean> pj = null;
+        ArrayList<PessoaJuridicaBean> pj = null;
         try {
-            pj = em.createQuery("from PessoaJuridicaBean e").getResultList();
+            pj = (ArrayList)em.createQuery("from PessoaJuridicaBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Clientes-Pessoa Jurídica" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Clientes-Pessoa Jurídica", "ERRO: Cliente-PJ");

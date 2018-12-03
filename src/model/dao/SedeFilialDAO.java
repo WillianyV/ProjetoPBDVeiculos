@@ -1,7 +1,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import model.beans.SedeFilialBean;
 
@@ -60,11 +60,11 @@ public class SedeFilialDAO {
         return sedefilial;
     }
 
-    public List<SedeFilialBean> findAll() {
+    public ArrayList<SedeFilialBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<SedeFilialBean> sedefilial = null;
+        ArrayList<SedeFilialBean> sedefilial = null;
         try {
-            sedefilial = em.createQuery("from SedeFilialBean e").getResultList();
+            sedefilial = (ArrayList)em.createQuery("from SedeFilialBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os empresa" + e);
             //Mensagem.mensagemErro("Erro ao buscar os empresa", "ERRO: empresa");

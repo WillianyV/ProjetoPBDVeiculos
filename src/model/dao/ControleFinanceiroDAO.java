@@ -2,6 +2,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.ControleFinanceiroBean;
@@ -11,6 +12,15 @@ import model.beans.ControleFinanceiroBean;
  * @author willi
  */
 public class ControleFinanceiroDAO {
+    private static ControleFinanceiroDAO controleFinanceiro;
+    
+    public static ControleFinanceiroDAO getInstance(){
+        if (controleFinanceiro == null){
+            controleFinanceiro = new ControleFinanceiroDAO();
+        }
+        return controleFinanceiro;
+    }
+    
     public ControleFinanceiroBean persist(ControleFinanceiroBean cFinanceiro) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
@@ -60,11 +70,11 @@ public class ControleFinanceiroDAO {
         return cFinanceiro;
     }
 
-    public List<ControleFinanceiroBean> findAll() {
+    public ArrayList<ControleFinanceiroBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<ControleFinanceiroBean> cFinanceiros = null;
+        ArrayList<ControleFinanceiroBean> cFinanceiros = null;
         try {
-            cFinanceiros = em.createQuery("from ControleFinanceiroBean e").getResultList();
+            cFinanceiros = (ArrayList)em.createQuery("from ControleFinanceiroBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os endereço" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Controles Financeiro", "ERRO: Controles Financeiro");

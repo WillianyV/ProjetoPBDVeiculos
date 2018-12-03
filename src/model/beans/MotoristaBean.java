@@ -29,7 +29,7 @@ public class MotoristaBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_motorista")
     private Integer id;
     private String nome;
-    @Column(nullable = false, length = 20) 
+    @Column(nullable = false, length = 20, unique = true) 
     private String CNH;
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(nullable = false)

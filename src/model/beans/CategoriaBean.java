@@ -37,32 +37,38 @@ public abstract class CategoriaBean implements Serializable {
     @Column(length = 50)
     private String tamanho, tipo_cambio;
     private boolean ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re;
+    @Column(nullable = false)
+    private float valor_locar_categoria;
 
     public CategoriaBean() {
     }
 
-    public CategoriaBean(String codigo, String nome) {
+    public CategoriaBean(String codigo, String nome, float valor_locar_categoria) {
         this.codigo = codigo;
         this.nome = nome;
+        this.valor_locar_categoria = valor_locar_categoria;
     }
 
-    public CategoriaBean(String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.tamanho = tamanho;
-        this.tipo_cambio = tipo_cambio;
-        this.ar_condicionado = ar_condicionado;
-        this.radio = radio;
-        this.DVD = DVD;
-        this.MP3 = MP3;
-        this.direcao_hidraulica = direcao_hidraulica;
-        this.camera_re = camera_re;
+    @Override
+    public String toString() {
+        return getCodigo();
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.codigo);
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.codigo);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.tamanho);
+        hash = 67 * hash + Objects.hashCode(this.tipo_cambio);
+        hash = 67 * hash + (this.ar_condicionado ? 1 : 0);
+        hash = 67 * hash + (this.radio ? 1 : 0);
+        hash = 67 * hash + (this.DVD ? 1 : 0);
+        hash = 67 * hash + (this.MP3 ? 1 : 0);
+        hash = 67 * hash + (this.direcao_hidraulica ? 1 : 0);
+        hash = 67 * hash + (this.camera_re ? 1 : 0);
+        hash = 67 * hash + Float.floatToIntBits(this.valor_locar_categoria);
         return hash;
     }
 
@@ -78,15 +84,43 @@ public abstract class CategoriaBean implements Serializable {
             return false;
         }
         final CategoriaBean other = (CategoriaBean) obj;
+        if (this.ar_condicionado != other.ar_condicionado) {
+            return false;
+        }
+        if (this.radio != other.radio) {
+            return false;
+        }
+        if (this.DVD != other.DVD) {
+            return false;
+        }
+        if (this.MP3 != other.MP3) {
+            return false;
+        }
+        if (this.direcao_hidraulica != other.direcao_hidraulica) {
+            return false;
+        }
+        if (this.camera_re != other.camera_re) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.valor_locar_categoria) != Float.floatToIntBits(other.valor_locar_categoria)) {
+            return false;
+        }
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.tamanho, other.tamanho)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo_cambio, other.tipo_cambio)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "CategoriaBean{" + "id=" + id + ", codigo=" + codigo + ", nome=" + nome + ", tamanho=" + tamanho + ", tipo_cambio=" + tipo_cambio + ", ar_condicionado=" + ar_condicionado + ", radio=" + radio + ", DVD=" + DVD + ", MP3=" + MP3 + ", direcao_hidraulica=" + direcao_hidraulica + ", camera_re=" + camera_re + '}';
     }
 
     public Integer getId() {
@@ -176,5 +210,14 @@ public abstract class CategoriaBean implements Serializable {
     public void setCamera_re(boolean camera_re) {
         this.camera_re = camera_re;
     }
+
+    public float getValor_locar_categoria() {
+        return valor_locar_categoria;
+    }
+
+    public void setValor_locar_categoria(float valor_locar_categoria) {
+        this.valor_locar_categoria = valor_locar_categoria;
+    }
+    
 
 }

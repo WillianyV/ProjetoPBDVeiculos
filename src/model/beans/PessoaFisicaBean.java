@@ -7,7 +7,6 @@ package model.beans;
 
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -23,25 +22,24 @@ import javax.persistence.Temporal;
 @Table(name="CLIENTE_PESSOA_FISICA")
 public class PessoaFisicaBean extends ClienteBean{
  
-    @Column(nullable = false,length = 15)
+    @Column(nullable = false,length = 15, unique = true)
     private String CPF;
     @Column(length = 10)
     private String sexo;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DN;
     @OneToOne()
-    @JoinColumn(name = "Id_Motorista", nullable = false)
+    @JoinColumn(name = "Id_Motorista")
     private MotoristaBean fk_motorista;
 
     public PessoaFisicaBean() {
     }
 
-    public PessoaFisicaBean(String CPF, MotoristaBean fk_motorista, String nome, EnderecoBean fk_endereco) {
-        super(nome, fk_endereco);
+    public PessoaFisicaBean(String CPF, MotoristaBean fk_motorista, String nome) {
+        super(nome);
         this.CPF = CPF;
         this.fk_motorista = fk_motorista;
     }
-
     
     @Override
     public int hashCode() {

@@ -45,6 +45,10 @@ public class SedeFilialBean implements Serializable {
         this.fk_endereco = fk_endereco;
     }
 
+    public SedeFilialBean(String nome) {
+        this.nome = nome;
+    }
+    
     public SedeFilialBean(String nome, String tipo, String CNPJ, EnderecoBean fk_endereco) {
         this.nome = nome;
         this.tipo = tipo;

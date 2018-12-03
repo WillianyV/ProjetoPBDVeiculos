@@ -6,6 +6,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.EnderecoBean;
@@ -66,11 +67,11 @@ public class EnderecoDAO {
         return endereco;
     }
 
-    public List<EnderecoBean> findAll() {
+    public ArrayList<EnderecoBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<EnderecoBean> enderecos = null;
+        ArrayList<EnderecoBean> enderecos = null;
         try {
-            enderecos = em.createQuery("from EnderecoBean e").getResultList();
+            enderecos = (ArrayList)em.createQuery("from EnderecoBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os endereço" + e);
             //Mensagem.mensagemErro("Erro ao buscar os endereço", "ERRO: Endereço");

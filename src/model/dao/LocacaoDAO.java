@@ -1,6 +1,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.LocacaoBean;
@@ -59,11 +60,11 @@ public class LocacaoDAO {
         return locacao;
     }
 
-    public List<LocacaoBean> findAll() {
+    public ArrayList<LocacaoBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<LocacaoBean> locacoes = null;
+        ArrayList<LocacaoBean> locacoes = null;
         try {
-            locacoes = em.createQuery("from LocacaoBean e").getResultList();
+            locacoes = (ArrayList)em.createQuery("from LocacaoBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar as Locações" + e);
             //Mensagem.mensagemErro("Erro ao buscar as Locações", "ERRO: Locação");

@@ -6,7 +6,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import model.beans.MotoristaBean;
 
@@ -64,11 +64,11 @@ public class MotoristaDAO {
         return motorista;
     }
 
-    public List<MotoristaBean> findAll() {
+    public ArrayList<MotoristaBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<MotoristaBean> motoristas = null;
+        ArrayList<MotoristaBean> motoristas = null;
         try {
-            motoristas = em.createQuery("from MotoristaBean e").getResultList();
+            motoristas = (ArrayList)em.createQuery("from MotoristaBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Motoristas" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Motoristas", "ERRO: Motorista");

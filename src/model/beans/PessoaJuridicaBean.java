@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="CLIENTE_PESSOA_JURIDICA")
 public class PessoaJuridicaBean extends ClienteBean{
     
-    @Column(nullable = false,length = 30)
+    @Column(nullable = false,length = 20)
     private String CNPJ;
     @Column(length = 30)
     private String insc_estadual;
@@ -21,10 +21,12 @@ public class PessoaJuridicaBean extends ClienteBean{
     public PessoaJuridicaBean() {
     }
 
-    public PessoaJuridicaBean(String CNPJ, String nome, EnderecoBean fk_endereco) {
-        super(nome, fk_endereco);
+    public PessoaJuridicaBean(String CNPJ, String nome) {
+        super(nome);
         this.CNPJ = CNPJ;
     }
+
+   
 
     @Override
     public int hashCode() {

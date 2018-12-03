@@ -1,6 +1,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.FormasPagamentosBean;
@@ -59,11 +60,11 @@ public class FormasPagamentosDAO {
         return fPg;
     }
 
-    public List<FormasPagamentosBean> findAll() {
+    public ArrayList<FormasPagamentosBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<FormasPagamentosBean> fPg = null;
+        ArrayList<FormasPagamentosBean> fPg = null;
         try {
-            fPg = em.createQuery("from FormasPagamentosBean e").getResultList();
+            fPg = (ArrayList)em.createQuery("from FormasPagamentosBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Pagamentos" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Pagamentos", "ERRO: Pagamento");

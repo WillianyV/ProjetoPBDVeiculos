@@ -7,6 +7,8 @@ package business;
 
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
+import fachada.Fachada;
+import java.util.ArrayList;
 import model.beans.UsuarioBean;
 import model.dao.UsuarioDAO;
 import util.Util;
@@ -23,12 +25,16 @@ public class UsuarioBusiness {
         this.dao = new UsuarioDAO();
     }
     
-    public UsuarioBean cadastrar(UsuarioBean usuario){
+    public void persist(UsuarioBean usuario){
         CPFValidator validador = new CPFValidator();
         try {
             validador.assertValid(usuario.getCPF());
             if(Util.validarSenha(usuario.getSenha())){
-                UsuarioBean u = dao.persist(usuario);
+                System.out.println("1");
+                Fachada.getInstance().cadastrarEndereco(usuario.getFk_endereco());
+                System.out.println("2");
+                
+                dao.persist(usuario);
             }else{
                 System.err.println("Digite uma senha válida");
                 //Mensagem.mensagemInformacao("Digite uma senha válido", "Senha INVÁLIDA");
@@ -36,26 +42,37 @@ public class UsuarioBusiness {
         } catch (InvalidStateException e) {
             System.err.println("Digite um CPF válido");
             //Mensagem.mensagemInformacao("Digite um CPF válido", "CPF INVÁLIDO");
-        }
-        
-        return usuario;        
+        }       
     }
     
-    
-    /*
-    public Usuario getById(int id){
-        return null;
-    } 
-    
-    public ArrayList<Usuario> getAll(){
-        return null;
+    public void merge(UsuarioBean usuario){
+        dao.merge(usuario);        
     }
     
-    public void persist(Usuario usuario){}
+    public void getById(int id){
+        dao.findById(id);
+    }
     
-    public void merge(Usuario usuario) {}
-    public void remove(Usuario usuario) {}
-    public void removeById(int id) {}
-    */
-    
+     public ArrayList<UsuarioBean> getAll(){
+         return dao.findAll();
+     }
+     
+     public ArrayList<UsuarioBean> getByName(String nome){
+         ArrayList<UsuarioBean> usuarios = new ArrayList<>();
+         getAll().stream().filter((u) -> (u.getNome().contains(nome))).forEachOrdered((u) -> {
+             usuarios.add(u);
+        });
+         /*
+         for(UsuarioBean u: getAll()){
+             if(u.getNome().contains(nome)){
+                 usuarios.add(u);
+             }
+         }
+         */
+         return  usuarios;
+     }
+     
+     public void remove(Integer id){
+         dao.remove(id);
+     }
 }

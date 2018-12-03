@@ -6,8 +6,9 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.beans.UsuarioBean;
 
 /**
@@ -24,7 +25,7 @@ public class UsuarioDAO {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao salvar Usuario" + e);
+            System.err.println("Erro ao salvar Usuario : " + e);
             //Mensagem.mensagemErro("Erro ao salvar Usuario", "ERRO: Usuario");
         } finally {
             em.close();
@@ -65,11 +66,11 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public List<UsuarioBean> findAll() {
+    public ArrayList<UsuarioBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<UsuarioBean> usuarios = null;
+        ArrayList<UsuarioBean> usuarios = null;
         try {
-            usuarios = em.createQuery("from UsuarioBean e").getResultList();
+            usuarios = (ArrayList)em.createQuery("from UsuarioBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Usuarios" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Usuarios", "ERRO: Usuario");
@@ -99,4 +100,18 @@ public class UsuarioDAO {
         
         return usuario;    
     }
+    public boolean validarLogin(String login, String senha){
+        boolean result = false;
+        EntityManager em = new ConnectionFactory().getConnetion();
+        try {
+            em.getTransaction().begin();
+            Query buscar = em.createQuery("from USUARIO u where u.login = ?5 an ");
+        } catch (Exception e) {
+        }
+        
+        return result;
+        //"select p from Pessoa p where p.login = :login and p.senha = :senha";
+    }
+    //criptografar senha
+     //login
 }

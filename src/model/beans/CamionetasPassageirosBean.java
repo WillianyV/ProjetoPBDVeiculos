@@ -1,5 +1,6 @@
 package model.beans;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,22 +19,54 @@ public class CamionetasPassageirosBean extends CategoriaBean{
     public CamionetasPassageirosBean() {
     }
 
-    public CamionetasPassageirosBean(String codigo, String nome) {
-        super(codigo, nome);
-    }
-
-    public CamionetasPassageirosBean(String tipo_air_bag, boolean direcao_assistida, boolean cintos_traseiros_retrateis, boolean rodas_liga_leve, boolean cont_poluicao_ar, String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re) {
-        super(codigo, nome, tamanho, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re);
-        this.tipo_air_bag = tipo_air_bag;
-        this.direcao_assistida = direcao_assistida;
-        this.cintos_traseiros_retrateis = cintos_traseiros_retrateis;
-        this.rodas_liga_leve = rodas_liga_leve;
-        this.cont_poluicao_ar = cont_poluicao_ar;
+    public CamionetasPassageirosBean(String codigo, String nome, float valor_locar_categoria) {
+        super(codigo, nome, valor_locar_categoria);
     }
 
     @Override
     public String toString() {
         return "CamionetasPassageirosBean{" + "tipo_air_bag=" + tipo_air_bag + ", direcao_assistida=" + direcao_assistida + ", cintos_traseiros_retrateis=" + cintos_traseiros_retrateis + ", rodas_liga_leve=" + rodas_liga_leve + ", cont_poluicao_ar=" + cont_poluicao_ar + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.tipo_air_bag);
+        hash = 31 * hash + (this.direcao_assistida ? 1 : 0);
+        hash = 31 * hash + (this.cintos_traseiros_retrateis ? 1 : 0);
+        hash = 31 * hash + (this.rodas_liga_leve ? 1 : 0);
+        hash = 31 * hash + (this.cont_poluicao_ar ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CamionetasPassageirosBean other = (CamionetasPassageirosBean) obj;
+        if (this.direcao_assistida != other.direcao_assistida) {
+            return false;
+        }
+        if (this.cintos_traseiros_retrateis != other.cintos_traseiros_retrateis) {
+            return false;
+        }
+        if (this.rodas_liga_leve != other.rodas_liga_leve) {
+            return false;
+        }
+        if (this.cont_poluicao_ar != other.cont_poluicao_ar) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo_air_bag, other.tipo_air_bag)) {
+            return false;
+        }
+        return true;
     }
 
     public String getTipo_air_bag() {
@@ -75,5 +108,5 @@ public class CamionetasPassageirosBean extends CategoriaBean{
     public void setCont_poluicao_ar(boolean cont_poluicao_ar) {
         this.cont_poluicao_ar = cont_poluicao_ar;
     }
-
+    
 }

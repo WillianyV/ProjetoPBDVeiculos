@@ -6,7 +6,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import model.beans.VeiculoBean;
 
@@ -66,11 +66,11 @@ public class VeiculoDAO {
         return veiculo;
     }
 
-    public List<VeiculoBean> findAll() {
+    public ArrayList<VeiculoBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<VeiculoBean> veiculos = null;
+        ArrayList<VeiculoBean> veiculos = null;
         try {
-            veiculos = em.createQuery("from VeiculoBean e").getResultList();
+            veiculos = (ArrayList) em.createQuery("from VeiculoBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os veículos" + e);
             //Mensagem.mensagemErro("Erro ao buscar os veículos", "ERRO: Veículos");
@@ -80,9 +80,7 @@ public class VeiculoDAO {
         
         return veiculos;
     }
-    /*
-        REMOVER?
-    */
+    
     public  VeiculoBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
         VeiculoBean veiculo = null;

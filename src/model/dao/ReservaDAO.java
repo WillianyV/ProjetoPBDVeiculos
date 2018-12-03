@@ -2,7 +2,7 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import model.beans.ReservaBean;
 
@@ -60,11 +60,11 @@ public class ReservaDAO {
         return reserva;
     }
 
-    public List<ReservaBean> findAll() {
+    public ArrayList<ReservaBean> findAll() {
         EntityManager em = new ConnectionFactory().getConnetion();
-        List<ReservaBean> reservas = null;
+        ArrayList<ReservaBean> reservas = null;
         try {
-            reservas = em.createQuery("from ReservaBean e").getResultList();
+            reservas = (ArrayList)em.createQuery("from ReservaBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar as Reservas" + e);
             //Mensagem.mensagemErro("Erro ao buscar as Reservas", "ERRO: Reserva");
