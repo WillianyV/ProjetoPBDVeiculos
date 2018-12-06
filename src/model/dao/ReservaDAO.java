@@ -11,7 +11,7 @@ import model.beans.ReservaBean;
  * @author willi
  */
 public class ReservaDAO {
-    public ReservaBean persist(ReservaBean reserva) {        
+    public void persist(ReservaBean reserva) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -24,7 +24,6 @@ public class ReservaDAO {
         } finally {
             em.close();
         }
-        return reserva;
 
     }
 

@@ -30,10 +30,7 @@ public class UsuarioBusiness {
         try {
             validador.assertValid(usuario.getCPF());
             if(Util.validarSenha(usuario.getSenha())){
-                System.out.println("1");
                 Fachada.getInstance().cadastrarEndereco(usuario.getFk_endereco());
-                System.out.println("2");
-                
                 dao.persist(usuario);
             }else{
                 System.err.println("Digite uma senha válida");
@@ -45,12 +42,12 @@ public class UsuarioBusiness {
         }       
     }
     
-    public void merge(UsuarioBean usuario){
-        dao.merge(usuario);        
+    public UsuarioBean merge(UsuarioBean usuario){
+        return dao.merge(usuario);        
     }
     
-    public void getById(int id){
-        dao.findById(id);
+    public UsuarioBean getById(int id){
+        return dao.findById(id);
     }
     
      public ArrayList<UsuarioBean> getAll(){
@@ -72,7 +69,7 @@ public class UsuarioBusiness {
          return  usuarios;
      }
      
-     public void remove(Integer id){
-         dao.remove(id);
+     public UsuarioBean remove(Integer id){
+        return  dao.remove(id);
      }
 }

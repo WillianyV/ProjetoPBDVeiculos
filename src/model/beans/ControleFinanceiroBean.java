@@ -7,6 +7,7 @@ package model.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,32 +39,90 @@ public class ControleFinanceiroBean implements Serializable {
     private Date dataFincanceiro;
     @Column(nullable = false)
     private String tipo;
+    private String forma_pagamento;
     @ManyToOne()
-    @JoinColumn(name = "Id_Usuario", nullable = false)
+    @JoinColumn(name = "Id_Usuario")
     private UsuarioBean fk_usuario;
     @ManyToOne()
-    @JoinColumn(name = "Id_Formas_Pagamento", nullable = false)
-    private FormasPagamentosBean fk_formas_pagamento;
-    @ManyToOne()
-    @JoinColumn(name = "Id_Locacao", nullable = false)
+    @JoinColumn(name = "Id_Locacao")
     private LocacaoBean fk_locacao;
 
     public ControleFinanceiroBean() {
     }
 
-    public ControleFinanceiroBean(String descricao, float valor, Date dataFincanceiro, String tipo, UsuarioBean fk_usuario, FormasPagamentosBean fk_formas_pagamento, LocacaoBean fk_locacao) {
+    public ControleFinanceiroBean(String descricao, float valor, Date dataFincanceiro, String tipo) {
         this.descricao = descricao;
         this.valor = valor;
         this.dataFincanceiro = dataFincanceiro;
         this.tipo = tipo;
+    }
+
+    public ControleFinanceiroBean(String descricao, float valor, Date dataFincanceiro, String tipo, String forma_pagamento, UsuarioBean fk_usuario, LocacaoBean fk_locacao) {
+        this.descricao = descricao;
+        this.valor = valor;
+        this.dataFincanceiro = dataFincanceiro;
+        this.tipo = tipo;
+        this.forma_pagamento = forma_pagamento;
         this.fk_usuario = fk_usuario;
-        this.fk_formas_pagamento = fk_formas_pagamento;
         this.fk_locacao = fk_locacao;
+    }
+    
+    @Override
+    public String toString() {
+        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", forma_pagamento=" + forma_pagamento + ", fk_usuario=" + fk_usuario + ", fk_locacao=" + fk_locacao + '}';
     }
 
     @Override
-    public String toString() {
-        return "ControleFinanceiroBean{" + "id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", dataFincanceiro=" + dataFincanceiro + ", tipo=" + tipo + ", fk_usuario=" + fk_usuario + ", fk_formas_pagamento=" + fk_formas_pagamento + ", fk_locacao=" + fk_locacao + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.descricao);
+        hash = 23 * hash + Float.floatToIntBits(this.valor);
+        hash = 23 * hash + Objects.hashCode(this.dataFincanceiro);
+        hash = 23 * hash + Objects.hashCode(this.tipo);
+        hash = 23 * hash + Objects.hashCode(this.forma_pagamento);
+        hash = 23 * hash + Objects.hashCode(this.fk_usuario);
+        hash = 23 * hash + Objects.hashCode(this.fk_locacao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ControleFinanceiroBean other = (ControleFinanceiroBean) obj;
+        if (Float.floatToIntBits(this.valor) != Float.floatToIntBits(other.valor)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        if (!Objects.equals(this.forma_pagamento, other.forma_pagamento)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataFincanceiro, other.dataFincanceiro)) {
+            return false;
+        }
+        if (!Objects.equals(this.fk_usuario, other.fk_usuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.fk_locacao, other.fk_locacao)) {
+            return false;
+        }
+        return true;
     }
 
     public Integer getId() {
@@ -106,20 +165,20 @@ public class ControleFinanceiroBean implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getForma_pagamento() {
+        return forma_pagamento;
+    }
+
+    public void setForma_pagamento(String forma_pagamento) {
+        this.forma_pagamento = forma_pagamento;
+    }
+
     public UsuarioBean getFk_usuario() {
         return fk_usuario;
     }
 
     public void setFk_usuario(UsuarioBean fk_usuario) {
         this.fk_usuario = fk_usuario;
-    }
-
-    public FormasPagamentosBean getFk_formas_pagamento() {
-        return fk_formas_pagamento;
-    }
-
-    public void setFk_formas_pagamento(FormasPagamentosBean fk_formas_pagamento) {
-        this.fk_formas_pagamento = fk_formas_pagamento;
     }
 
     public LocacaoBean getFk_locacao() {

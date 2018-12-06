@@ -21,13 +21,17 @@ public class PessoaJuridicaBean extends ClienteBean{
     public PessoaJuridicaBean() {
     }
 
-    public PessoaJuridicaBean(String CNPJ, String nome) {
-        super(nome);
+    public PessoaJuridicaBean(String CNPJ, String nome, boolean status, EnderecoBean fk_endereco) {
+        super(nome, status, fk_endereco);
         this.CNPJ = CNPJ;
     }
 
-   
-
+    public PessoaJuridicaBean(String CNPJ, String insc_estadual, String nome, boolean status, EnderecoBean fk_endereco) {
+        super(nome, status, fk_endereco);
+        this.CNPJ = CNPJ;
+        this.insc_estadual = insc_estadual;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;

@@ -27,7 +27,7 @@ public class PessoaFisicaBusiness {
     public void persit(PessoaFisicaBean pessoaFisicaBean){
         CNPJValidator validador = new CNPJValidator();
         try {
-            validador.assertValid(pessoaFisicaBean.getCPF());
+            //validador.assertValid(pessoaFisicaBean.getCPF());
             Fachada.getInstance().cadastrarEndereco(pessoaFisicaBean.getFk_endereco());
             dao.persist(pessoaFisicaBean);
         } catch (InvalidStateException e) {
@@ -35,16 +35,16 @@ public class PessoaFisicaBusiness {
             //Mensagem.mensagemInformacao("Digite um CPF válido", "CPF INVÁLIDO");
         }
     }
-    public void merge (PessoaFisicaBean pessoaFisicaBean){
-      dao.merge(pessoaFisicaBean);
+    public PessoaFisicaBean merge (PessoaFisicaBean pessoaFisicaBean){
+        return dao.merge(pessoaFisicaBean);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public PessoaFisicaBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<PessoaFisicaBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public PessoaFisicaBean remove(Integer id){
+        return dao.remove(id);
     } 
 }

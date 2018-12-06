@@ -33,6 +33,9 @@ public class SedeFilialBean implements Serializable {
     private String nome;
     @Column(length = 20)
     private String tipo, CNPJ;
+    @Column(nullable = false)
+    private boolean status;
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Endereco")
     private EnderecoBean fk_endereco;
@@ -45,10 +48,6 @@ public class SedeFilialBean implements Serializable {
         this.fk_endereco = fk_endereco;
     }
 
-    public SedeFilialBean(String nome) {
-        this.nome = nome;
-    }
-    
     public SedeFilialBean(String nome, String tipo, String CNPJ, EnderecoBean fk_endereco) {
         this.nome = nome;
         this.tipo = tipo;

@@ -39,16 +39,34 @@ public abstract class CategoriaBean implements Serializable {
     private boolean ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re;
     @Column(nullable = false)
     private float valor_locar_categoria;
-
+    @Column(nullable = false)
+    private boolean status;
+    
     public CategoriaBean() {
     }
 
-    public CategoriaBean(String codigo, String nome, float valor_locar_categoria) {
+    public CategoriaBean(String codigo, String nome, float valor_locar_categoria, boolean status) {
         this.codigo = codigo;
         this.nome = nome;
         this.valor_locar_categoria = valor_locar_categoria;
+        this.status = status;
     }
 
+    public CategoriaBean(String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.tamanho = tamanho;
+        this.tipo_cambio = tipo_cambio;
+        this.ar_condicionado = ar_condicionado;
+        this.radio = radio;
+        this.DVD = DVD;
+        this.MP3 = MP3;
+        this.direcao_hidraulica = direcao_hidraulica;
+        this.camera_re = camera_re;
+        this.valor_locar_categoria = valor_locar_categoria;
+        this.status = status;
+    }
+    
     @Override
     public String toString() {
         return getCodigo();

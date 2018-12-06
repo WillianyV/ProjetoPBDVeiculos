@@ -16,7 +16,7 @@ import model.beans.PessoaFisicaBean;
  * @author willi
  */
 public class PessoaFisicaDAO {
-    public PessoaFisicaBean persist(PessoaFisicaBean pf) {        
+    public void persist(PessoaFisicaBean pf) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -29,7 +29,6 @@ public class PessoaFisicaDAO {
         } finally {
             em.close();
         }
-        return pf;
 
     }
 

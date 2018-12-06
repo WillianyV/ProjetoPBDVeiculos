@@ -39,6 +39,7 @@ public class LocacaoBean implements Serializable {
     private Date data_hora_devolucao;
     
     private float taxa_higienização, taxa_combustivel,km_inicial,km_final, metade_valor_locacao;
+    @Column(nullable = false)
     private boolean status;
     
    
@@ -72,6 +73,23 @@ public class LocacaoBean implements Serializable {
         this.fk_veiculo = fk_veiculo;
     }
 
+    public LocacaoBean(String tipo_locacao, Date data_hora_retirada, Date data_hora_devolucao, float taxa_higienização, float taxa_combustivel, float km_inicial, float km_final, float metade_valor_locacao, boolean status, ReservaBean fk_reserva, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista, VeiculoBean fk_veiculo) {
+        this.tipo_locacao = tipo_locacao;
+        this.data_hora_retirada = data_hora_retirada;
+        this.data_hora_devolucao = data_hora_devolucao;
+        this.taxa_higienização = taxa_higienização;
+        this.taxa_combustivel = taxa_combustivel;
+        this.km_inicial = km_inicial;
+        this.km_final = km_final;
+        this.metade_valor_locacao = metade_valor_locacao;
+        this.status = status;
+        this.fk_reserva = fk_reserva;
+        this.fk_usuario = fk_usuario;
+        this.fk_cliente = fk_cliente;
+        this.fk_motorista = fk_motorista;
+        this.fk_veiculo = fk_veiculo;
+    }
+    
     @Override
     public String toString() {
         return "LocacaoBean{" + "id=" + id + ", tipo_locacao=" + tipo_locacao + ", data_hora_retirada=" + data_hora_retirada + ", data_hora_devolucao=" + data_hora_devolucao + ", taxa_higieniza\u00e7\u00e3o=" + taxa_higienização + ", taxa_combustivel=" + taxa_combustivel + ", km_inicial=" + km_inicial + ", km_final=" + km_final + ", metade_valor_locacao=" + metade_valor_locacao + ", status=" + status + ", fk_reserva=" + fk_reserva + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_motorista=" + fk_motorista + ", fk_veiculo=" + fk_veiculo + '}';

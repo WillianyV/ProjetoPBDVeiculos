@@ -19,10 +19,20 @@ public class CamionetasCargaBean extends CategoriaBean{
     public CamionetasCargaBean() {
     }
 
-    public CamionetasCargaBean(String codigo, String nome, float valor_locar_categoria) {
-        super(codigo, nome, valor_locar_categoria);
+    public CamionetasCargaBean(String codigo, String nome, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, valor_locar_categoria, status);
     }
 
+    public CamionetasCargaBean(float capacidade_carga, float desempenho, float potencia_motor, float volume_abastecimento, float distancia_eixos, String tipo_embreagem, String codigo, String nome, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, valor_locar_categoria, status);
+        this.capacidade_carga = capacidade_carga;
+        this.desempenho = desempenho;
+        this.potencia_motor = potencia_motor;
+        this.volume_abastecimento = volume_abastecimento;
+        this.distancia_eixos = distancia_eixos;
+        this.tipo_embreagem = tipo_embreagem;
+    }
+    
     @Override
     public String toString() {
         return "CamionetasCargaBean{" + "capacidade_carga=" + capacidade_carga + ", desempenho=" + desempenho + ", potencia_motor=" + potencia_motor + ", volume_abastecimento=" + volume_abastecimento + ", distancia_eixos=" + distancia_eixos + ", tipo_embreagem=" + tipo_embreagem + '}';

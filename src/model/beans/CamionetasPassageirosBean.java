@@ -19,10 +19,18 @@ public class CamionetasPassageirosBean extends CategoriaBean{
     public CamionetasPassageirosBean() {
     }
 
-    public CamionetasPassageirosBean(String codigo, String nome, float valor_locar_categoria) {
-        super(codigo, nome, valor_locar_categoria);
+    public CamionetasPassageirosBean(String codigo, String nome, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, valor_locar_categoria, status);
     }
 
+    public CamionetasPassageirosBean(String tipo_air_bag, boolean direcao_assistida, boolean cintos_traseiros_retrateis, boolean rodas_liga_leve, boolean cont_poluicao_ar, String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, tamanho, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re, valor_locar_categoria, status);
+        this.tipo_air_bag = tipo_air_bag;
+        this.direcao_assistida = direcao_assistida;
+        this.cintos_traseiros_retrateis = cintos_traseiros_retrateis;
+        this.rodas_liga_leve = rodas_liga_leve;
+        this.cont_poluicao_ar = cont_poluicao_ar;
+    }
     @Override
     public String toString() {
         return "CamionetasPassageirosBean{" + "tipo_air_bag=" + tipo_air_bag + ", direcao_assistida=" + direcao_assistida + ", cintos_traseiros_retrateis=" + cintos_traseiros_retrateis + ", rodas_liga_leve=" + rodas_liga_leve + ", cont_poluicao_ar=" + cont_poluicao_ar + '}';

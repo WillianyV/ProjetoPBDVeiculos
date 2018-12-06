@@ -12,7 +12,6 @@
     <class>model.beans.ClienteBean</class>
     <class>model.beans.ControleFinanceiroBean</class>
     <class>model.beans.EnderecoBean</class>
-    <class>model.beans.FormasPagamentosBean</class>
     <class>model.beans.LocacaoBean</class>
     <class>model.beans.MotoristaBean</class>
     <class>model.beans.PessoaFisicaBean</class>
@@ -41,7 +40,6 @@
       <property name="hibernate.format_sql" value="true"/>
       <!-- Show SQL formatted -->
       <property name="use_sql_comments" value="true"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

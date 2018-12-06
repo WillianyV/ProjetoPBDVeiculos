@@ -31,7 +31,6 @@ public class ReservaBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_reserva")
     private Integer id;
     
-    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date data_hora_reserva;
     
@@ -51,7 +50,7 @@ public class ReservaBean implements Serializable {
     @JoinColumn(name = "Id_Categoria")
     private CategoriaBean fk_categoria;
     
-    private float valorLocacao;
+    private float valor_locacao;
     private boolean status;
 
     public ReservaBean() {
@@ -64,22 +63,32 @@ public class ReservaBean implements Serializable {
         this.status = status;
     }
 
+    public ReservaBean(Date data_hora_reserva, Date data_deseja_locar, UsuarioBean fk_usuario, ClienteBean fk_cliente, CategoriaBean fk_categoria, float valor_locacao, boolean status) {
+        this.data_hora_reserva = data_hora_reserva;
+        this.data_deseja_locar = data_deseja_locar;
+        this.fk_usuario = fk_usuario;
+        this.fk_cliente = fk_cliente;
+        this.fk_categoria = fk_categoria;
+        this.valor_locacao = valor_locacao;
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "ReservaBean{" + "id=" + id + ", data_hora_reserva=" + data_hora_reserva + ", data_deseja_locar=" + data_deseja_locar + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_categoria=" + fk_categoria + ", valorLocacao=" + valorLocacao + ", status=" + status + '}';
+        return "ReservaBean{" + "id=" + id + ", data_hora_reserva=" + data_hora_reserva + ", data_deseja_locar=" + data_deseja_locar + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_categoria=" + fk_categoria + ", valor_locacao=" + valor_locacao + ", status=" + status + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.data_hora_reserva);
-        hash = 97 * hash + Objects.hashCode(this.data_deseja_locar);
-        hash = 97 * hash + Objects.hashCode(this.fk_usuario);
-        hash = 97 * hash + Objects.hashCode(this.fk_cliente);
-        hash = 97 * hash + Objects.hashCode(this.fk_categoria);
-        hash = 97 * hash + Float.floatToIntBits(this.valorLocacao);
-        hash = 97 * hash + (this.status ? 1 : 0);
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.data_hora_reserva);
+        hash = 89 * hash + Objects.hashCode(this.data_deseja_locar);
+        hash = 89 * hash + Objects.hashCode(this.fk_usuario);
+        hash = 89 * hash + Objects.hashCode(this.fk_cliente);
+        hash = 89 * hash + Objects.hashCode(this.fk_categoria);
+        hash = 89 * hash + Float.floatToIntBits(this.valor_locacao);
+        hash = 89 * hash + (this.status ? 1 : 0);
         return hash;
     }
 
@@ -95,7 +104,7 @@ public class ReservaBean implements Serializable {
             return false;
         }
         final ReservaBean other = (ReservaBean) obj;
-        if (Float.floatToIntBits(this.valorLocacao) != Float.floatToIntBits(other.valorLocacao)) {
+        if (Float.floatToIntBits(this.valor_locacao) != Float.floatToIntBits(other.valor_locacao)) {
             return false;
         }
         if (this.status != other.status) {
@@ -170,12 +179,12 @@ public class ReservaBean implements Serializable {
         this.fk_categoria = fk_categoria;
     }
 
-    public float getValorLocacao() {
-        return valorLocacao;
+    public float getValor_locacao() {
+        return valor_locacao;
     }
 
-    public void setValorLocacao(float valorLocacao) {
-        this.valorLocacao = valorLocacao;
+    public void setValor_locacao(float valor_locacao) {
+        this.valor_locacao = valor_locacao;
     }
 
     public boolean isStatus() {

@@ -12,7 +12,7 @@ import model.beans.PessoaJuridicaBean;
  * @author willi
  */
 public class PessoaJuridicaDAO {
-    public PessoaJuridicaBean persist(PessoaJuridicaBean pj) {        
+    public void persist(PessoaJuridicaBean pj) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -25,8 +25,6 @@ public class PessoaJuridicaDAO {
         } finally {
             em.close();
         }
-        return pj;
-
     }
 
     public PessoaJuridicaBean merge(PessoaJuridicaBean pj) {

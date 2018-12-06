@@ -2,7 +2,6 @@ package model.dao;
 
 import connenction.ConnectionFactory;
 import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.CamionetasPassageirosBean;
 
@@ -11,7 +10,7 @@ import model.beans.CamionetasPassageirosBean;
  * @author willi
  */
 public class CamionetasPassageirosDAO {
-    public CamionetasPassageirosBean persist(CamionetasPassageirosBean cPassageiro) {        
+    public void persist(CamionetasPassageirosBean cPassageiro) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -24,7 +23,6 @@ public class CamionetasPassageirosDAO {
         } finally {
             em.close();
         }
-        return cPassageiro;
 
     }
 

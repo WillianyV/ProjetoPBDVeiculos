@@ -25,17 +25,17 @@ public class CamionetasPassageirosBusiness {
     public void persit(CamionetasPassageirosBean camionetasPassageiros){
         dao.persist(camionetasPassageiros);
     }
-    public void merge (CamionetasPassageirosBean camionetasPassageiros){
-      dao.merge(camionetasPassageiros);
+    public CamionetasPassageirosBean merge (CamionetasPassageirosBean camionetasPassageiros){
+      return dao.merge(camionetasPassageiros);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public CamionetasPassageirosBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<CamionetasPassageirosBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public CamionetasPassageirosBean remove(Integer id){
+        return dao.remove(id);
     }
     public ArrayList<CamionetasPassageirosBean> findByCodigo(String cod){
         ArrayList<CamionetasPassageirosBean> passageiros = new ArrayList<>();

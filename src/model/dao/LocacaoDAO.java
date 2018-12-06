@@ -11,7 +11,7 @@ import model.beans.LocacaoBean;
  * @author willi
  */
 public class LocacaoDAO {
-    public LocacaoBean persist(LocacaoBean locacao) {        
+    public void persist(LocacaoBean locacao) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -24,7 +24,6 @@ public class LocacaoDAO {
         } finally {
             em.close();
         }
-        return locacao;
 
     }
 

@@ -28,17 +28,20 @@ public class PessoaFisicaBean extends ClienteBean{
     private String sexo;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DN;
-    @OneToOne()
-    @JoinColumn(name = "Id_Motorista")
-    private MotoristaBean fk_motorista;
-
+    
     public PessoaFisicaBean() {
     }
 
-    public PessoaFisicaBean(String CPF, MotoristaBean fk_motorista, String nome) {
-        super(nome);
+    public PessoaFisicaBean(String CPF, String nome, boolean status, EnderecoBean fk_endereco) {
+        super(nome, status, fk_endereco);
         this.CPF = CPF;
-        this.fk_motorista = fk_motorista;
+    }
+
+    public PessoaFisicaBean(String CPF, String sexo, Date DN, String nome, boolean status, EnderecoBean fk_endereco) {
+        super(nome, status, fk_endereco);
+        this.CPF = CPF;
+        this.sexo = sexo;
+        this.DN = DN;
     }
     
     @Override
@@ -68,7 +71,7 @@ public class PessoaFisicaBean extends ClienteBean{
 
     @Override
     public String toString() {
-        return "PessoaFisicaBean{" + "CPF=" + CPF + ", sexo=" + sexo + ", DN=" + DN + ", fk_motorista=" + fk_motorista + '}';
+        return "PessoaFisicaBean{" + "CPF=" + CPF + ", sexo=" + sexo + ", DN=" + DN + '}';
     }
 
     public String getCPF() {
@@ -95,12 +98,5 @@ public class PessoaFisicaBean extends ClienteBean{
         this.DN = DN;
     }
 
-    public MotoristaBean getFk_motorista() {
-        return fk_motorista;
-    }
-
-    public void setFk_motorista(MotoristaBean fk_motorista) {
-        this.fk_motorista = fk_motorista;
-    }
     
 }

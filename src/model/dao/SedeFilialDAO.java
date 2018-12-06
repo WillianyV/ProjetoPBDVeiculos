@@ -11,7 +11,7 @@ import model.beans.SedeFilialBean;
  */
 public class SedeFilialDAO {
     
-    public SedeFilialBean persist(SedeFilialBean endereco) {        
+    public void persist(SedeFilialBean endereco) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -24,8 +24,6 @@ public class SedeFilialDAO {
         } finally {
             em.close();
         }
-        return endereco;
-
     }
 
     public SedeFilialBean merge(SedeFilialBean sedefilial) {

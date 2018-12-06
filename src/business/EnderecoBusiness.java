@@ -6,7 +6,6 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.List;
 import model.beans.EnderecoBean;
 import model.dao.EnderecoDAO;
 
@@ -25,19 +24,19 @@ public class EnderecoBusiness {
         dao.persist(endereco);
     }
 
-    public void merge(EnderecoBean endereco) {
-       dao.merge(endereco);
+    public EnderecoBean merge(EnderecoBean endereco) {
+       return dao.merge(endereco);
     }
 
-    public void findById(Integer id) {
-        dao.findById(id);
+    public EnderecoBean findById(Integer id) {
+        return dao.findById(id);
     }
 
     public ArrayList<EnderecoBean> findAll() {
         return dao.findAll();
     }
    
-    public  void remove (Integer id) {
-        dao.remove(id);
+    public  EnderecoBean remove (Integer id) {
+        return dao.remove(id);
     }
 }

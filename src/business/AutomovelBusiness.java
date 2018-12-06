@@ -21,19 +21,19 @@ public class AutomovelBusiness {
     }
     
     public void persit(AutomovelBean automovel){
-        dao.persist(automovel);
+         dao.persist(automovel);
     }
-    public void merge (AutomovelBean automovel){
-      dao.merge(automovel);
+    public AutomovelBean merge (AutomovelBean automovel){
+      return dao.merge(automovel);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public AutomovelBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<AutomovelBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public AutomovelBean remove(Integer id){
+        return dao.remove(id);
     }
     public ArrayList<AutomovelBean> findByCodigo(String cod){
         ArrayList<AutomovelBean> automoveis = new ArrayList<>();

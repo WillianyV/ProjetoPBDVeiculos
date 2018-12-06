@@ -3,7 +3,6 @@ package model.dao;
 
 import connenction.ConnectionFactory;
 import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.ControleFinanceiroBean;
 
@@ -12,18 +11,11 @@ import model.beans.ControleFinanceiroBean;
  * @author willi
  */
 public class ControleFinanceiroDAO {
-    private static ControleFinanceiroDAO controleFinanceiro;
-    
-    public static ControleFinanceiroDAO getInstance(){
-        if (controleFinanceiro == null){
-            controleFinanceiro = new ControleFinanceiroDAO();
-        }
-        return controleFinanceiro;
-    }
-    
-    public ControleFinanceiroBean persist(ControleFinanceiroBean cFinanceiro) {        
+   
+    public void persist(ControleFinanceiroBean cFinanceiro) {
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
+           
             em.getTransaction().begin();
             em.persist(cFinanceiro);
             em.getTransaction().commit();
@@ -34,7 +26,6 @@ public class ControleFinanceiroDAO {
         } finally {
             em.close();
         }
-        return cFinanceiro;
 
     }
 

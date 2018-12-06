@@ -16,7 +16,7 @@ import model.beans.MotoristaBean;
  */
 public class MotoristaDAO {
     
-    public MotoristaBean persist(MotoristaBean motorista) {        
+    public void persist(MotoristaBean motorista) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -29,7 +29,6 @@ public class MotoristaDAO {
         } finally {
             em.close();
         }
-        return motorista;
 
     }
 

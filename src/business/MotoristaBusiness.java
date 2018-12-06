@@ -26,23 +26,23 @@ public class MotoristaBusiness {
        if(!(Util.validaCNH(motorista.getCNH()))){
            System.err.println("CNH Inválida");
        }else if(Util.verificarIdade(motorista.getDN()) >= 21){
-           dao.persist(motorista);
+            dao.persist(motorista);
        }else{
+           
            System.err.println("Motorista com idade menor a de 21 anos");
            //Mensagem.mensagemInformacao("Motorista menos de 21 anos", "Erro");           
-       }
-        
+       }       
     }
-    public void merge (MotoristaBean motorista){
-      dao.merge(motorista);
+    public MotoristaBean merge (MotoristaBean motorista){
+      return dao.merge(motorista);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public MotoristaBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<MotoristaBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public MotoristaBean remove(Integer id){
+        return dao.remove(id);
     }
 }

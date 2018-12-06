@@ -17,7 +17,7 @@ import model.beans.UsuarioBean;
  */
 public class UsuarioDAO {
     
-    public UsuarioBean persist(UsuarioBean usuario) {        
+    public void persist(UsuarioBean usuario) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -30,7 +30,6 @@ public class UsuarioDAO {
         } finally {
             em.close();
         }
-        return usuario;
 
     }
 

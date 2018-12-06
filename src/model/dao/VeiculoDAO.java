@@ -15,7 +15,7 @@ import model.beans.VeiculoBean;
  * @author willi
  */
 public class VeiculoDAO {
-    public VeiculoBean persist(VeiculoBean veiculo) {        
+    public void persist(VeiculoBean veiculo) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -28,7 +28,6 @@ public class VeiculoDAO {
         } finally {
             em.close();
         }
-        return veiculo;
 
     }
 

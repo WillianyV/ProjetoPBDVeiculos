@@ -10,7 +10,6 @@ import business.CamionetasCargaBusiness;
 import business.CamionetasPassageirosBusiness;
 import business.ControleFinanceiroBusiness;
 import business.EnderecoBusiness;
-import business.FormasPagamentosBusiness;
 import business.LocacaoBusiness;
 import business.MotoristaBusiness;
 import business.PessoaFisicaBusiness;
@@ -23,8 +22,8 @@ import java.util.ArrayList;
 import model.beans.AutomovelBean;
 import model.beans.CamionetasCargaBean;
 import model.beans.CamionetasPassageirosBean;
+import model.beans.ControleFinanceiroBean;
 import model.beans.EnderecoBean;
-import model.beans.FormasPagamentosBean;
 import model.beans.LocacaoBean;
 import model.beans.MotoristaBean;
 import model.beans.PessoaFisicaBean;
@@ -48,7 +47,6 @@ public class Fachada {
     private static CamionetasPassageirosBusiness camionetasPassageirosBusiness;
     private static ControleFinanceiroBusiness controleFinanceiroBusiness;    
     private static EnderecoBusiness enderecoBusiness;    
-    private static FormasPagamentosBusiness formasPagamentosBusiness;
     private static LocacaoBusiness locacaoBusiness;
     private static MotoristaBusiness motoristaBusiness;
     private static PessoaFisicaBusiness pessoaFisicaBusiness;
@@ -63,7 +61,6 @@ public class Fachada {
         camionetasCargaBusiness = new CamionetasCargaBusiness();
         camionetasPassageirosBusiness = new CamionetasPassageirosBusiness();
         enderecoBusiness = new EnderecoBusiness();
-        formasPagamentosBusiness = new FormasPagamentosBusiness();
         locacaoBusiness = new LocacaoBusiness();
         motoristaBusiness = new MotoristaBusiness();
         pessoaFisicaBusiness = new PessoaFisicaBusiness();
@@ -72,6 +69,7 @@ public class Fachada {
         sedeFilialBusiness = new SedeFilialBusiness();
         usuarioBusiness = new UsuarioBusiness(); 
         veiculoBusiness = new VeiculoBusiness();
+        controleFinanceiroBusiness = new ControleFinanceiroBusiness();
     }
     
     public static Fachada getInstance(){
@@ -80,18 +78,32 @@ public class Fachada {
         }
         return fachada;
     }
-    
+    public void cadastrarControleFinanceiro(ControleFinanceiroBean controleFinanceiro){
+          controleFinanceiroBusiness.persit(controleFinanceiro);
+    }
+    public ControleFinanceiroBean editarControleFinanceiro(ControleFinanceiroBean controleFinanceiro){
+        return controleFinanceiroBusiness.merge(controleFinanceiro);
+    }
+    public ControleFinanceiroBean excluirControleFinanceiro(Integer id){
+        return controleFinanceiroBusiness.remove(id);
+    }
+    public ControleFinanceiroBean pesquisarControleFinanceiroId(Integer id){
+        return controleFinanceiroBusiness.findById(id);
+    }
+    public ArrayList<ControleFinanceiroBean> pesquisarControleFinanceiroAll(){
+        return controleFinanceiroBusiness.findAll();
+    }
     public void cadastrarAutomovel(AutomovelBean automovel){
        automovelBusiness.persit(automovel);
     }
-    public void editarAutomovel(AutomovelBean automovel){
-        automovelBusiness.merge(automovel);
+    public AutomovelBean editarAutomovel(AutomovelBean automovel){
+        return automovelBusiness.merge(automovel);
     }
-    public void excluirAutomovel(Integer id){
-        automovelBusiness.remove(id);
+    public AutomovelBean excluirAutomovel(Integer id){
+        return automovelBusiness.remove(id);
     }
-    public void pesquisarAutomovelId(Integer id){
-        automovelBusiness.findById(id);
+    public AutomovelBean pesquisarAutomovelId(Integer id){
+        return automovelBusiness.findById(id);
     }
     public ArrayList<AutomovelBean> pesquisarAutomovelAll(){
         return automovelBusiness.findAll();
@@ -102,14 +114,14 @@ public class Fachada {
     public void cadastrarCamionetasCarga(CamionetasCargaBean camionetasCarga){
         camionetasCargaBusiness.persit(camionetasCarga);
     }
-    public void editarCamionetasCarga(CamionetasCargaBean camionetasCarga){
-        camionetasCargaBusiness.merge(camionetasCarga);
+    public CamionetasCargaBean editarCamionetasCarga(CamionetasCargaBean camionetasCarga){
+        return camionetasCargaBusiness.merge(camionetasCarga);
     }
-    public void excluirCamionetasCarga(Integer id){
-        camionetasCargaBusiness.remove(id);
+    public CamionetasCargaBean excluirCamionetasCarga(Integer id){
+        return camionetasCargaBusiness.remove(id);
     }
-    public void pesquisarCamionetasCargaId(Integer id){
-        camionetasCargaBusiness.findById(id);
+    public CamionetasCargaBean pesquisarCamionetasCargaId(Integer id){
+        return camionetasCargaBusiness.findById(id);
     }
     public ArrayList<CamionetasCargaBean> pesquisarCamionetasCargaAll(){
         return camionetasCargaBusiness.findAll();
@@ -120,14 +132,14 @@ public class Fachada {
     public void cadastrarCamionetasPassageiros(CamionetasPassageirosBean camionetasPassageiros){
         camionetasPassageirosBusiness.persit(camionetasPassageiros);
     }
-    public void editarCamionetasPassageiros(CamionetasPassageirosBean camionetasPassageiros){
-        camionetasPassageirosBusiness.merge(camionetasPassageiros);
+    public CamionetasPassageirosBean editarCamionetasPassageiros(CamionetasPassageirosBean camionetasPassageiros){
+        return camionetasPassageirosBusiness.merge(camionetasPassageiros);
     }
-    public void excluirCamionetasPassageiros(Integer id){
-        camionetasPassageirosBusiness.remove(id);
+    public CamionetasPassageirosBean excluirCamionetasPassageiros(Integer id){
+        return camionetasPassageirosBusiness.remove(id);
     }
-    public void pesquisarCamionetasPassageirosId(Integer id){
-        camionetasPassageirosBusiness.findById(id);
+    public CamionetasPassageirosBean pesquisarCamionetasPassageirosId(Integer id){
+        return camionetasPassageirosBusiness.findById(id);
     }
     public ArrayList<CamionetasPassageirosBean> pesquisarCamionetasPassageirosAll(){
         return camionetasPassageirosBusiness.findAll();
@@ -138,44 +150,29 @@ public class Fachada {
     public void cadastrarEndereco(EnderecoBean endereco){
         enderecoBusiness.persit(endereco);
     }
-    public void editarEndereco(EnderecoBean endereco) {
-       enderecoBusiness.merge(endereco);
+    public EnderecoBean editarEndereco(EnderecoBean endereco) {
+       return enderecoBusiness.merge(endereco);
     }
-    public  void excluirEndereco (Integer id) {
-        enderecoBusiness.remove(id);
+    public  EnderecoBean excluirEndereco (Integer id) {
+        return enderecoBusiness.remove(id);
     }
-    public void pesquisarEnderecoId(Integer id) {
-        enderecoBusiness.findById(id);
+    public EnderecoBean pesquisarEnderecoId(Integer id) {
+        return enderecoBusiness.findById(id);
     }
     public ArrayList<EnderecoBean> pesquisarEnderecoAll() {
         return enderecoBusiness.findAll();
     }
-    public void cadastrarFormasPagamentos(FormasPagamentosBean formasPagamentos){
-        formasPagamentosBusiness.persit(formasPagamentos);
-    }
-    public void editarFormasPagamentos(FormasPagamentosBean formasPagamentos){
-        formasPagamentosBusiness.merge(formasPagamentos);
-    }
-    public void excluirFormasPagamentos(Integer id){
-        formasPagamentosBusiness.remove(id);
-    }
-    public void pesquisarFormasPagamentosId(Integer id){
-        formasPagamentosBusiness.findById(id);
-    }
-    public ArrayList<FormasPagamentosBean> pesquisarFormasPagamentosAll(){
-        return formasPagamentosBusiness.findAll();
-    }
     public void cadastrarLocacao(LocacaoBean locacao){
         locacaoBusiness.persit(locacao);
     }
-    public void editarLocacao(LocacaoBean locacao){
-        locacaoBusiness.merge(locacao);
+    public LocacaoBean editarLocacao(LocacaoBean locacao){
+        return locacaoBusiness.merge(locacao);
     }
-    public void excluirLocacao(Integer id){
-        locacaoBusiness.remove(id);
+    public LocacaoBean excluirLocacao(Integer id){
+        return locacaoBusiness.remove(id);
     }
-    public void pesquisarLocacaoId(Integer id){
-        locacaoBusiness.findById(id);
+    public LocacaoBean pesquisarLocacaoId(Integer id){
+        return locacaoBusiness.findById(id);
     }
     public ArrayList<LocacaoBean> pesquisarLocacaoAll(){
         return locacaoBusiness.findAll();
@@ -183,14 +180,14 @@ public class Fachada {
     public void cadastrarMotorista(MotoristaBean motorista){
         motoristaBusiness.persit(motorista);
     }
-    public void editarMotorista(MotoristaBean motorista){
-        motoristaBusiness.merge(motorista);
+    public MotoristaBean editarMotorista(MotoristaBean motorista){
+        return motoristaBusiness.merge(motorista);
     }
-    public void excluirMotorista(Integer id){
-        motoristaBusiness.remove(id);
+    public MotoristaBean excluirMotorista(Integer id){
+        return motoristaBusiness.remove(id);
     }
-    public void pesquisarMotoristaId(Integer id){
-        motoristaBusiness.findById(id);
+    public MotoristaBean pesquisarMotoristaId(Integer id){
+        return motoristaBusiness.findById(id);
     }
     public ArrayList<MotoristaBean> pesquisarMotoristaAll(){
         return motoristaBusiness.findAll();
@@ -198,14 +195,14 @@ public class Fachada {
     public void cadastrarPessoaFisica(PessoaFisicaBean pessoaFisica){
         pessoaFisicaBusiness.persit(pessoaFisica);
     }
-    public void editarPessoaFisica(PessoaFisicaBean pessoaFisica){
-        pessoaFisicaBusiness.merge(pessoaFisica);
+    public PessoaFisicaBean editarPessoaFisica(PessoaFisicaBean pessoaFisica){
+        return pessoaFisicaBusiness.merge(pessoaFisica);
     }
-    public void excluirPessoaFisica(Integer id){
-        pessoaFisicaBusiness.remove(id);
+    public PessoaFisicaBean excluirPessoaFisica(Integer id){
+        return pessoaFisicaBusiness.remove(id);
     }
-    public void pesquisarPessoaFisicaId(Integer id){
-        pessoaFisicaBusiness.findById(id);
+    public PessoaFisicaBean pesquisarPessoaFisicaId(Integer id){
+        return pessoaFisicaBusiness.findById(id);
     }
     public ArrayList<PessoaFisicaBean> pesquisarPessoaFisicaAll(){
         return pessoaFisicaBusiness.findAll();
@@ -213,14 +210,14 @@ public class Fachada {
      public void cadastrarPessoaJuridica(PessoaJuridicaBean pessoaJuridica){
         pessoaJuridicaBusiness.persit(pessoaJuridica);
     }
-    public void editarPessoaJuridica(PessoaJuridicaBean pessoaJuridica){
-        pessoaJuridicaBusiness.merge(pessoaJuridica);
+    public PessoaJuridicaBean editarPessoaJuridica(PessoaJuridicaBean pessoaJuridica){
+        return pessoaJuridicaBusiness.merge(pessoaJuridica);
     }
-    public void excluirPessoaJuridica(Integer id){
-        pessoaJuridicaBusiness.remove(id);
+    public PessoaJuridicaBean excluirPessoaJuridica(Integer id){
+        return pessoaJuridicaBusiness.remove(id);
     }
-    public void pesquisarPessoaJuridicaId(Integer id){
-        pessoaJuridicaBusiness.findById(id);
+    public PessoaJuridicaBean pesquisarPessoaJuridicaId(Integer id){
+        return pessoaJuridicaBusiness.findById(id);
     }
     public ArrayList<PessoaJuridicaBean> pesquisarPessoaJuridicaAll(){
         return pessoaJuridicaBusiness.findAll();
@@ -228,14 +225,14 @@ public class Fachada {
     public void cadastrarReserva(ReservaBean reserva){
         reservaBusiness.persit(reserva);
     }
-    public void editarReserva(ReservaBean reserva){
-        reservaBusiness.merge(reserva);
+    public ReservaBean editarReserva(ReservaBean reserva){
+        return reservaBusiness.merge(reserva);
     }
-    public void excluirReserva(Integer id){
-        reservaBusiness.remove(id);
+    public ReservaBean excluirReserva(Integer id){
+        return reservaBusiness.remove(id);
     }
-    public void pesquisarReservaId(Integer id){
-        reservaBusiness.findById(id);
+    public ReservaBean pesquisarReservaId(Integer id){
+        return reservaBusiness.findById(id);
     }
     public ArrayList<ReservaBean> pesquisarReservaAll(){
         return reservaBusiness.findAll();
@@ -243,14 +240,14 @@ public class Fachada {
     public void cadastrarSedeFilial(SedeFilialBean sedeFilial){
         sedeFilialBusiness.persit(sedeFilial);
     }
-    public void editarSedeFilial(SedeFilialBean sedeFilial){
-        sedeFilialBusiness.merge(sedeFilial);
+    public SedeFilialBean editarSedeFilial(SedeFilialBean sedeFilial){
+        return sedeFilialBusiness.merge(sedeFilial);
     }
-    public void excluirSedeFilial(Integer id){
-        sedeFilialBusiness.remove(id);
+    public SedeFilialBean excluirSedeFilial(Integer id){
+        return sedeFilialBusiness.remove(id);
     }
-    public void pesquisarSedeFilialId(Integer id){
-        sedeFilialBusiness.findById(id);
+    public SedeFilialBean pesquisarSedeFilialId(Integer id){
+        return sedeFilialBusiness.findById(id);
     }
     public ArrayList<SedeFilialBean> pesquisarSedeFilialAll(){
         return sedeFilialBusiness.findAll();
@@ -258,14 +255,14 @@ public class Fachada {
     public void cadastrarUsuario(UsuarioBean usuario){
         usuarioBusiness.persist(usuario);
     }
-    public void editarUsuario(UsuarioBean usuario){
-        usuarioBusiness.merge(usuario);
+    public UsuarioBean editarUsuario(UsuarioBean usuario){
+        return usuarioBusiness.merge(usuario);
     }
-    public void excluirUsuario(Integer id){
-        usuarioBusiness.remove(id);
+    public UsuarioBean excluirUsuario(Integer id){
+        return usuarioBusiness.remove(id);
     }
-    public void pesquisarUsuarioId(Integer id){
-        usuarioBusiness.getById(id);
+    public UsuarioBean pesquisarUsuarioId(Integer id){
+        return usuarioBusiness.getById(id);
     }
     public ArrayList<UsuarioBean> pesquisarUsuarioAll(){
         return usuarioBusiness.getAll();
@@ -276,14 +273,14 @@ public class Fachada {
     public void cadastrarVeiculo(VeiculoBean veiculo){
         veiculoBusiness.persit(veiculo);
     }
-    public void editarVeiculo(VeiculoBean veiculo){
-        veiculoBusiness.merge(veiculo);
+    public VeiculoBean editarVeiculo(VeiculoBean veiculo){
+        return veiculoBusiness.merge(veiculo);
     }
-    public void excluirVeiculo(Integer id){
-        veiculoBusiness.remove(id);
+    public VeiculoBean excluirVeiculo(Integer id){
+        return veiculoBusiness.remove(id);
     }
-    public void pesquisarVeiculoId(Integer id){
-        veiculoBusiness.findById(id);
+    public VeiculoBean pesquisarVeiculoId(Integer id){
+        return veiculoBusiness.findById(id);
     }
     public ArrayList<VeiculoBean> pesquisarVeiculoAll(){
         return veiculoBusiness.findAll();
@@ -292,7 +289,6 @@ public class Fachada {
     public static UsuarioBean getUsuarioLogado() {
         return usuarioLogado;
     }
-
     public static void setUsuarioLogado(UsuarioBean usuarioLogado) {
         Fachada.usuarioLogado = usuarioLogado;
     }

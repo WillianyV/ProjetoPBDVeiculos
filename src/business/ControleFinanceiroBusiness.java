@@ -21,23 +21,18 @@ public class ControleFinanceiroBusiness {
         this.dao = new ControleFinanceiroDAO();
     }
     public void persit(ControleFinanceiroBean controleFinanceiro){
-        dao.getInstance().persist(controleFinanceiro);
-        //dao.persist(controleFinanceiro);
+         dao.persist(controleFinanceiro);
     }
-    public void merge (ControleFinanceiroBean controleFinanceiro){
-        dao.getInstance().merge(controleFinanceiro);
-        //dao.merge(controleFinanceiro);
+    public ControleFinanceiroBean merge (ControleFinanceiroBean controleFinanceiro){
+        return dao.merge(controleFinanceiro);
     }
-    public void findById(Integer id) {
-        dao.getInstance().findById(id);
-        //dao.findById(id);
+    public ControleFinanceiroBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<ControleFinanceiroBean> findAll(){
-        return dao.getInstance().findAll();
-        //return dao.findAll();
+        return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.getInstance().remove(id);
-        //dao.remove(id);
+    public ControleFinanceiroBean remove(Integer id){
+        return dao.remove(id);
     }
 }

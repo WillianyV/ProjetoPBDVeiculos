@@ -33,6 +33,8 @@ public class UsuarioBean implements Serializable {
     private Integer id;
     @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
+    private boolean status;
     @Column(length = 30)
     private String CPF, RG, CTPS;
     @Column(nullable = false,length = 30)
@@ -49,11 +51,26 @@ public class UsuarioBean implements Serializable {
     public UsuarioBean() {
     }
 
-    public UsuarioBean(String nome, String tipo_usuario, String login, String senha) {
+    public UsuarioBean(String nome, boolean status, String tipo_usuario, String login, String senha) {
         this.nome = nome;
+        this.status = status;
         this.tipo_usuario = tipo_usuario;
         this.login = login;
         this.senha = senha;
+    }
+
+    public UsuarioBean(String nome, boolean status, String CPF, String RG, String CTPS, String tipo_usuario, String login, String senha, Date DN, EnderecoBean fk_endereco, SedeFilialBean fk_sede_filial) {
+        this.nome = nome;
+        this.status = status;
+        this.CPF = CPF;
+        this.RG = RG;
+        this.CTPS = CTPS;
+        this.tipo_usuario = tipo_usuario;
+        this.login = login;
+        this.senha = senha;
+        this.DN = DN;
+        this.fk_endereco = fk_endereco;
+        this.fk_sede_filial = fk_sede_filial;
     }
 
     @Override

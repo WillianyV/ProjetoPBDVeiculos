@@ -18,7 +18,7 @@ import view.Mensagem;
  */
 public class EnderecoDAO {
 
-    public EnderecoBean persist(EnderecoBean endereco) {        
+    public void persist(EnderecoBean endereco) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -31,7 +31,6 @@ public class EnderecoDAO {
         } finally {
             em.close();
         }
-        return endereco;
 
     }
 

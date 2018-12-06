@@ -10,7 +10,7 @@ import model.beans.CamionetasCargaBean;
  * @author willi
  */
 public class CamionetasCargaDAO {
-    public CamionetasCargaBean persist(CamionetasCargaBean cCarga) {        
+    public void persist(CamionetasCargaBean cCarga) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -23,7 +23,6 @@ public class CamionetasCargaDAO {
         } finally {
             em.close();
         }
-        return cCarga;
 
     }
 

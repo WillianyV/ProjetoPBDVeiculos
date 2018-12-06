@@ -23,17 +23,17 @@ public class VeiculoBusiness {
     public void persit(VeiculoBean veiculo){
         dao.persist(veiculo);
     }
-    public void merge (VeiculoBean veiculo){
-      dao.merge(veiculo);
+    public VeiculoBean merge (VeiculoBean veiculo){
+      return dao.merge(veiculo);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public VeiculoBean findById(Integer id) {
+       return  dao.findById(id);
     }
     public ArrayList<VeiculoBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public VeiculoBean remove(Integer id){
+        return dao.remove(id);
     }  
     
 }

@@ -11,7 +11,7 @@ import model.beans.AutomovelBean;
  * @author willi
  */
 public class AutomovelDAO {
-    public AutomovelBean persist(AutomovelBean automovel) {        
+    public void persist(AutomovelBean automovel) {        
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -24,7 +24,6 @@ public class AutomovelDAO {
         } finally {
             em.close();
         }
-        return automovel;
 
     }
 

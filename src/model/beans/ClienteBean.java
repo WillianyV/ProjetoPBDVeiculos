@@ -36,25 +36,21 @@ public abstract class ClienteBean implements Serializable {
     @Column(nullable = false)
     private String nome;
     
+    private boolean status;
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Endereco")
     private EnderecoBean fk_endereco;
     
-    private boolean status;
-
     public ClienteBean() {
     }
 
-    public ClienteBean(String nome) {
+    public ClienteBean(String nome, boolean status, EnderecoBean fk_endereco) {
         this.nome = nome;
-    }
-
-    public ClienteBean(String nome, EnderecoBean fk_endereco, boolean status) {
-        this.nome = nome;
-        this.fk_endereco = fk_endereco;
         this.status = status;
+        this.fk_endereco = fk_endereco;
     }
-
+    
     @Override
     public String toString() {
         return "ClienteBean{" + "id=" + id + ", nome=" + nome + ", fk_endereco=" + fk_endereco + ", status=" + status + '}';

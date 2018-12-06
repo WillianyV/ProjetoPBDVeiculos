@@ -23,17 +23,17 @@ public class CamionetasCargaBusiness {
     public void persit(CamionetasCargaBean camionetasCarga){
         dao.persist(camionetasCarga);
     }
-    public void merge (CamionetasCargaBean camionetasCarga){
-      dao.merge(camionetasCarga);
+    public CamionetasCargaBean merge (CamionetasCargaBean camionetasCarga){
+      return dao.merge(camionetasCarga);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public CamionetasCargaBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<CamionetasCargaBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public CamionetasCargaBean remove(Integer id){
+        return dao.remove(id);
     }
      public ArrayList<CamionetasCargaBean> findByCodigo(String cod){
          ArrayList<CamionetasCargaBean> cargas = new ArrayList<>();

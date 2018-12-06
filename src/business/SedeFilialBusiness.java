@@ -5,6 +5,7 @@
  */
 package business;
 
+import fachada.Fachada;
 import java.util.ArrayList;
 import model.beans.SedeFilialBean;
 import model.dao.SedeFilialDAO;
@@ -22,17 +23,17 @@ public class SedeFilialBusiness {
     public void persit(SedeFilialBean sedeFilial){
         dao.persist(sedeFilial);
     }
-    public void merge (SedeFilialBean sedeFilial){
-      dao.merge(sedeFilial);
+    public SedeFilialBean merge (SedeFilialBean sedeFilial){
+      return dao.merge(sedeFilial);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public SedeFilialBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<SedeFilialBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public SedeFilialBean remove(Integer id){
+        return dao.remove(id);
     }
     
 }

@@ -24,16 +24,16 @@ public class LocacaoBusiness {
     public void persit(LocacaoBean locacao){
         dao.persist(locacao);
     }
-    public void merge (LocacaoBean locacao){
-      dao.merge(locacao);
+    public LocacaoBean merge (LocacaoBean locacao){
+      return dao.merge(locacao);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public LocacaoBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<LocacaoBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public LocacaoBean remove(Integer id){
+        return dao.remove(id);
     } 
 }

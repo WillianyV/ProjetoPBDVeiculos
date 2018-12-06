@@ -39,6 +39,7 @@ public class VeiculoBean implements Serializable{
     @Column(length = 50, nullable = false)
     private boolean status;
     private int ano_fabricacao, ano_modelo;
+    
     @ManyToOne()
     @JoinColumn(name = "Id_Categoria")
     private CategoriaBean fk_categoria;
@@ -49,11 +50,31 @@ public class VeiculoBean implements Serializable{
     public VeiculoBean() {
     }
 
-    public VeiculoBean(String n_placa, boolean status) {
+    public VeiculoBean(String n_placa, boolean status, CategoriaBean fk_categoria) {
         this.n_placa = n_placa;
         this.status = status;
+        this.fk_categoria = fk_categoria;
     }
 
+    public VeiculoBean(String n_placa, String n_chassi, String n_motor, double toque_motor, double quilometragem_atual, int n_passageiros, int n_porta, String cor, String modelo, String tipo_combustivel, String fabricante, boolean status, int ano_fabricacao, int ano_modelo, CategoriaBean fk_categoria, SedeFilialBean fk_sede_filial) {
+        this.n_placa = n_placa;
+        this.n_chassi = n_chassi;
+        this.n_motor = n_motor;
+        this.toque_motor = toque_motor;
+        this.quilometragem_atual = quilometragem_atual;
+        this.n_passageiros = n_passageiros;
+        this.n_porta = n_porta;
+        this.cor = cor;
+        this.modelo = modelo;
+        this.tipo_combustivel = tipo_combustivel;
+        this.fabricante = fabricante;
+        this.status = status;
+        this.ano_fabricacao = ano_fabricacao;
+        this.ano_modelo = ano_modelo;
+        this.fk_categoria = fk_categoria;
+        this.fk_sede_filial = fk_sede_filial;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

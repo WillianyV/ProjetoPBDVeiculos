@@ -22,19 +22,18 @@ public class ReservaBusiness {
     }
     
     public void persit(ReservaBean reserva){
-        
         dao.persist(reserva);
     }
-    public void merge (ReservaBean reserva){
-      dao.merge(reserva);
+    public ReservaBean merge (ReservaBean reserva){
+      return dao.merge(reserva);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public ReservaBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<ReservaBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public ReservaBean remove(Integer id){
+        return dao.remove(id);
     }    
 }

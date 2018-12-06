@@ -36,16 +36,16 @@ public class PessoaJuridicaBusiness {
             //Mensagem.mensagemInformacao("Digite um CNPJ válido", "CPF INVÁLIDO");
         }
     }
-    public void merge (PessoaJuridicaBean pessoaJuridica){
-      dao.merge(pessoaJuridica);
+    public PessoaJuridicaBean merge (PessoaJuridicaBean pessoaJuridica){
+      return dao.merge(pessoaJuridica);
     }
-    public void findById(Integer id) {
-        dao.findById(id);
+    public PessoaJuridicaBean findById(Integer id) {
+        return dao.findById(id);
     }
     public ArrayList<PessoaJuridicaBean> findAll(){
         return dao.findAll();
     }
-    public void remove(Integer id){
-        dao.remove(id);
+    public PessoaJuridicaBean remove(Integer id){
+        return dao.remove(id);
     } 
 }
