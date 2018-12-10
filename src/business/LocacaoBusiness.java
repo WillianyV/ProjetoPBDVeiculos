@@ -36,4 +36,9 @@ public class LocacaoBusiness {
     public LocacaoBean remove(Integer id){
         return dao.remove(id);
     } 
+    
+    /*
+    validar data, não pode ser a mesma do dia tem q ser maior
+    ex: um dia amais 
+    */
 }

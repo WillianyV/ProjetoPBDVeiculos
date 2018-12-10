@@ -19,12 +19,12 @@ public class CamionetasCargaBean extends CategoriaBean{
     public CamionetasCargaBean() {
     }
 
-    public CamionetasCargaBean(String codigo, String nome, float valor_locar_categoria, boolean status) {
-        super(codigo, nome, valor_locar_categoria, status);
+    public CamionetasCargaBean(String codigo, String nome, String tamanho, String descricao, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, tamanho, descricao, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re, valor_locar_categoria, status);
     }
 
-    public CamionetasCargaBean(float capacidade_carga, float desempenho, float potencia_motor, float volume_abastecimento, float distancia_eixos, String tipo_embreagem, String codigo, String nome, float valor_locar_categoria, boolean status) {
-        super(codigo, nome, valor_locar_categoria, status);
+    public CamionetasCargaBean(float capacidade_carga, float desempenho, float potencia_motor, float volume_abastecimento, float distancia_eixos, String tipo_embreagem, String codigo, String nome, String tamanho, String descricao, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
+        super(codigo, nome, tamanho, descricao, tipo_cambio, ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re, valor_locar_categoria, status);
         this.capacidade_carga = capacidade_carga;
         this.desempenho = desempenho;
         this.potencia_motor = potencia_motor;

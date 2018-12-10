@@ -31,8 +31,7 @@ public class ReservaBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequencia_reserva")
     private Integer id;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date data_hora_reserva;
+    private String data_hora_reserva;
     
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -56,14 +55,7 @@ public class ReservaBean implements Serializable {
     public ReservaBean() {
     }
 
-    public ReservaBean(Date data_deseja_locar, ClienteBean fk_cliente, CategoriaBean fk_categoria, boolean status) {
-        this.data_deseja_locar = data_deseja_locar;
-        this.fk_cliente = fk_cliente;
-        this.fk_categoria = fk_categoria;
-        this.status = status;
-    }
-
-    public ReservaBean(Date data_hora_reserva, Date data_deseja_locar, UsuarioBean fk_usuario, ClienteBean fk_cliente, CategoriaBean fk_categoria, float valor_locacao, boolean status) {
+    public ReservaBean(String data_hora_reserva, Date data_deseja_locar, UsuarioBean fk_usuario, ClienteBean fk_cliente, CategoriaBean fk_categoria, float valor_locacao, boolean status) {
         this.data_hora_reserva = data_hora_reserva;
         this.data_deseja_locar = data_deseja_locar;
         this.fk_usuario = fk_usuario;
@@ -80,15 +72,15 @@ public class ReservaBean implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.data_hora_reserva);
-        hash = 89 * hash + Objects.hashCode(this.data_deseja_locar);
-        hash = 89 * hash + Objects.hashCode(this.fk_usuario);
-        hash = 89 * hash + Objects.hashCode(this.fk_cliente);
-        hash = 89 * hash + Objects.hashCode(this.fk_categoria);
-        hash = 89 * hash + Float.floatToIntBits(this.valor_locacao);
-        hash = 89 * hash + (this.status ? 1 : 0);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.data_hora_reserva);
+        hash = 31 * hash + Objects.hashCode(this.data_deseja_locar);
+        hash = 31 * hash + Objects.hashCode(this.fk_usuario);
+        hash = 31 * hash + Objects.hashCode(this.fk_cliente);
+        hash = 31 * hash + Objects.hashCode(this.fk_categoria);
+        hash = 31 * hash + Float.floatToIntBits(this.valor_locacao);
+        hash = 31 * hash + (this.status ? 1 : 0);
         return hash;
     }
 
@@ -110,10 +102,10 @@ public class ReservaBean implements Serializable {
         if (this.status != other.status) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.data_hora_reserva, other.data_hora_reserva)) {
             return false;
         }
-        if (!Objects.equals(this.data_hora_reserva, other.data_hora_reserva)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.data_deseja_locar, other.data_deseja_locar)) {
@@ -139,11 +131,11 @@ public class ReservaBean implements Serializable {
         this.id = id;
     }
 
-    public Date getData_hora_reserva() {
+    public String getData_hora_reserva() {
         return data_hora_reserva;
     }
 
-    public void setData_hora_reserva(Date data_hora_reserva) {
+    public void setData_hora_reserva(String data_hora_reserva) {
         this.data_hora_reserva = data_hora_reserva;
     }
 

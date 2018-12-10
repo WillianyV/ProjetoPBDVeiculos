@@ -6,7 +6,6 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.List;
 import model.beans.CamionetasPassageirosBean;
 import model.dao.CamionetasPassageirosDAO;
 
@@ -19,7 +18,7 @@ public class CamionetasPassageirosBusiness {
     CamionetasPassageirosDAO dao;
 
     public CamionetasPassageirosBusiness() {
-    this.dao = new CamionetasPassageirosDAO();
+        this.dao = new CamionetasPassageirosDAO();
     }
     
     public void persit(CamionetasPassageirosBean camionetasPassageiros){

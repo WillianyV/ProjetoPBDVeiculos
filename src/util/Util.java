@@ -5,6 +5,11 @@
  */
 package util;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -30,23 +35,28 @@ public class Util {
     public static Date getDate(String d) {
         d = d.replaceAll("/", "");
         int ano = (Integer.parseInt(d.substring(4, 8))) - 1900;
-        int mes = (Integer.parseInt(d.substring(2, 4))) - 1;
+        int mes = (Integer.parseInt(d.substring(2, 4)))-1;
         int dia = (Integer.parseInt(d.substring(0, 2)));
-        // System.out.println("Dia:" + dia +" mes: "+ (mes+1) + " Ano:"+(ano+1900));
+
         Date data = new Date(ano, mes, dia);
         return data;
     }
+    public static String getDateTime(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
 
     public static int verificarIdade(Date dn) {
-        Calendar data = Calendar.getInstance();
-        int idade = data.get(Calendar.YEAR) - dn.getYear();
+        Date d = new Date();
+        int idade = d.getYear() - dn.getYear();        
         return idade;
     }
 
     public static boolean validaCNH(String cnh) {
         /*Código para validar CNH em java
 	 * Código disponível em: https://github.com/danielsouza/validarCNH/blob/master/ValidarCNH.java
-        */
+         */
         char char1 = cnh.charAt(0);
 
         if (cnh.replaceAll("\\D+", "").length() != 11
@@ -78,5 +88,22 @@ public class Util {
         long vl2 = (x >= 10) ? 0 : x - dsc;
 
         return (String.valueOf(vl1) + String.valueOf(vl2)).equals(cnh.substring(cnh.length() - 2));
+    }
+    
+    public static String criptografarSenha(String senha){
+        /*Código para criptografar Senha
+	 *Baseado no código disponível em: https://www.youtube.com/watch?v=lFzgaOICMXY
+         */
+        String senhaCriptografada = "";
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            BigInteger hash = new BigInteger(1,md.digest(senha.getBytes()));
+            senhaCriptografada = hash.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("Erro ao criptografar senha");
+        }
+                
+        return senhaCriptografada;
     }
 }

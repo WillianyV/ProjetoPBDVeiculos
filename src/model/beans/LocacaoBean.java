@@ -31,12 +31,10 @@ public class LocacaoBean implements Serializable {
     @Column(length = 50,nullable = false)
     private String tipo_locacao;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Date data_hora_retirada;
+    private String data_hora_retirada;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date data_hora_devolucao;
+    private String data_hora_devolucao;
     
     private float taxa_higienização, taxa_combustivel,km_inicial,km_final, metade_valor_locacao;
     @Column(nullable = false)
@@ -66,14 +64,19 @@ public class LocacaoBean implements Serializable {
     public LocacaoBean() {
     }
 
-    public LocacaoBean(String tipo_locacao, Date data_hora_retirada, MotoristaBean fk_motorista, VeiculoBean fk_veiculo) {
+    public LocacaoBean(String tipo_locacao, String data_hora_retirada, float km_inicial, float metade_valor_locacao, boolean status, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista, VeiculoBean fk_veiculo) {
         this.tipo_locacao = tipo_locacao;
         this.data_hora_retirada = data_hora_retirada;
+        this.km_inicial = km_inicial;
+        this.metade_valor_locacao = metade_valor_locacao;
+        this.status = status;
+        this.fk_usuario = fk_usuario;
+        this.fk_cliente = fk_cliente;
         this.fk_motorista = fk_motorista;
         this.fk_veiculo = fk_veiculo;
     }
 
-    public LocacaoBean(String tipo_locacao, Date data_hora_retirada, Date data_hora_devolucao, float taxa_higienização, float taxa_combustivel, float km_inicial, float km_final, float metade_valor_locacao, boolean status, ReservaBean fk_reserva, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista, VeiculoBean fk_veiculo) {
+    public LocacaoBean(String tipo_locacao, String data_hora_retirada, String data_hora_devolucao, float taxa_higienização, float taxa_combustivel, float km_inicial, float km_final, float metade_valor_locacao, boolean status, ReservaBean fk_reserva, UsuarioBean fk_usuario, ClienteBean fk_cliente, MotoristaBean fk_motorista, VeiculoBean fk_veiculo) {
         this.tipo_locacao = tipo_locacao;
         this.data_hora_retirada = data_hora_retirada;
         this.data_hora_devolucao = data_hora_devolucao;
@@ -89,7 +92,7 @@ public class LocacaoBean implements Serializable {
         this.fk_motorista = fk_motorista;
         this.fk_veiculo = fk_veiculo;
     }
-    
+
     @Override
     public String toString() {
         return "LocacaoBean{" + "id=" + id + ", tipo_locacao=" + tipo_locacao + ", data_hora_retirada=" + data_hora_retirada + ", data_hora_devolucao=" + data_hora_devolucao + ", taxa_higieniza\u00e7\u00e3o=" + taxa_higienização + ", taxa_combustivel=" + taxa_combustivel + ", km_inicial=" + km_inicial + ", km_final=" + km_final + ", metade_valor_locacao=" + metade_valor_locacao + ", status=" + status + ", fk_reserva=" + fk_reserva + ", fk_usuario=" + fk_usuario + ", fk_cliente=" + fk_cliente + ", fk_motorista=" + fk_motorista + ", fk_veiculo=" + fk_veiculo + '}';
@@ -97,22 +100,22 @@ public class LocacaoBean implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.tipo_locacao);
-        hash = 97 * hash + Objects.hashCode(this.data_hora_retirada);
-        hash = 97 * hash + Objects.hashCode(this.data_hora_devolucao);
-        hash = 97 * hash + Float.floatToIntBits(this.taxa_higienização);
-        hash = 97 * hash + Float.floatToIntBits(this.taxa_combustivel);
-        hash = 97 * hash + Float.floatToIntBits(this.km_inicial);
-        hash = 97 * hash + Float.floatToIntBits(this.km_final);
-        hash = 97 * hash + Float.floatToIntBits(this.metade_valor_locacao);
-        hash = 97 * hash + (this.status ? 1 : 0);
-        hash = 97 * hash + Objects.hashCode(this.fk_reserva);
-        hash = 97 * hash + Objects.hashCode(this.fk_usuario);
-        hash = 97 * hash + Objects.hashCode(this.fk_cliente);
-        hash = 97 * hash + Objects.hashCode(this.fk_motorista);
-        hash = 97 * hash + Objects.hashCode(this.fk_veiculo);
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.tipo_locacao);
+        hash = 43 * hash + Objects.hashCode(this.data_hora_retirada);
+        hash = 43 * hash + Objects.hashCode(this.data_hora_devolucao);
+        hash = 43 * hash + Float.floatToIntBits(this.taxa_higienização);
+        hash = 43 * hash + Float.floatToIntBits(this.taxa_combustivel);
+        hash = 43 * hash + Float.floatToIntBits(this.km_inicial);
+        hash = 43 * hash + Float.floatToIntBits(this.km_final);
+        hash = 43 * hash + Float.floatToIntBits(this.metade_valor_locacao);
+        hash = 43 * hash + (this.status ? 1 : 0);
+        hash = 43 * hash + Objects.hashCode(this.fk_reserva);
+        hash = 43 * hash + Objects.hashCode(this.fk_usuario);
+        hash = 43 * hash + Objects.hashCode(this.fk_cliente);
+        hash = 43 * hash + Objects.hashCode(this.fk_motorista);
+        hash = 43 * hash + Objects.hashCode(this.fk_veiculo);
         return hash;
     }
 
@@ -149,13 +152,13 @@ public class LocacaoBean implements Serializable {
         if (!Objects.equals(this.tipo_locacao, other.tipo_locacao)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
         if (!Objects.equals(this.data_hora_retirada, other.data_hora_retirada)) {
             return false;
         }
         if (!Objects.equals(this.data_hora_devolucao, other.data_hora_devolucao)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.fk_reserva, other.fk_reserva)) {
@@ -192,19 +195,19 @@ public class LocacaoBean implements Serializable {
         this.tipo_locacao = tipo_locacao;
     }
 
-    public Date getData_hora_retirada() {
+    public String getData_hora_retirada() {
         return data_hora_retirada;
     }
 
-    public void setData_hora_retirada(Date data_hora_retirada) {
+    public void setData_hora_retirada(String data_hora_retirada) {
         this.data_hora_retirada = data_hora_retirada;
     }
 
-    public Date getData_hora_devolucao() {
+    public String getData_hora_devolucao() {
         return data_hora_devolucao;
     }
 
-    public void setData_hora_devolucao(Date data_hora_devolucao) {
+    public void setData_hora_devolucao(String data_hora_devolucao) {
         this.data_hora_devolucao = data_hora_devolucao;
     }
 
@@ -295,7 +298,5 @@ public class LocacaoBean implements Serializable {
     public void setFk_veiculo(VeiculoBean fk_veiculo) {
         this.fk_veiculo = fk_veiculo;
     }
-    
-    
     
 }

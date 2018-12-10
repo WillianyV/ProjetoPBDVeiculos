@@ -9,6 +9,7 @@ import br.com.caelum.stella.validation.CNPJValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
 import fachada.Fachada;
 import java.util.ArrayList;
+import model.beans.EnderecoBean;
 import model.beans.PessoaFisicaBean;
 import model.dao.PessoaFisicaDAO;
 
@@ -28,7 +29,7 @@ public class PessoaFisicaBusiness {
         CNPJValidator validador = new CNPJValidator();
         try {
             //validador.assertValid(pessoaFisicaBean.getCPF());
-            Fachada.getInstance().cadastrarEndereco(pessoaFisicaBean.getFk_endereco());
+            //Fachada.getInstance().cadastrarEndereco(pessoaFisicaBean.getFk_endereco());
             dao.persist(pessoaFisicaBean);
         } catch (InvalidStateException e) {
             System.err.println("Digite um CPF válido");

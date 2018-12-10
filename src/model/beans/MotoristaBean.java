@@ -53,12 +53,20 @@ public class MotoristaBean implements Serializable {
         this.data_vencimento_CHN = data_vencimento_CHN;
         this.DN = DN;
     }
+    @Override
+    public String toString() {
+        return "Motorista: {" + "id=" + id + ", nome=" + nome + ", CNH=" + CNH + ", data_vencimento_CHN=" + data_vencimento_CHN + ", DN=" + DN + '}';
+    }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.nome);
-        hash = 67 * hash + Objects.hashCode(this.CNH);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + (this.status ? 1 : 0);
+        hash = 37 * hash + Objects.hashCode(this.CNH);
+        hash = 37 * hash + Objects.hashCode(this.data_vencimento_CHN);
+        hash = 37 * hash + Objects.hashCode(this.DN);
         return hash;
     }
 
@@ -74,15 +82,25 @@ public class MotoristaBean implements Serializable {
             return false;
         }
         final MotoristaBean other = (MotoristaBean) obj;
+        if (this.status != other.status) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
         if (!Objects.equals(this.CNH, other.CNH)) {
             return false;
         }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.data_vencimento_CHN, other.data_vencimento_CHN)) {
+            return false;
+        }
+        if (!Objects.equals(this.DN, other.DN)) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "MotoristaBean{" + "id=" + id + ", nome=" + nome + ", CNH=" + CNH + ", data_vencimento_CHN=" + data_vencimento_CHN + ", DN=" + DN + '}';
     }
 
     public Integer getId() {
@@ -99,6 +117,14 @@ public class MotoristaBean implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getCNH() {
@@ -124,5 +150,5 @@ public class MotoristaBean implements Serializable {
     public void setDN(Date DN) {
         this.DN = DN;
     }
-    
+        
 }

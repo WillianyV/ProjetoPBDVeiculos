@@ -28,12 +28,18 @@ public class UsuarioBusiness {
     public void persist(UsuarioBean usuario){
         CPFValidator validador = new CPFValidator();
         try {
-            validador.assertValid(usuario.getCPF());
+            //validador.assertValid(usuario.getCPF());
             if(Util.validarSenha(usuario.getSenha())){
-                Fachada.getInstance().cadastrarEndereco(usuario.getFk_endereco());
+                usuario.setSenha(Util.criptografarSenha(usuario.getSenha()));
+                //Fachada.getInstance().cadastrarEndereco(usuario.getFk_endereco());
                 dao.persist(usuario);
             }else{
-                System.err.println("Digite uma senha válida");
+                System.err.println("Digite uma senha válida: \n"
+                        + "*Sua senha deve conter no mínimo 6\n"
+                        + "caracteres (até 11) com pelo menos\n"
+                        + "uma letra maiúscula e minúcula,\n"
+                        + "conter pelo menos um numero e\n"
+                        + "um caracterer especial.");
                 //Mensagem.mensagemInformacao("Digite uma senha válido", "Senha INVÁLIDA");
             }
         } catch (InvalidStateException e) {
@@ -72,4 +78,21 @@ public class UsuarioBusiness {
      public UsuarioBean remove(Integer id){
         return  dao.remove(id);
      }
+     
+     public boolean editarSenha(UsuarioBean usuario, String novaSenha){
+       return dao.editarSenha(usuario, novaSenha);
+    }
+     
+    public boolean resetSenha(UsuarioBean superUsuario, UsuarioBean usuario){
+        return dao.resetSenha(superUsuario, usuario);
+    } 
+    
+    public boolean fazerLogin(String login, String senha){
+        return dao.fazerLogin(login, senha);
+    }
+    /*
+    public UsuarioBean fazerLogin(String login, String senha){
+    return dao.fazerLogin(login, senha);
+       
+    }*/
 }

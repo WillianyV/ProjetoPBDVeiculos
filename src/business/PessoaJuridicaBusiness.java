@@ -25,11 +25,10 @@ public class PessoaJuridicaBusiness {
     }
     
     public void persit(PessoaJuridicaBean pessoaJuridica){
-        CNPJValidator validadorCNPJ = new CNPJValidator(); 
-        //INSCRICAO ESTADUAL
+        CNPJValidator validadorCNPJ = new CNPJValidator();
         try {
             validadorCNPJ.assertValid(pessoaJuridica.getCNPJ());
-            Fachada.getInstance().cadastrarEndereco(pessoaJuridica.getFk_endereco());
+            //Fachada.getInstance().cadastrarEndereco(pessoaJuridica.getFk_endereco());
             dao.persist(pessoaJuridica);
         } catch (InvalidStateException e) {
             System.err.println("Digite um CNPJ válido");

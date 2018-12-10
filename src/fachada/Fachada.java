@@ -270,6 +270,20 @@ public class Fachada {
     public ArrayList<UsuarioBean> pesquisarUsuarioNome(String nome){
         return usuarioBusiness.getByName(nome);
     }
+    public boolean editarSenha(UsuarioBean usuario, String novaSenha){
+       return usuarioBusiness.editarSenha(usuario, novaSenha);
+    }
+    public boolean resetSenha(UsuarioBean superUsuario, UsuarioBean usuario){
+        return usuarioBusiness.resetSenha(superUsuario, usuario);
+    }
+    
+    public boolean fazerLogin(String login, String senha){
+        return usuarioBusiness.fazerLogin(login, senha);
+    }
+    /*
+    public UsuarioBean fazerLogin(String login, String senha){
+        return usuarioBusiness.fazerLogin(login, senha);
+    }*/
     public void cadastrarVeiculo(VeiculoBean veiculo){
         veiculoBusiness.persit(veiculo);
     }

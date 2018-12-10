@@ -35,7 +35,7 @@ public abstract class CategoriaBean implements Serializable {
     @Column(nullable = false)
     private String nome;
     @Column(length = 50)
-    private String tamanho, tipo_cambio;
+    private String tamanho, descricao, tipo_cambio;
     private boolean ar_condicionado, radio, DVD, MP3, direcao_hidraulica, camera_re;
     @Column(nullable = false)
     private float valor_locar_categoria;
@@ -45,17 +45,11 @@ public abstract class CategoriaBean implements Serializable {
     public CategoriaBean() {
     }
 
-    public CategoriaBean(String codigo, String nome, float valor_locar_categoria, boolean status) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.valor_locar_categoria = valor_locar_categoria;
-        this.status = status;
-    }
-
-    public CategoriaBean(String codigo, String nome, String tamanho, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
+    public CategoriaBean(String codigo, String nome, String tamanho, String descricao, String tipo_cambio, boolean ar_condicionado, boolean radio, boolean DVD, boolean MP3, boolean direcao_hidraulica, boolean camera_re, float valor_locar_categoria, boolean status) {
         this.codigo = codigo;
         this.nome = nome;
         this.tamanho = tamanho;
+        this.descricao = descricao;
         this.tipo_cambio = tipo_cambio;
         this.ar_condicionado = ar_condicionado;
         this.radio = radio;
@@ -66,27 +60,29 @@ public abstract class CategoriaBean implements Serializable {
         this.valor_locar_categoria = valor_locar_categoria;
         this.status = status;
     }
-    
+
     @Override
     public String toString() {
-        return getCodigo();
+        return "CategoriaBean{" + "id=" + id + ", codigo=" + codigo + ", nome=" + nome + ", tamanho=" + tamanho + ", descricao=" + descricao + ", tipo_cambio=" + tipo_cambio + ", ar_condicionado=" + ar_condicionado + ", radio=" + radio + ", DVD=" + DVD + ", MP3=" + MP3 + ", direcao_hidraulica=" + direcao_hidraulica + ", camera_re=" + camera_re + ", valor_locar_categoria=" + valor_locar_categoria + ", status=" + status + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.codigo);
-        hash = 67 * hash + Objects.hashCode(this.nome);
-        hash = 67 * hash + Objects.hashCode(this.tamanho);
-        hash = 67 * hash + Objects.hashCode(this.tipo_cambio);
-        hash = 67 * hash + (this.ar_condicionado ? 1 : 0);
-        hash = 67 * hash + (this.radio ? 1 : 0);
-        hash = 67 * hash + (this.DVD ? 1 : 0);
-        hash = 67 * hash + (this.MP3 ? 1 : 0);
-        hash = 67 * hash + (this.direcao_hidraulica ? 1 : 0);
-        hash = 67 * hash + (this.camera_re ? 1 : 0);
-        hash = 67 * hash + Float.floatToIntBits(this.valor_locar_categoria);
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.codigo);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.tamanho);
+        hash = 97 * hash + Objects.hashCode(this.descricao);
+        hash = 97 * hash + Objects.hashCode(this.tipo_cambio);
+        hash = 97 * hash + (this.ar_condicionado ? 1 : 0);
+        hash = 97 * hash + (this.radio ? 1 : 0);
+        hash = 97 * hash + (this.DVD ? 1 : 0);
+        hash = 97 * hash + (this.MP3 ? 1 : 0);
+        hash = 97 * hash + (this.direcao_hidraulica ? 1 : 0);
+        hash = 97 * hash + (this.camera_re ? 1 : 0);
+        hash = 97 * hash + Float.floatToIntBits(this.valor_locar_categoria);
+        hash = 97 * hash + (this.status ? 1 : 0);
         return hash;
     }
 
@@ -123,6 +119,9 @@ public abstract class CategoriaBean implements Serializable {
         if (Float.floatToIntBits(this.valor_locar_categoria) != Float.floatToIntBits(other.valor_locar_categoria)) {
             return false;
         }
+        if (this.status != other.status) {
+            return false;
+        }
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
@@ -130,6 +129,9 @@ public abstract class CategoriaBean implements Serializable {
             return false;
         }
         if (!Objects.equals(this.tamanho, other.tamanho)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
         if (!Objects.equals(this.tipo_cambio, other.tipo_cambio)) {
@@ -171,6 +173,14 @@ public abstract class CategoriaBean implements Serializable {
 
     public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getTipo_cambio() {
@@ -236,6 +246,14 @@ public abstract class CategoriaBean implements Serializable {
     public void setValor_locar_categoria(float valor_locar_categoria) {
         this.valor_locar_categoria = valor_locar_categoria;
     }
-    
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    
 }

@@ -38,7 +38,11 @@ public class UsuarioBean implements Serializable {
     @Column(length = 30)
     private String CPF, RG, CTPS;
     @Column(nullable = false,length = 30)
-    private String tipo_usuario, login, senha;
+    private String tipo_usuario;
+    @Column(nullable = false,length = 20, unique = true)
+    private String login;
+    @Column(nullable = false)
+    private String senha;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DN;
     @OneToOne(cascade = CascadeType.ALL)
@@ -75,23 +79,24 @@ public class UsuarioBean implements Serializable {
 
     @Override
     public String toString() {
-        return "UsuarioBean{" + "id=" + id + ", nome=" + nome + ", CPF=" + CPF + ", RG=" + RG + ", CTPS=" + CTPS + ", tipo_usuario=" + tipo_usuario + ", login=" + login + ", senha=" + senha + ", DN=" + DN + ", fk_endereco=" + fk_endereco + ", fk_sede_filial=" + fk_sede_filial + '}';
+        return "UsuarioBean{" + "id=" + id + ", nome=" + nome + ", status=" + status + ", CPF=" + CPF + ", RG=" + RG + ", CTPS=" + CTPS + ", tipo_usuario=" + tipo_usuario + ", login=" + login + ", senha=" + senha + ", DN=" + DN + ", fk_endereco=" + fk_endereco + ", fk_sede_filial=" + fk_sede_filial + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.nome);
-        hash = 79 * hash + Objects.hashCode(this.CPF);
-        hash = 79 * hash + Objects.hashCode(this.RG);
-        hash = 79 * hash + Objects.hashCode(this.CTPS);
-        hash = 79 * hash + Objects.hashCode(this.tipo_usuario);
-        hash = 79 * hash + Objects.hashCode(this.login);
-        hash = 79 * hash + Objects.hashCode(this.senha);
-        hash = 79 * hash + Objects.hashCode(this.DN);
-        hash = 79 * hash + Objects.hashCode(this.fk_endereco);
-        hash = 79 * hash + Objects.hashCode(this.fk_sede_filial);
+        int hash = 7;
+        hash = 11 * hash + Objects.hashCode(this.id);
+        hash = 11 * hash + Objects.hashCode(this.nome);
+        hash = 11 * hash + (this.status ? 1 : 0);
+        hash = 11 * hash + Objects.hashCode(this.CPF);
+        hash = 11 * hash + Objects.hashCode(this.RG);
+        hash = 11 * hash + Objects.hashCode(this.CTPS);
+        hash = 11 * hash + Objects.hashCode(this.tipo_usuario);
+        hash = 11 * hash + Objects.hashCode(this.login);
+        hash = 11 * hash + Objects.hashCode(this.senha);
+        hash = 11 * hash + Objects.hashCode(this.DN);
+        hash = 11 * hash + Objects.hashCode(this.fk_endereco);
+        hash = 11 * hash + Objects.hashCode(this.fk_sede_filial);
         return hash;
     }
 
@@ -107,6 +112,9 @@ public class UsuarioBean implements Serializable {
             return false;
         }
         final UsuarioBean other = (UsuarioBean) obj;
+        if (this.status != other.status) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -141,6 +149,14 @@ public class UsuarioBean implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Integer getId() {

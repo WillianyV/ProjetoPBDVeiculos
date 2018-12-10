@@ -6,18 +6,22 @@
 package model.dao;
 
 import connenction.ConnectionFactory;
+import fachada.Fachada;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import model.beans.UsuarioBean;
+import util.Util;
 
 /**
  *
  * @author willi
  */
 public class UsuarioDAO {
-    
-    public void persist(UsuarioBean usuario) {        
+
+    public void persist(UsuarioBean usuario) {
         EntityManager em = new ConnectionFactory().getConnetion();
         try {
             em.getTransaction().begin();
@@ -69,21 +73,21 @@ public class UsuarioDAO {
         EntityManager em = new ConnectionFactory().getConnetion();
         ArrayList<UsuarioBean> usuarios = null;
         try {
-            usuarios = (ArrayList)em.createQuery("from UsuarioBean e").getResultList();
+            usuarios = (ArrayList) em.createQuery("from UsuarioBean e").getResultList();
         } catch (Exception e) {
             System.err.println("Erro ao buscar os Usuarios" + e);
             //Mensagem.mensagemErro("Erro ao buscar os Usuarios", "ERRO: Usuario");
-        }finally{
+        } finally {
             em.close();
         }
-        
+
         return usuarios;
     }
-   
-    public  UsuarioBean remove (Integer id) {
+
+    public UsuarioBean remove(Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
         UsuarioBean usuario = null;
-    
+
         try {
             usuario = em.find(UsuarioBean.class, id);
             em.getTransaction().begin();
@@ -93,24 +97,46 @@ public class UsuarioDAO {
             em.getTransaction().rollback();
             System.err.println("Erro ao remover Usuario" + e);
             //Mensagem.mensagemErro("Erro ao remover Usuario", "ERRO: Usuario");
-        }finally{
+        } finally {
             em.close();
         }
-        
-        return usuario;    
+
+        return usuario;
     }
-    public boolean validarLogin(String login, String senha){
-        boolean result = false;
-        EntityManager em = new ConnectionFactory().getConnetion();
-        try {
-            em.getTransaction().begin();
-            Query buscar = em.createQuery("from USUARIO u where u.login = ?5 an ");
-        } catch (Exception e) {
+
+    public boolean editarSenha(UsuarioBean usuario, String novaSenha) {
+        
+        if(Fachada.getUsuarioLogado().getLogin().equals(usuario.getLogin())){
+            if (Util.validarSenha(novaSenha)) {
+            usuario.setSenha(Util.criptografarSenha(novaSenha));
+            merge(usuario);
+            return true;
+            }
         }
         
-        return result;
-        //"select p from Pessoa p where p.login = :login and p.senha = :senha";
+        return false;
     }
-    //criptografar senha
-     //login
+
+    public boolean resetSenha(UsuarioBean superUsuario, UsuarioBean usuario) {
+        boolean editarSenha = false;
+
+        if (superUsuario.getTipo_usuario().equals("Superusuário")) {
+            editarSenha = editarSenha(usuario, "!1NovaSenha");
+        }
+
+        return editarSenha;
+    }
+
+    
+    public boolean fazerLogin(String login, String senha){
+       
+       for(UsuarioBean u : findAll()){
+            if(u.getLogin().equals(login) && u.getSenha().equals(Util.criptografarSenha(senha))){
+                Fachada.setUsuarioLogado(u);
+                return true;
+            }
+       }
+       return  false;
+    }
+
 }

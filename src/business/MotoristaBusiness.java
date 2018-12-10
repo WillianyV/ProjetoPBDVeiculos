@@ -28,7 +28,6 @@ public class MotoristaBusiness {
        }else if(Util.verificarIdade(motorista.getDN()) >= 21){
             dao.persist(motorista);
        }else{
-           
            System.err.println("Motorista com idade menor a de 21 anos");
            //Mensagem.mensagemInformacao("Motorista menos de 21 anos", "Erro");           
        }       
