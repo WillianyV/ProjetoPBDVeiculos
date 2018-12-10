@@ -1,5 +1,7 @@
 package app;
 
+import br.com.caelum.stella.validation.CPFValidator;
+import br.com.caelum.stella.validation.InvalidStateException;
 import fachada.Fachada;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +9,7 @@ import model.beans.AutomovelBean;
 import model.beans.CamionetasCargaBean;
 import model.beans.CamionetasPassageirosBean;
 import model.beans.CategoriaBean;
+import model.beans.ClienteBean;
 import model.beans.ControleFinanceiroBean;
 import model.beans.EnderecoBean;
 import model.beans.LocacaoBean;
@@ -32,7 +35,7 @@ public class App {
         /*
         //CADASTRO EMPRESA:
         EnderecoBean enderecoEmpresa = new EnderecoBean("Rua 1", "Santa Rosa", "Floresta", "PE", "56400-000", 4);
-        SedeFilialBean sedeFilial = new SedeFilialBean("Veículos Pajeú”", "Sede", "10.848.522/0001-00", enderecoEmpresa);
+        SedeFilialBean sedeFilial = new SedeFilialBean("Veículos Pajeú", "Sede", "10.848.522/0001-00", true, enderecoEmpresa);
         
         Fachada.getInstance().cadastrarSedeFilial(sedeFilial);
         
@@ -135,13 +138,15 @@ public class App {
         */
         
         //LISTAR CATEGORIAS:
-        /*for(){
-            System.out.println();
+       /* for(CategoriaBean cat : Fachada.getInstance().pesquisarCategoriaAll()){
+            System.out.println(cat.toString());
         }
         //LISTAR CLIENTES:
-        for(){
-            System.out.println();
-        }*/
+        
+        for(ClienteBean c : Fachada.getInstance().pesquisarClienteAll()){
+            System.out.println(c.toString());
+        }
+        */
         
         /*
         //LISTAR AS SEDES OU FILIAIS DA EMPRESA:
@@ -222,9 +227,96 @@ public class App {
         /*
         Editar:
         */
+        //CATEGORIA:
+        /*
+        AutomovelBean automovel = Fachada.getInstance().pesquisarAutomovelId(1);
+        automovel.setStatus(false);
+        Fachada.getInstance().editarAutomovel(automovel);
+        ArrayList<AutomovelBean> A = Fachada.getInstance().pesquisarAutomovelCod("AT1");
+        System.out.println(A);
+        
+        //EMPRESA:
+        
+        SedeFilialBean sedeF = Fachada.getInstance().pesquisarSedeFilialId(1);
+        sedeF.setTipo("Filial");
+        sedeF.setStatus(true);
+        Fachada.getInstance().editarSedeFilial(sedeF);
+        
+        //CLIENTES:
+        
+        PessoaFisicaBean psf =Fachada.getInstance().pesquisarPessoaFisicaId(1);
+        psf.setSexo("M");
+        Fachada.getInstance().editarPessoaFisica(psf);
+        
+        //VEICULOS:
+        
+        VeiculoBean ve = Fachada.getInstance().pesquisarVeiculoId(1);
+        ve.setAno_fabricacao(2016);
+        Fachada.getInstance().editarVeiculo(ve);
+        
+        //USUARIO:
+       
+        UsuarioBean us = Fachada.getInstance().pesquisarUsuarioId(1);
+        us.setStatus(false);
+        Fachada.getInstance().editarUsuario(us);
+       
+        //MOTORISTA:
+       
+        MotoristaBean mo = Fachada.getInstance().pesquisarMotoristaId(1);
+        mo.setNome("Capitão America");
+        Fachada.getInstance().editarMotorista(mo);
+       
+        //RESERVA:
+       
+        ReservaBean re = Fachada.getInstance().pesquisarReservaId(1);
+        re.setStatus(false);
+        Fachada.getInstance().editarReserva(re);
+        
+        //LOCAÇÃO:
+       
+        LocacaoBean lo = Fachada.getInstance().pesquisarLocacaoId(1);
+        lo.setStatus(false);
+        Fachada.getInstance().editarLocacao(lo);
+        
+        //FINCANCEIRO:
+        
+        ControleFinanceiroBean controlF = Fachada.getInstance().pesquisarControleFinanceiroId(1);
+        controlF.setValor(200);
+        Fachada.getInstance().editarControleFinanceiro(controlF);
+        */
+        
         /*
         Remover:
         */
-        
+         /*
+        //CATEGORIA:
+        AutomovelBean automovel1 = Fachada.getInstance().pesquisarAutomovelId(1);
+        Fachada.getInstance().excluirAutomovel(automovel1.getId());
+        //EMPRESA:
+        SedeFilialBean sedeF1 = Fachada.getInstance().pesquisarSedeFilialId(1);
+        Fachada.getInstance().excluirSedeFilial(sedeF1.getId());
+        //CLIENTES:
+        PessoaFisicaBean psf1 =Fachada.getInstance().pesquisarPessoaFisicaId(1);
+        Fachada.getInstance().excluirPessoaFisica(psf1.getId());
+        //VEICULOS:
+        VeiculoBean ve1 = Fachada.getInstance().pesquisarVeiculoId(1);
+        Fachada.getInstance().excluirVeiculo(ve1.getId());
+        //USUARIO:
+        UsuarioBean us1 = Fachada.getInstance().pesquisarUsuarioId(1);
+        Fachada.getInstance().excluirUsuario(us1.getId());
+        //MOTORISTA:
+        MotoristaBean mo1 = Fachada.getInstance().pesquisarMotoristaId(1);
+        Fachada.getInstance().excluirMotorista(mo1.getId());
+        //RESERVA:
+        ReservaBean re1 = Fachada.getInstance().pesquisarReservaId(1);
+        Fachada.getInstance().excluirReserva(re1.getId());
+        //LOCAÇÃO:
+        LocacaoBean lo1 = Fachada.getInstance().pesquisarLocacaoId(1);
+        Fachada.getInstance().excluirLocacao(lo1.getId());
+        //FINCANCEIRO:
+        ControleFinanceiroBean controlF1 = Fachada.getInstance().pesquisarControleFinanceiroId(1);
+        Fachada.getInstance().excluirControleFinanceiro(controlF1.getId());
+        */
+               
     }
 }

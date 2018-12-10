@@ -87,7 +87,7 @@ public class ControleFinanceiroDAO {
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Controle Financeiro" + e);
+            System.err.println("Erro ao remover Controle Financeiro");
             //Mensagem.mensagemErro("Erro ao remover Controle Financeiro", "ERRO: Controle Financeiro");
         }finally{
             em.close();

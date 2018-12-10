@@ -76,15 +76,18 @@ public class SedeFilialDAO {
     public  SedeFilialBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
         SedeFilialBean sedefilial = null;
-    
+        sedefilial = em.find(SedeFilialBean.class, id);
         try {
-            sedefilial = em.find(SedeFilialBean.class, id);
             em.getTransaction().begin();
             em.remove(sedefilial);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover empresa" + e);
+            System.err.println("Erro ao remover empresa, empresa ainda está sendo utilizada");
+            //sedefilial.setStatus(false);
+            //merge(sedefilial);
+            //System.err.println("Erro ao remover empresa, empresa ainda está sendo utilizada por usuários\nO Status da empresa será modificado para falso");
+            
             //Mensagem.mensagemErro("Erro ao remover empresa", "ERRO: empresa");
         }finally{
             em.close();

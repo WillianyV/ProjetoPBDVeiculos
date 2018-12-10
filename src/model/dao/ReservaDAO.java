@@ -76,16 +76,17 @@ public class ReservaDAO {
    
     public  ReservaBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        ReservaBean reserva = null;
-    
+        ReservaBean reserva;
+        reserva = em.find(ReservaBean.class, id);
         try {
-            reserva = em.find(ReservaBean.class, id);
             em.getTransaction().begin();
             em.remove(reserva);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Reserva" + e);
+            reserva.setStatus(false);
+            merge(reserva);
+            System.err.println("Erro ao remover Reserva, pois está sendo utilizado\nO Status da Reserva será modificado para falso");
             //Mensagem.mensagemErro("Erro ao remover Reserva", "ERRO: Reserva");
         }finally{
             em.close();

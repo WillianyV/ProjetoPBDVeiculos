@@ -76,16 +76,18 @@ public class PessoaJuridicaDAO {
     
     public  PessoaJuridicaBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        PessoaJuridicaBean pj = null;
-    
+        PessoaJuridicaBean pj;
+        pj = em.find(PessoaJuridicaBean.class, id);
         try {
-            pj = em.find(PessoaJuridicaBean.class, id);
             em.getTransaction().begin();
             em.remove(pj);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover o Cliente-Pessoa Jurídica" + e);
+            pj.setStatus(false);
+            merge(pj);
+            System.err.println("Erro ao remover o Cliente-Pessoa Jurídica, pois está sendo utilizado\nO Status do Cliente será modificado para falso");
+            
             //Mensagem.mensagemErro("Erro ao remover endereço", "ERRO: Cliente-PJ");
         }finally{
             em.close();

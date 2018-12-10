@@ -75,16 +75,17 @@ public class CamionetasPassageirosDAO {
    
     public  CamionetasPassageirosBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        CamionetasPassageirosBean cp = null;
-    
-        try {
-            cp = em.find(CamionetasPassageirosBean.class, id);
+        CamionetasPassageirosBean cp;
+        cp = em.find(CamionetasPassageirosBean.class, id);
+        try {            
             em.getTransaction().begin();
             em.remove(cp);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Camioneta de passageiro" + e);
+            cp.setStatus(false);
+            merge(cp);
+            System.err.println("Erro ao remover Camioneta de passageiro, pois esta cendo utilizada\nO Status da camioneta irá mudar para falso");
             //Mensagem.mensagemErro("Erro ao remover Camioneta de passageiro", "ERRO: Camioneta de passageiro");
         }finally{
             em.close();

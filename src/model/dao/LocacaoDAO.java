@@ -76,16 +76,16 @@ public class LocacaoDAO {
    
     public  LocacaoBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        LocacaoBean locacao = null;
-    
-        try {
-            locacao = em.find(LocacaoBean.class, id);
-            em.getTransaction().begin();
+        LocacaoBean locacao;
+        locacao = em.find(LocacaoBean.class, id);
+        try {em.getTransaction().begin();
             em.remove(locacao);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Locação" + e);
+            locacao.setStatus(false);
+            merge(locacao);
+            System.err.println("Erro ao remover Locação, pois está sendo utilizado\nO Status da locação será modificado para falso");
             //Mensagem.mensagemErro("Erro ao remover Locação", "ERRO: Locação");
         }finally{
             em.close();

@@ -80,16 +80,18 @@ public class MotoristaDAO {
    
     public  MotoristaBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        MotoristaBean motorista = null;
-    
+        MotoristaBean motorista;
+        motorista = em.find(MotoristaBean.class, id);
         try {
-            motorista = em.find(MotoristaBean.class, id);
             em.getTransaction().begin();
             em.remove(motorista);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Motorista" + e);
+            motorista.setStatus(false);
+            merge(motorista);
+            System.err.println("Erro ao remover Motorista, pois está sendo utilizado\nO Status do Motorista será modificado para falso");
+            
             //Mensagem.mensagemErro("Erro ao remover Motorista", "ERRO: Motoristas");
         }finally{
             em.close();

@@ -76,16 +76,18 @@ public class AutomovelDAO {
    
     public  AutomovelBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        AutomovelBean automovel = null;
-    
+        AutomovelBean automovel;
+        automovel = em.find(AutomovelBean.class, id);
         try {
-            automovel = em.find(AutomovelBean.class, id);
             em.getTransaction().begin();
             em.remove(automovel);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Automóvel" + e);
+            automovel.setStatus(false);
+            merge(automovel);
+            System.err.println("Erro ao remover Automóvel, pois esta sendo utilizada.\nO Status do Automóvel irá mudar para falso");
+            
             //Mensagem.mensagemErro("Erro ao remover Automóvel", "ERRO: Automovel");
         }finally{
             em.close();

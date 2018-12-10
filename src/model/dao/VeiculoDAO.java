@@ -82,16 +82,17 @@ public class VeiculoDAO {
     
     public  VeiculoBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        VeiculoBean veiculo = null;
-    
+        VeiculoBean veiculo;
+        veiculo = em.find(VeiculoBean.class, id);
         try {
-            veiculo = em.find(VeiculoBean.class, id);
             em.getTransaction().begin();
             em.remove(veiculo);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover veículo" + e);
+            veiculo.setStatus(false);
+            merge(veiculo);
+            System.err.println("Erro ao remover veículo, pois o veículo está sendo utilizado\nO Status do veículo será modificado para falso");
             //Mensagem.mensagemErro("Erro ao remover veículo", "ERRO: Veículo");
         }finally{
             em.close();

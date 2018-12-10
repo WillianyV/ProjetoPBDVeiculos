@@ -7,7 +7,6 @@ package model.dao;
 
 import connenction.ConnectionFactory;
 import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import model.beans.PessoaFisicaBean;
 
@@ -81,16 +80,18 @@ public class PessoaFisicaDAO {
    
     public  PessoaFisicaBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        PessoaFisicaBean pf = null;
-    
+        PessoaFisicaBean pf;
+         pf = em.find(PessoaFisicaBean.class, id);
         try {
-            pf = em.find(PessoaFisicaBean.class, id);
             em.getTransaction().begin();
             em.remove(pf);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Cliente-Pessoa Fisica" + e);
+            pf.setStatus(false);
+            merge(pf);
+            System.err.println("Erro ao remover Cliente-Pessoa Fisica, pois está sendo utilizado\nO Status do Cliente será modificado para falso");
+            
             //Mensagem.mensagemErro("Erro ao remover Cliente-Pessoa Fisica", "ERRO: Cliente-PF");
         }finally{
             em.close();

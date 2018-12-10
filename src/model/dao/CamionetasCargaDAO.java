@@ -75,16 +75,17 @@ public class CamionetasCargaDAO {
    
     public  CamionetasCargaBean remove (Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        CamionetasCargaBean cCarga = null;
-    
-        try {
-            cCarga = em.find(CamionetasCargaBean.class, id);
+        CamionetasCargaBean cCarga;
+        cCarga = em.find(CamionetasCargaBean.class, id);
+        try {            
             em.getTransaction().begin();
             em.remove(cCarga);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Camioneta de carga" + e);
+            cCarga.setStatus(false);
+            merge(cCarga);
+            System.err.println("Erro ao remover Camioneta de carga, pois esta sendo utilizada.\nO Status da Camuoneta irá mudar para falso");
             //Mensagem.mensagemErro("Erro ao remover Camioneta de carga", "ERRO: Camioneta de carga");
         }finally{
             em.close();

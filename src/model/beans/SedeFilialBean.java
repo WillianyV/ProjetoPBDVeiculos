@@ -48,17 +48,28 @@ public class SedeFilialBean implements Serializable {
         this.fk_endereco = fk_endereco;
     }
 
-    public SedeFilialBean(String nome, String tipo, String CNPJ, EnderecoBean fk_endereco) {
+    public SedeFilialBean(String nome, String tipo, String CNPJ, boolean status, EnderecoBean fk_endereco) {
         this.nome = nome;
         this.tipo = tipo;
         this.CNPJ = CNPJ;
+        this.status = status;
         this.fk_endereco = fk_endereco;
+    }
+
+    @Override
+    public String toString() {
+        return "SedeFilialBean{" + "id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", CNPJ=" + CNPJ + ", status=" + status + ", fk_endereco=" + fk_endereco + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.tipo);
+        hash = 13 * hash + Objects.hashCode(this.id);
+        hash = 13 * hash + Objects.hashCode(this.nome);
+        hash = 13 * hash + Objects.hashCode(this.tipo);
+        hash = 13 * hash + Objects.hashCode(this.CNPJ);
+        hash = 13 * hash + (this.status ? 1 : 0);
+        hash = 13 * hash + Objects.hashCode(this.fk_endereco);
         return hash;
     }
 
@@ -74,12 +85,25 @@ public class SedeFilialBean implements Serializable {
             return false;
         }
         final SedeFilialBean other = (SedeFilialBean) obj;
+        if (this.status != other.status) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        if (!Objects.equals(this.CNPJ, other.CNPJ)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.fk_endereco, other.fk_endereco)) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "SedeFilialBean{" + "id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", CNPJ=" + CNPJ + ", fk_Endereco=" + fk_endereco + '}';
     }
 
     public Integer getId() {
@@ -112,6 +136,14 @@ public class SedeFilialBean implements Serializable {
 
     public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public EnderecoBean getFk_endereco() {

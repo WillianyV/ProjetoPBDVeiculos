@@ -8,6 +8,8 @@ package fachada;
 import business.AutomovelBusiness;
 import business.CamionetasCargaBusiness;
 import business.CamionetasPassageirosBusiness;
+import business.CategoriaBusiness;
+import business.ClienteBusiness;
 import business.ControleFinanceiroBusiness;
 import business.EnderecoBusiness;
 import business.LocacaoBusiness;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 import model.beans.AutomovelBean;
 import model.beans.CamionetasCargaBean;
 import model.beans.CamionetasPassageirosBean;
+import model.beans.CategoriaBean;
+import model.beans.ClienteBean;
 import model.beans.ControleFinanceiroBean;
 import model.beans.EnderecoBean;
 import model.beans.LocacaoBean;
@@ -55,6 +59,8 @@ public class Fachada {
     private static SedeFilialBusiness sedeFilialBusiness;
     private static UsuarioBusiness usuarioBusiness;    
     private static VeiculoBusiness veiculoBusiness; 
+    private static CategoriaBusiness categoriaBusiness;
+    private static ClienteBusiness clienteBusiness;
     
     public Fachada() {
         automovelBusiness = new AutomovelBusiness();
@@ -70,6 +76,9 @@ public class Fachada {
         usuarioBusiness = new UsuarioBusiness(); 
         veiculoBusiness = new VeiculoBusiness();
         controleFinanceiroBusiness = new ControleFinanceiroBusiness();
+        categoriaBusiness = new CategoriaBusiness();
+        clienteBusiness = new ClienteBusiness();
+        
     }
     
     public static Fachada getInstance(){
@@ -298,6 +307,12 @@ public class Fachada {
     }
     public ArrayList<VeiculoBean> pesquisarVeiculoAll(){
         return veiculoBusiness.findAll();
+    }
+    public ArrayList<CategoriaBean> pesquisarCategoriaAll(){
+        return categoriaBusiness.findAll();
+    }
+    public ArrayList<ClienteBean> pesquisarClienteAll(){
+        return clienteBusiness.findAll();
     }
     
     public static UsuarioBean getUsuarioLogado() {

@@ -86,16 +86,17 @@ public class UsuarioDAO {
 
     public UsuarioBean remove(Integer id) {
         EntityManager em = new ConnectionFactory().getConnetion();
-        UsuarioBean usuario = null;
-
+        UsuarioBean usuario;
+        usuario = em.find(UsuarioBean.class, id);
         try {
-            usuario = em.find(UsuarioBean.class, id);
             em.getTransaction().begin();
             em.remove(usuario);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            System.err.println("Erro ao remover Usuario" + e);
+            usuario.setStatus(false);
+            merge(usuario);
+            System.err.println("Erro ao remover Usuario,pois está sendo utilizado\\nO Status do usuário será modificado para falso");
             //Mensagem.mensagemErro("Erro ao remover Usuario", "ERRO: Usuario");
         } finally {
             em.close();
@@ -108,8 +109,8 @@ public class UsuarioDAO {
         
         if(Fachada.getUsuarioLogado().getLogin().equals(usuario.getLogin())){
             if (Util.validarSenha(novaSenha)) {
-            usuario.setSenha(Util.criptografarSenha(novaSenha));
-            merge(usuario);
+                usuario.setSenha(Util.criptografarSenha(novaSenha));
+                merge(usuario);
             return true;
             }
         }
@@ -121,7 +122,12 @@ public class UsuarioDAO {
         boolean editarSenha = false;
 
         if (superUsuario.getTipo_usuario().equals("Superusuário")) {
-            editarSenha = editarSenha(usuario, "!1NovaSenha");
+            //editarSenha = editarSenha(usuario, "!1NovaSenha");
+             if (Util.validarSenha("!1NovaSenha")) {
+                usuario.setSenha(Util.criptografarSenha("!1NovaSenha"));
+                merge(usuario);
+            return true;
+            }
         }
 
         return editarSenha;
