@@ -114,7 +114,7 @@ public class App {
         VeiculoBean v = Fachada.getInstance().pesquisarVeiculoId(2);
         
         //CADASTRO DE RESERVA: 
-        ReservaBean reservaPF = new ReservaBean(Util.getDateTime(), Util.getDate("20/12/2028"), aten, pf, at2, at2.getValor_locar_categoria(), true);
+        ReservaBean reservaPF = new ReservaBean(Util.getDateTime(), Util.getDate("20/12/2028"), aten, pf, at2, (at2.getValor_locar_categoria()/2), true);
         
         Fachada.getInstance().cadastrarReserva(reservaPF);
         
@@ -131,7 +131,10 @@ public class App {
         
         Fachada.getInstance().cadastrarControleFinanceiro(financeiro);
         */
+        /*AutomovelBean automovelCompacto = new AutomovelBean("AT3", "Automóvel", "Pequeno", "Compacto", "Automático", true, true, true, true, true, true, 55, true);
         
+        Fachada.getInstance().cadastrarAutomovel(automovelCompacto);
+        */
         
         /*
          Listar all:
@@ -186,20 +189,20 @@ public class App {
         /*
         Fazer login:
         */
-        /*if(Fachada.getInstance().fazerLogin("super", "Super!1")){
+        if(Fachada.getInstance().fazerLogin("super", "Super!1")){
             System.out.println("Usuario Logado");
         }else{
             System.err.println("Erro ao entrar no sistema");
         }
         System.out.println(Fachada.getUsuarioLogado().toString());
-        */
+        
         
         
         /*
         Reset senha:
         */
-        /*UsuarioBean user = Fachada.getInstance().pesquisarUsuarioId(3);
-        if(Fachada.getInstance().resetSenha(Fachada.getUsuarioLogado(), user)){
+        UsuarioBean user = Fachada.getInstance().pesquisarUsuarioId(3);
+        /*if(Fachada.getInstance().resetSenha(Fachada.getUsuarioLogado(), user)){
             System.out.println("Senha resetada com sucesso");
         }else{
             System.err.println("Erro ao resetar senha");
@@ -210,7 +213,7 @@ public class App {
         /*
         Editar senha:
         */
-        /*if(Fachada.getInstance().fazerLogin("aten", "!1NovaSenha")){
+        if(Fachada.getInstance().fazerLogin("aten", "!1NovaSenha")){
             System.out.println("Usuario Logado");
         }else{
             System.err.println("Erro ao entrar no sistema");
@@ -221,7 +224,7 @@ public class App {
             System.out.println("Senha editada com sucesso");
         }else{
             System.out.println("Erro ao editar senha");
-        }*/
+        }
         
         
         /*
