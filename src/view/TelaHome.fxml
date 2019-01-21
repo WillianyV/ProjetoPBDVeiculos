@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="backgroudPrincipal" fx:id="principalPane" prefHeight="698.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaHomeController">
+   <children>
+      <AnchorPane id="menuPane" fx:id="menuPane" layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="300.0" style="-fx-background-color: #0747A6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView id="veiculoPJIcon" fx:id="veiculoPJIcon" fitHeight="100.0" fitWidth="250.0" layoutX="52.0" layoutY="14.0" onMousePressed="#irParaHome" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Button id="reservarButton" fx:id="reservarButton" accessibleText="Reservar Categoria" alignment="BASELINE_LEFT" layoutX="52.0" layoutY="125.0" mnemonicParsing="false" onAction="#irTelaReserva" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Reservar" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-reserve-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="locarButton" fx:id="locarButton" accessibleText="Locar Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="180.0" mnemonicParsing="false" onAction="#irTelaLocar" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Locar" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-car-rental-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="clientesButton" fx:id="clienteButton" accessibleText="Cadastrar Clientes" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="280.0" mnemonicParsing="false" onAction="#irTelaCliente" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Clientes" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-client-management-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="motoristasButton" fx:id="motoristasButton" accessibleText="Cadastrar Motoristas" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="330.0" mnemonicParsing="false" onAction="#irTelaMotorista" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Motoristas" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-driver-license-filled-20%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="veiculosButton" fx:id="veiculosButton" accessibleText="Cadastrar Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="380.0" mnemonicParsing="false" onAction="#irTelaVeiculos" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Veículos" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-car-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="categoriasButton" fx:id="categoriasButton" accessibleText="Categorias dos Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="430.0" mnemonicParsing="false" onAction="#irTelaCatgorias" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Categorias" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-list-view-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="relatoriosButton" fx:id="relatoriosButton" accessibleText="Relatórios" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="480.0" mnemonicParsing="false" onAction="#irTelasRelatorios" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Relatórios" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-graph-report-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="financeiroButton" fx:id="fincanceiroButton" accessibleText="Financeiro da empresa" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="530.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Financeiro" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-accounting-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="financeiroButton" fx:id="fincanceiroButton" accessibleText="Financeiro da empresa" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="530.0" mnemonicParsing="false" onAction="#irTelaFinanceiro" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Financeiro" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-accounting-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="devolucaoButton" fx:id="devolucaoButton" accessibleText="Devolução de veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="230.0" mnemonicParsing="false" onAction="#irTelaDevolucao" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Devolução" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-left-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="menuLateralPane" fx:id="menuLateralPane" layoutX="9.0" layoutY="11.0" onMouseClicked="#menuClick" prefHeight="650.0" prefWidth="50.0" style="-fx-background-color: #063f95;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView id="menuVisualizarIcon" fx:id="menuVisualizar" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="136.0" onMousePressed="#visualizarMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="140.0">
+               <image>
+                  <Image url="@../imagens/icons8-menu-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="backupIcon" fx:id="backup" accessibleText="Fazer backup" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="192.0" onMousePressed="#fazerBackup" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="190.0">
+               <image>
+                  <Image url="@../imagens/icons8-data-backup-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="restoreIcon" fx:id="restore" accessibleText="Fazer restore" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="240.0" onMousePressed="#fazerRestore" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-restore-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="logIcon" fx:id="log" accessibleText="Visualizar log's" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="289.0" onMousePressed="#visualizarLog" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-index-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="configuracaoIcon" fx:id="configuracao" accessibleText="Visualizar configurações" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="342.0" onMousePressed="#fazerConfiguracoes" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-settings-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="informacaoIcon" fx:id="informacao" accessibleText="Visualizar informações" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="391.0" onMousePressed="#informacaoSistema" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-question-mark-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="sairIcon" fx:id="sair" accessibleText="Sair do sistema" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="491.0" onMousePressed="#sairSistema" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-exit-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="logoutIcon" fx:id="logout" accessibleText="Fazer logout" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="442.0" onMousePressed="#fazerLogout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-shutdown-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="cadastrarReservar" fx:id="telaInicialPane" layoutX="310.0" layoutY="1.0" prefHeight="659.0" prefWidth="900.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutY="39.0" prefHeight="50.0" prefWidth="900.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <ImageView id="voltar" fx:id="voltar" accessibleText="Voltar" fitHeight="30.0" fitWidth="30.0" layoutX="34.0" layoutY="10.0" onMousePressed="#voltarPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-back-arrow-30.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView id="ir" fx:id="ir" accessibleText="Ir" fitHeight="30.0" fitWidth="30.0" layoutX="83.0" layoutY="10.0" onMousePressed="#irPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-forward-button-30.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Separator halignment="LEFT" layoutX="125.0" layoutY="5.0" opacity="0.5" orientation="VERTICAL" prefHeight="40.0" prefWidth="10.0" />
+                  <ImageView id="atualizar" fx:id="atualizar" accessibleHelp="Atualizar" accessibleText="Atualizar" fitHeight="30.0" fitWidth="30.0" layoutX="147.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-synchronize-30%20(1).png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Separator halignment="LEFT" layoutX="193.0" layoutY="5.0" opacity="0.5" orientation="VERTICAL" prefHeight="40.0" prefWidth="10.0" />
+                  <Label alignment="CENTER" layoutX="217.0" layoutY="12.0" text="Início" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="701.0" layoutY="667.0" text="Desenvolvido por Williany Almeida" textFill="#979797" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
+               <opaqueInsets>
+                  <Insets right="10.0" />
+               </opaqueInsets>
+            </Label>
+            <ImageView fitHeight="100.0" fitWidth="300.0" layoutX="300.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/logo2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

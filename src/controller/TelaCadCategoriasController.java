@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author willi
  */
-public class TelaController implements Initializable {
+public class TelaCadCategoriasController implements Initializable {
 
     /**
      * Initializes the controller class.

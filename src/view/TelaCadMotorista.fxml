@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="backgroudPrincipal" fx:id="principalPane" prefHeight="698.0" prefWidth="1200.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaCadMotoristaController">
+   <children>
+      <AnchorPane id="menuPane" fx:id="menuPane" prefHeight="650.0" prefWidth="300.0" style="-fx-background-color: #0747A6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView id="veiculoPJIcon" fx:id="veiculoPJIcon" fitHeight="100.0" fitWidth="250.0" layoutX="52.0" layoutY="14.0" onMousePressed="#irParaHome" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Button id="reservarButton" fx:id="reservarButton" accessibleText="Reservar Categoria" alignment="BASELINE_LEFT" layoutX="52.0" layoutY="125.0" mnemonicParsing="false" onAction="#irTelaReserva" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Reservar" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-reserve-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="locarButton" fx:id="locarButton" accessibleText="Locar Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="180.0" mnemonicParsing="false" onAction="#irTelaLocar" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Locar" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-car-rental-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="clientesButton" fx:id="clienteButton" accessibleText="Cadastrar Clientes" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="280.0" mnemonicParsing="false" onAction="#irTelaCliente" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Clientes" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-client-management-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="motoristasButton" fx:id="motoristasButton" accessibleText="Cadastrar Motoristas" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="330.0" mnemonicParsing="false" onAction="#irTelaMotorista" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Motoristas" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-driver-license-filled-20%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="veiculosButton" fx:id="veiculosButton" accessibleText="Cadastrar Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="380.0" mnemonicParsing="false" onAction="#irTelaVeiculos" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Veículos" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-car-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="categoriasButton" fx:id="categoriasButton" accessibleText="Categorias dos Veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="430.0" mnemonicParsing="false" onAction="#irTelaCatgorias" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Categorias" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-list-view-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="relatoriosButton" fx:id="relatoriosButton" accessibleText="Relatórios" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="480.0" mnemonicParsing="false" onAction="#irTelasRelatorios" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Relatórios" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-graph-report-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="financeiroButton" fx:id="fincanceiroButton" accessibleText="Financeiro da empresa" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="530.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Financeiro" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-accounting-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="financeiroButton" fx:id="fincanceiroButton" accessibleText="Financeiro da empresa" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="530.0" mnemonicParsing="false" onAction="#irTelaFinanceiro" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Financeiro" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-accounting-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="devolucaoButton" fx:id="devolucaoButton" accessibleText="Devolução de veículos" alignment="BASELINE_LEFT" layoutX="50.0" layoutY="230.0" mnemonicParsing="false" onAction="#irTelaDevolucao" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Devolução" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-left-filled-15.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="menuLateralPane" fx:id="menuLateralPane" layoutX="-1.0" layoutY="1.0" onMouseClicked="#menuClick" prefHeight="650.0" prefWidth="50.0" style="-fx-background-color: #063f95;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView id="menuVisualizarIcon" fx:id="menuVisualizar" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="136.0" onMousePressed="#visualizarMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="140.0">
+               <image>
+                  <Image url="@../imagens/icons8-menu-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="backupIcon" fx:id="backup" accessibleText="Fazer backup" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="192.0" onMousePressed="#fazerBackup" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="190.0">
+               <image>
+                  <Image url="@../imagens/icons8-data-backup-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="restoreIcon" fx:id="restore" accessibleText="Fazer restore" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="240.0" onMousePressed="#fazerRestore" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-restore-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="logIcon" fx:id="log" accessibleText="Visualizar log's" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="289.0" onMousePressed="#visualizarLog" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-index-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="configuracaoIcon" fx:id="configuracao" accessibleText="Visualizar configurações" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="342.0" onMousePressed="#fazerConfiguracoes" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-settings-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="informacaoIcon" fx:id="informacao" accessibleText="Visualizar informações" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="391.0" onMousePressed="#informacaoSistema" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-question-mark-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="sairIcon" fx:id="sair" accessibleText="Sair do sistema" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="491.0" onMousePressed="#sairSistema" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-exit-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="logoutIcon" fx:id="logout" accessibleText="Fazer logout" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="442.0" onMousePressed="#fazerLogout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/icons8-shutdown-filled-30.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="cadastrarReservar" fx:id="telaCadastrarLocacaoPane" layoutX="310.0" layoutY="10.0" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutY="39.0" prefHeight="50.0" prefWidth="900.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <ImageView id="voltar" fx:id="voltar" accessibleText="Voltar" fitHeight="30.0" fitWidth="30.0" layoutX="34.0" layoutY="10.0" onMousePressed="#voltarPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-back-arrow-30.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView id="ir" fx:id="ir" accessibleText="Ir" fitHeight="30.0" fitWidth="30.0" layoutX="83.0" layoutY="10.0" onMousePressed="#irPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-forward-button-30.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Separator halignment="LEFT" layoutX="125.0" layoutY="5.0" opacity="0.5" orientation="VERTICAL" prefHeight="40.0" prefWidth="10.0" />
+                  <ImageView id="atualizar" fx:id="atualizar" accessibleHelp="Atualizar" accessibleText="Atualizar" fitHeight="30.0" fitWidth="30.0" layoutX="147.0" layoutY="10.0" onMousePressed="#atualizarPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/icons8-synchronize-30%20(1).png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Separator halignment="LEFT" layoutX="193.0" layoutY="5.0" opacity="0.5" orientation="VERTICAL" prefHeight="40.0" prefWidth="10.0" />
+                  <Label alignment="CENTER" layoutX="217.0" layoutY="12.0" text="Cadastrar Motorista" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <AnchorPane layoutX="50.0" layoutY="109.0" prefHeight="265.0" prefWidth="981.0" style="-fx-border-color: CDCDCD;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <children>
+                  <GridPane layoutX="28.0" layoutY="22.0" prefHeight="229.0" prefWidth="745.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="21.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="323.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.0" minWidth="0.0" prefWidth="172.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="219.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="42.0" minHeight="8.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="27.0" minHeight="8.0" prefHeight="8.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Data  de Nascimento" GridPane.rowIndex="4" />
+                        <Label text="Status" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="statusCliienteComboBox" disable="true" prefWidth="150.0" promptText="Status do motorista" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </ComboBox>
+                        <Button fx:id="salvarLocacaoButton" disable="true" mnemonicParsing="false" onAction="#salvarMotorista" prefHeight="25.0" prefWidth="100.0" stylesheets="@style.css" text="Salvar" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Label text="Nome" GridPane.rowIndex="2" />
+                        <TextField fx:id="nomeClienteField" disable="true" promptText="Nome" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <DatePicker fx:id="dataNascimentoDate" disable="true" promptText="Data" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </DatePicker>
+                        <Label text="CNH" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Data do Vencimento da CNH" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="cnhField" disable="true" promptText="00000000000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <DatePicker disable="true" promptText="Data" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="idField" disable="true" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" promptText="id" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Button fx:id="novoLocacaoButton" mnemonicParsing="false" onAction="#novoMotorista" prefHeight="25.0" prefWidth="100.0" stylesheets="@style.css" text="Novo" textFill="WHITE" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <GridPane layoutX="50.0" layoutY="388.0" prefHeight="57.0" prefWidth="800.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="265.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="153.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="152.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="152.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="40.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="pesquisarLocacaoField" prefHeight="25.0" prefWidth="371.0" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Pesquisar Locação" GridPane.rowIndex="1" />
+                  <Label text="Status" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Período inicial" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Período final" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="pesquisarPInicialLocacaoDate" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="pesquisarPfinalLocacaoDate" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ImageView fx:id="pesquisarLocacaoIcon" fitHeight="30.0" fitWidth="30.0" onMousePressed="#pesquisarIcon" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../imagens/icons8-search-30.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ComboBox fx:id="pesquisarStatusLocacaoComboBox" prefWidth="150.0" promptText="Status do motorista" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fx:id="imprimirLocacaoIcon" fitHeight="30.0" fitWidth="30.0" onMousePressed="#imprimirIcon" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../imagens/icons8-print-30.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </GridPane>
+            <TableView fx:id="clientesTable" layoutX="50.0" layoutY="458.0" prefHeight="220.0" prefWidth="800.0" stylesheets="@style.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+               <columns>
+                  <TableColumn prefWidth="33.0" text="id" />
+                  <TableColumn prefWidth="92.0" text="Data | Hora" />
+                  <TableColumn prefWidth="89.0" text="Data Locação" />
+                  <TableColumn prefWidth="230.0" text="Cliente" />
+                  <TableColumn minWidth="0.0" prefWidth="87.0" text="Veículo" />
+                  <TableColumn prefWidth="74.0" text="Valor inicial" />
+                  <TableColumn prefWidth="87.0" text="Status" />
+                  <TableColumn prefWidth="107.0" text="Funcionário" />
+               </columns>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
